@@ -1,8 +1,26 @@
 # Intellij
-.idea/
+.idea/*
 *.iml
 *.iws
 
 # Maven
 log/
 target/
+
+Rule-Web/.idea/*
+Rule-Web/target/*
+Rule-Web/IPS-Web.iml
+Rule-Web/npm-debug.log
+Rule-Web/logs/*
+Rule-Web/tmp.json
+Rule-Web/src/main/webapp/app/.*\.js$
+Rule-Web/src/main/webapp/app/.*\.map$
+Rule-Web/src/main/webapp/node_modules/*
+Rule-Web/src/main/webapp/resources/global/ips/sass/.sass-cache/*
+Rule-Web/src/main/webapp/.sass-cache/*
+Rule-Web/src/main/webapp/resources/global/ips/sass/main.css
+Rule-Web/src/main/webapp/resources/global/ips/css/main.css
+Rule-Web/src/main/webapp/resources/global/ips/sass/main.css.map
+Rule-Web/src/main/webapp/dist/*
+Rule-Web/src/main/webapp/app.min.js
+Rule-Web/src/main/webapp/vendors.min.js
