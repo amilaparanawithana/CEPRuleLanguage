@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <bean id="configurationEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+        <property name="config">
+            <bean class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
+                <property name="algorithm" value="PBEWITHSHA256AND256BITAES-CBC-BC"/>
+                <property name="passwordEnvName" value="APP_PASSWORD"/>
+                <property name="providerClassName" value="org.bouncycastle.jce.provider.BouncyCastleProvider"/>
+                <property name="providerName" value="BC"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="jwtTokenEncrypt" class="org.adroitlogic.ips.util.auth.util.JWTTokenEncrypt">
+        <constructor-arg value="${jwt.encryption.key}"/>
+    </bean>
+
+    <bean id="keyRepository" class="org.adroitlogic.ips.util.auth.constant.KeyRepositoryConst">
+        <constructor-arg value="${jwt.shared.key}"/>
+    </bean>
+
+    <bean id="tenantService" class="org.adroitlogic.ips.services.userManagement.TenantService" init-method="init">
+        <property name="defaultTenantName" value="adroitlogic"/>
+        <property name="defaultTenantDomain" value="adroitlogic.com"/>
+        <property name="defaultTenantEmail" value="defaulttenant@adroitlogic.com"/>
+        <property name="superUserGroup" value="SUPER"/>
+    </bean>
+
+    <bean id="cachingService" class="org.adroitlogic.ips.services.userManagement.CachingService" init-method="init">
+        <property name="hostName" value="localhost"/>
+        <property name="port" value="6379"/>
+    </bean>
+
+
+
+    <bean id="roleService" class="org.adroitlogic.ips.services.userManagement.RoleService">
+
+    </bean>
+
+    <bean id="userService" class="org.adroitlogic.ips.services.userManagement.UserService"/>
+
+    <bean id="permissionService" class="org.adroitlogic.ips.services.userManagement.PermissionService"/>
+
+    <bean id="auditLogService" class="org.adroitlogic.ips.services.AuditLogService" init-method="init">
+        <property name="logPath" value="${log.path}"/>
+    </bean>
+
+    <bean id="authService" class="org.adroitlogic.ips.services.userManagement.AuthService">
+    </bean>
+
+    <bean id="bearerAuthConfig" class="org.adroitlogic.ips.util.auth.config.BearerAuthConfig">
+        <property name="token" value="${kube.api.auth.bearer.token}"/>
+    </bean>
+
+
+    <bean id="dataSource" class="org.adroitlogic.ultracp.UltraDataSource" init-method="initialize"
+          destroy-method="destroy">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/CEP"/>
+        <property name="initialSize" value="5"/>
+        <property name="minSize" value="2"/>
+        <property name="maxTotal" value="10"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <!--<property name="waitTimeToInitialize" value="${ultracp.waitTimeToInitialize}"/>-->
+        <property name="connectionProperties">
+            <props>
+                <prop key="user">root</prop>
+                <prop key="password">root</prop>
+            </props>
+        </property>
+        <property name="poolName" value="ips-web-mysql"/>
+        <property name="connectionIdleMillis" value="60000"/>
+        <property name="connectionWaitMillis" value="60000"/>
+        <property name="refreshIntervalMillis" value="20000"/>
+    </bean>
+
+
+    <bean id="hibernateJpaVendorAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
+    <!-- Configure the entity manager factory bean -->
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+        <!-- Set JPA properties -->
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <!-- Automatically drop and create tables -->
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+            </props>
+        </property>
+        <property name="packagesToScan" value="org.adroitlogic.ips.model.db"/>
+    </bean>
+
+    <!-- Configure the transaction manager bean -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <tx:annotation-driven/>
+
+    <jpa:repositories base-package="org.adroitlogic.ips.repository"/>
+    <context:component-scan base-package="org.adroitlogic.ips.model.db"/>
+
+    <!--Turn off sessions of shiro-->
+    <bean id="sessionStorageEvaluator" class="org.apache.shiro.mgt.DefaultSessionStorageEvaluator">
+        <property name="sessionStorageEnabled" value="false"/>
+    </bean>
+    <bean id="subjectDAO" class="org.apache.shiro.mgt.DefaultSubjectDAO">
+        <property name="sessionStorageEvaluator" ref="sessionStorageEvaluator"/>
+    </bean>
+    <!--Turn off sessions done-->
+
+    <!--Defining Shiro Realm-->
+    <bean id="jwtRalm" class="org.adroitlogic.ips.util.auth.realms.JWTRealm">
+        <property name="authorizationCachingEnabled" value="false"/>
+    </bean>
+
+    <!--security manager configuration and binding-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="jwtRalm"/>
+        <!--<property name="subjectDAO" ref="subjectDAO"/>-->
+        <!--Remove this line to re enable sessions-->
+    </bean>
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager"/>
+        <property name="arguments" ref="securityManager"/>
+    </bean>
+    <!--End fo security manager configuration-->
+
+    <!--mediating all teh requests-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="loginUrl" value="${ips.auth.unauthorized}"/>
+        <property name="unauthorizedUrl" value="${ips.auth.unauthorized}"/>
+        <property name="securityManager" ref="securityManager"/>
+        <property name="filters">
+            <util:map>
+                <entry key="authzFilter" value-ref="authzFilter"/>
+            </util:map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                # some example chain definitions:
+                /** = authzFilter
+                # more URL-to-FilterChain definitions here
+            </value>
+        </property>
+    </bean>
+
+    <bean id="authzFilter" class="org.adroitlogic.ips.util.auth.filters.JWTAuthorizationFilter">
+        <constructor-arg name="authUrl" value="/rest/auth"/>
+        <property name="filterOn" value="true"/>
+    </bean>
+
+    <!--Enable shiro annotation processing inside spring/jersy controllers-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <!--JWT Tokens-->
+    <bean name="jwtTokenManager" class="org.adroitlogic.ips.util.auth.tokens.JWTTokenManager">
+        <property name="issuer" value="adroitlogic - ips"/>
+        <property name="lifeTime" value="3600000"/>
+    </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!-- Annotation, so that it's easier to search controllers/components -->
+    <context:component-scan base-package="org.adroitlogic.ips.rest.controllers"/>
+
+    <bean name="dbAuthService" class="org.adroitlogic.ips.services.userManagement.DBAuthService"/>
+    <bean name="tenantFactory" class="org.adroitlogic.ips.util.annotations.TenantFactory"/>
+
+</beans>

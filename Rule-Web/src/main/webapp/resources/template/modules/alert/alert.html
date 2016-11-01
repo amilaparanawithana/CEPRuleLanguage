@@ -1,0 +1,19 @@
+<div class="alert-wrapper" *ngIf="service.config!=null">
+    <div class="alert-container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>{{service.config.title}}</h4>
+                <p>{{service.config.message}}</p>
+            </div>
+            <div class="col-xs-12">
+                <div class="pull-right">
+                    <button class="btn btn-default" (click)="positiveAction()">{{service.config.positiveButton}}
+                    </button>
+                    <button class="btn btn-default" *ngIf="service.config.negativeButtonVisible" (click)="dismissAlert()">
+                        {{service.config.negativeButton}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

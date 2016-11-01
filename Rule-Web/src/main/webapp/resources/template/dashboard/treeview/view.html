@@ -1,0 +1,28 @@
+<ul style="list-style-type: none;">
+    <li *ngFor="#dir of directories" style="list-style-type: none;">
+        <div>
+            <i (click)="dir.toggle()" class="fa fa-{{dir.getIcon()}}-square-o fa-1x" style="margin-right: 5px;"></i>
+            <div class="checkbox checkbox-inline">
+                <input type="checkbox" id="dir.name" [checked]="dir.checked" (click)="dir.check()">
+                <label for="dir.name">
+                    {{ dir.name }}
+                </label>
+            </div>
+        </div>
+        <div *ngIf="dir.expanded">
+            <ul style="list-style-type: none;">
+                <li style="list-style-type: none;" *ngFor="#permission of dir.permissions">
+                    <div class="checkbox checkbox-inline">
+                        <input type="checkbox" id="permission.name" [checked]="permission.checked" (click)="permission.check()">
+                        <label for="permission.name">
+                            {{ permission.name }}
+                        </label>
+                    </div>
+                    {{file}}
+                </li>
+            </ul>
+            <tree-view [(directories)]="dir.directories"></tree-view>
+        </div>
+
+    </li>
+</ul>

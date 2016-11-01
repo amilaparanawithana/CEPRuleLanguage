@@ -1,0 +1,38 @@
+<div class="content-header-wrapper">
+    <div class="row">
+        <div class="col-md-5"><p class="ips-page-header"> Service Packages</p></div>
+        <div class="col-md-7">
+            <div class="pull-right">
+                <a href="javascript:;" class="btn btn-default" (click)="fetchPackages()"><i class="fa fa-refresh"></i>
+                    Refresh</a>
+                <button class="btn btn-active" [routerLink]="['../ServicePackageCreate']"><i class="fa fa-plus-square-o"></i>
+                    Add
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-body-wrapper">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th width="20%"> Index</th>
+            <th class="text-left">Name</th>
+            <th class="text-left">Replication Count</th>
+            <th class="text-left"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="#package of servicePackages">
+            <td>{{package.id}}</td>
+            <td>{{package.name}}</td>
+            <td>{{package.maxReplication}}</td>
+            <td>
+                <button class="btn btn-default btn-sm" [routerLink]="['../ServicePackageCreate',{id:package.id,createNew:false}]">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deletePackage(package.id)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

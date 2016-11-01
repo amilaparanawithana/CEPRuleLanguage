@@ -1,0 +1,66 @@
+@import "../styles";
+@import "../colours";
+
+$tour-padding: 20px;
+
+.tour-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: $material_box_shadow;
+  padding: 0;
+  z-index: 9999;
+  background-color: $white;
+
+  .tour-header {
+    background-color: $theme_blue;
+    margin: 0;
+    padding: 5px 20px;
+    color: $white;
+  }
+
+  .tour-body {
+    padding: 0px;
+  }
+
+  .tour-row {
+    $tour-row-height: 30px;
+    margin: 0 !important;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+
+    .tour-status {
+      height: $tour-row-height;
+      line-height: $tour-row-height;
+      overflow: hidden;
+
+      .tour-status-ico, .tour-status-text {
+        float: left;
+      }
+
+      .tour-status-ico {
+        i {
+          font-size: $tour-row-height;
+          color: #757575;
+        }
+
+        .fa-check-circle{
+          color: $validation_green;
+        }
+      }
+
+      .tour-status-text {
+        padding-left: 20px;
+      }
+    }
+  }
+
+  .tour-row:hover {
+    background-color: #EEEEEE;
+  }
+
+  .tour-footer {
+    padding: $tour-padding;
+  }
+}

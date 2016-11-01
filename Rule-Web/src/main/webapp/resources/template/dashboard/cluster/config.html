@@ -1,0 +1,260 @@
+<div class="content-header-wrapper">
+    <div class="header-back-arrow" [routerLink]="['../ClusterList']"></div>
+    <ul class="nav nav-pills" style="width: 400px; margin: 0 auto;">
+        <li class="active"><a data-toggle="tab" href="#tabConfig" (click)="onTabChange('conf')">Configurations</a></li>
+        <li><a data-toggle="tab" href="#tabCharts" (click)="onTabChange('stat')">Statistics</a></li>
+    </ul>
+</div>
+
+<div class="content-body-wrapper">
+    <div class="tab-content">
+        <div id="tabConfig" class="tab-pane fade in active">
+            <div class="bottom-separator row">
+                <p class="ips-page-sub-header">General Configurations</p>
+
+                <div class="form">
+
+                    <form class="form-horizontal" role="form" (ngSubmit)="onUpdate()">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Name :</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="clusterName" [(ngModel)]="cluster.name" required
+                                   pattern="([A-Za-z)-9][-A-Za-z0-9_.]*)?[A-Za-z)-9]">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Replication Count :</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="rcCount"
+                                   [(ngModel)]="cluster.replicationCounter" required pattern="[0-9]+">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Service Package :</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="clusterServicePackageName"
+                                   [(ngModel)]="clusterServicePackage.name" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Node Groups:</label>
+                        <div class="col-md-10">
+                            <table class="table table-striped table-responsive">
+                                <thead>
+                                <tr>
+                                    <th class="numeric"></th>
+                                    <th width="20%">Name</th>
+                                    <th class="text-left">Description</th>
+                                    <th class="numeric">Hosts</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="#nodeGroup of nodeGroups">
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="addNodeGroup(nodeGroup.id)"
+                                                *ngIf="!isAddedNodeGroup(nodeGroup.id)">Add</button>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="removeNodeGroup(nodeGroup.id)"
+                                                *ngIf="isAddedNodeGroup(nodeGroup.id)">Remove</button>
+                                    </td>
+                                    <td>{{nodeGroup.name}}</td>
+                                    <td>{{nodeGroup.description}}</td>
+                                    <td>
+                                        <span class="label" *ngFor="#hostname of nodeGroup.hostnames">
+                                            {{hostname}}
+                                        </span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="form-group pull-right">
+                        <button type="button" class="btn btn-default" (click)="onRefresh()"><i
+                                class="fa fa-refresh"></i>
+                            Refresh Cluster
+                        </button>
+                        <button type="submit" class="btn btn-active" ><i
+                                class="fa fa-cloud-upload"></i>
+                            Update
+                        </button>
+                    </div>
+                </form>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="sub-header-container">
+                    <div class="pull-left">
+                        <p class="ips-page-sub-header">Working UltraESB Pods</p>
+                    </div>
+                    <div class="orm-group pull-right">
+                        <a (click)="fetchPods()" class="reload" class="btn btn-default"> <i
+                                class="fa fa-refresh"></i> Refresh Pods View </a>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="numeric"> Name</th>
+                        <th class="numeric"> State</th>
+                        <th class="numeric"> Running Node</th>
+                        <th class="numeric"> Restarts</th>
+                        <th class="numeric"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="#pod of pods">
+                        <td>{{pod.name}}</td>
+                        <td>{{pod.state}}</td>
+                        <td> {{pod.runningNode}}</td>
+                        <td class="numeric">{{pod.restarts}}</td>
+                        <td>
+                            <button class="btn yellow btn-sm"
+                                    [routerLink]="['../../Pod',{id:cluster.id, name:pod.name}]">Detail
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="sub-header-container">
+                    <div class="pull-left">
+                        <p class="ips-page-sub-header">Endpoints Mapping</p>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="text-left"> Port</th>
+                        <th class="text-left"> Endpoints</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="#endpoint of endpoints">
+                        <td>{{endpoint.port}}</td>
+                        <td>
+                            <ul>
+                                <li *ngFor="#ep of endpoint.endpoints">
+                                    {{ep}}
+                                </li>
+                            </ul>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="sub-header-container">
+                    <div class="pull-left">
+                        <p class="ips-page-sub-header">Projects</p>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="text-left"> ID</th>
+                        <th class="text-left"> Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="#project of projects">
+                        <td>{{project.id}}</td>
+                        <td>{{project.name}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div id="tabCharts" class="tab-pane fade" style="overflow: hidden;">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#osMetricsTab" (click)="onChartTabChange('osMetrics')">Operating
+                    System Metrics</a></li>
+                <li><a data-toggle="tab" href="#esbMetricsTab" (click)="onChartTabChange('esbMetrics')">UltraESB
+                    Metrics</a></li>
+                <li><a data-toggle="tab" href="#comMetricsTab" (click)="onChartTabChange('comMetrics')">Communication
+                    Metrics</a></li>
+                <li>
+                    <div style="margin-left: 90px;">
+                        <div id="reportrange" class="pull-right"
+                             style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #eee; width: 300px;">
+                            <i class="fa fa-calendar"></i>&nbsp;
+                            <span></span> <b class="caret"></b>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="osMetricsTab" class="tab-pane fade in active">
+                    <div class="row graph-horizontal-bar">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="cpuUsageChart" *ngIf="cpuUsageChart"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="heapUsageChart" *ngIf="heapUsageChart"></chart>
+                        </div>
+                    </div>
+
+                    <div class="row graph-horizontal-bar-last">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="fdUsageChart" *ngIf="fdUsageChart"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="threadUsageChart" *ngIf="threadUsageChart"></chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="esbMetricsTab" class="tab-pane fade">
+                    <div class="row graph-horizontal-bar">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="threadCountChart" *ngIf="threadCountChart" style="width: 200px;"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="fileCacheUsageChart" *ngIf="fileCacheUsageChart" style="width: 200px;"></chart>
+                        </div>
+                    </div>
+
+                    <div class="row graph-horizontal-bar">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="failedOutCountChart" *ngIf="failedOutCountChart" style="width: 200px;"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="failedInCountChart" *ngIf="failedInCountChart" style="width: 200px;"></chart>
+                        </div>
+                    </div>
+
+                    <div class="row graph-horizontal-bar-last">
+                        <div class="col-lg-6" col-lg-no-padding>
+                            <chart [chart]="totalLatencyChart" *ngIf="totalLatencyChart" style="width: 200px;"></chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="comMetricsTab" class="tab-pane fade">
+                    <div class="row graph-horizontal-bar-last">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="receivedCountChart" *ngIf="receivedCountChart" style="width: 200px;"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="sentCountChart" *ngIf="sentCountChart" style="width: 200px;"></chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

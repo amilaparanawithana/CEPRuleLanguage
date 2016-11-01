@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-xs-2">
+        <div class="input-group">
+            <select class="form-control" (change)="setRowsPerPages($event.target.value)">
+                <option>10</option>
+                <option selected>25</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-offset-4 col-xs-3 text-right">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" id="col-select-btn">
+                Columns <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li *ngFor="#column of columns; #i = index">
+                    <!--<input class="form-control" type="checkbox">-->
+                    <div class="checkbox checkbox-inline">
+                        <input type="checkbox" id="{{column.uid}}" [(ngModel)]="column.visible">
+                        <label class="checkbox-info">{{column.title}}</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-3 text-right">
+        <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+            <input placeholder="Search" class="form-control ng-pristine ng-valid ng-touched"
+                   type="text" (keyup.enter)="update()" [(ngModel)]="keyword">
+        </div>
+    </div>
+</div>
+<div class="row">
+    &nbsp;
+</div>
+<div class="row table-container">
+    <div class="col-xs-12">
+        <table class="table table-striped data-table table-bordered table-responsive">
+            <thead>
+            <tr>
+                <th *ngFor="#column of columns; #i = index"
+                    [class.hidden-column]="!isColumnVisible(i)"
+                    [class.sortable-column]="column.sortable"
+                    [class.sortable-column-asc]="column.sortable && sortColumn==i && sortAscending"
+                    [class.sortable-column-desc]="column.sortable && sortColumn==i && !sortAscending"
+                    (click)="setSortColumn(i)"
+                    [width]="getColumnWidth(i)">
+                    {{column.title}}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="#dataRow of dataRows; #rowIndex = index">
+                <td *ngFor="#col of dataRow.data; #i = index"
+                    [class.hidden-column]="!isColumnVisible(i)">
+                    <div *ngIf="!isColumnActionable(i)">
+                        {{col}}
+                    </div>
+                    <div *ngIf="isColumnClickable(i)">
+                        <button (click)="callActionable(i,rowIndex,col)"
+                                [class]="getColumnSpecificCssClassesForHtmlElement(i)">{{col}}
+                        </button>
+                    </div>
+                    <div *ngIf="isColumnSelectable(i)">
+                        <select (change)="callActionable(i,rowIndex,$event.target.value)"
+                                [class]="getColumnSpecificCssClassesForHtmlElement(i)">
+                            <option *ngFor="#item of getColumnSelectable(i).optionValues; #sIndex = index;"
+                                    [value]="item"
+                                    [selected]="getColumnSelectable(i).equals(col,sIndex)">
+                                {{getColumnSelectable(i).optionData[sIndex]}}
+                            </option>
+                        </select>
+                    </div>
+                    <div *ngIf="isColumnCheckable(i)">
+                        <input type="checkbox" [checked]="getColumnCheckable(i).isChecked(col)"
+                               [class]="getColumnSpecificCssClassesForHtmlElement(i)"
+                               (change)="callActionable(i,rowIndex,col)">
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-nav-wrapper">
+        <div class="table-nav  text-right">
+            <ul class="pagination">
+                <li><a (click)="setCurrentPage(0)"><<</a></li>
+                <li><a (click)="setCurrentPage(currentPage-1)"><</a></li>
+                <li *ngFor="#i of rangeArr" [class.active]="i==currentPage"><a (click)="setCurrentPage(i)">{{i+1}}</a>
+                </li>
+                <li><a (click)="setCurrentPage(currentPage+1)">></a></li>
+                <li><a (click)="setCurrentPage(pages-1)">>></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

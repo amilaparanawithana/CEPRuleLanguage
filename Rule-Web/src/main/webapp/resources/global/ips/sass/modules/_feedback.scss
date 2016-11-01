@@ -1,0 +1,32 @@
+@import "../styles";
+
+.feedback-wrapper {
+  position: fixed;
+  top: 60px;
+  right: 30px;
+  box-shadow: $material_box_shadow;
+  background: white;
+  width: 350px;
+  z-index: 9999;
+
+  .alert {
+    margin-bottom: 0px !important;
+  }
+
+  .feedback-element {
+    margin-bottom: 5px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .feedback-element.feedback-success {
+    border-left: 5px solid #2E7D32;
+  }
+
+  .feedback-element.feedback-error{
+    border-left: 5px solid #c62828;
+  }
+
+  .feedback-element.feedback-warning{
+    border-left: 5px solid #F9A825;
+  }
+}

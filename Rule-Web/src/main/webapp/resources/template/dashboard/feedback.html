@@ -1,0 +1,45 @@
+<header>
+    <div [hidden]="!feedbackService.showPreloader" style="position: fixed;" aria-label="Loading, please wait." role="progressbar"></div>
+</header>
+<div class="feedback-wrapper">
+    <div *ngFor="#feedback of feedbackService.getFeedbacks()">
+        <div style="display: block;"
+             class="alert feedback-element feedback-success"
+             [class.feedback-success]="feedback.isSuccess()"
+             [class.feedback-error]="feedback.isError()"
+             [class.feedback-warning]="feedback.isWarning()" *ngIf="feedback.isValid()">
+            <button href="#" class="close" aria-label="close" (click)="feedback.invalidate()">&times;</button>
+            {{feedback.message}}
+        </div>
+    </div>
+</div>
+<!--OLD feedback component //todo remove if not useful-->
+<!--
+<div>
+    <div class="row">
+        <div class="col-xs-12" [hidden]="!feedbackService.error">
+            <div style="display: block;" class="alert alert-danger display-hide">
+                <button href="#" class="close" aria-label="close" (click)="dismissError()">&times;</button>
+                {{feedbackService.error}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12" [hidden]="!feedbackService.success">
+            <div style="display: block;" class="alert alert-success display-hide">
+                <button href="#" class="close" aria-label="close" (click)="dismissSuccess()">&times;</button>
+                {{feedbackService.success}}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12" [hidden]="!feedbackService.warning">
+            <div style="display: block;" class="alert alert-warning display-hide">
+                <button href="#" class="close" aria-label="close" (click)="dismissWarning()">&times;</button>
+                {{feedbackService.warning}}
+            </div>
+        </div>
+    </div>
+</div>-->

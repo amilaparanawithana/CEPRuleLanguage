@@ -1,0 +1,25 @@
+<div class="graph">
+    <div class="graph-header">
+        <span class="graph-header-text">{{chart.title}}</span>
+    </div>
+
+    <div id="{{divId}}" class="graph-pane"></div>
+    <div class="graph-footer" *ngIf="chart?.summary.length > 0">
+        <span class="graph-stat">
+            Minimum:
+            <span title="Minimum" class="graph-stat-value graph-stat-min">{{chart?.summary[0] | roundNum}}</span>
+        </span>
+        <span class="graph-stat">
+            Maximum:
+            <span title="Maximum" class="graph-stat-value graph-stat-max">{{chart?.summary[1] | roundNum}}</span>
+        </span>
+        <span class="graph-stat">
+            Average:
+            <span title="Average" class="graph-stat-value graph-stat-avg">{{chart?.summary[2] | roundNum}}</span>
+        </span>
+        <span class="graph-stat">
+            Total:
+            <span title="Total" class="graph-stat-value graph-stat-total">{{chart?.summary[3] | roundNum}}</span>
+        </span>
+    </div>
+</div>

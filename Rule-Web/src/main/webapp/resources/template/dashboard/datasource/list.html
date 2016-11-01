@@ -1,0 +1,47 @@
+<div class="content-header-wrapper">
+    <div class="row">
+        <div class="col-md-4"><p class="ips-page-header"> Datasources</p></div>
+        <div class="col-md-offset-1 col-md-7">
+            <div class="pull-right">
+                <select id="selectPod" class="form-control" (change)="onPodSelect($event.target.value)">
+                    <option *ngFor="#pod of pods; #i = index" [value]="i">
+                        {{pod.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="pull-right" style="margin-right: 5px;">
+                <select id="selectCluster" class="form-control" (change)="onClusterSelect($event.target.value)">
+                    <option *ngFor="#cluster of clusters; #i = index" [value]="i">
+                        {{cluster.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-body-wrapper">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th width="20%">Pool Name</th>
+            <th class="text-left">Connection URL</th>
+            <th class="text-left">JDBC Driver</th>
+            <th class="text-left">Status</th>
+            <th class="text-left"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="#datasource of datasources">
+            <td>{{datasource.poolName}}</td>
+            <td>{{datasource.url}}</td>
+            <td>{{datasource.driverClass}}</td>
+            <td>{{datasource.poolStatus}}</td>
+            <td></td>
+             <td>
+                 <button class="btn btn-default btn-sm" [routerLink]="['../DatasourceView',{id:datasource.id,podIP:selectedPodIP}]">Configuration</button>
+             </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

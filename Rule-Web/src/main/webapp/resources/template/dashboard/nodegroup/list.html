@@ -1,0 +1,46 @@
+<div class="content-header-wrapper">
+    <div class="row">
+        <div class="col-md-5"><p class="ips-page-header"> Node Groups</p></div>
+        <div class="col-md-7">
+            <div class="pull-right">
+                <a href="javascript:;" class="btn btn-default" (click)="fetchNodeGroups()"><i class="fa fa-refresh"></i>
+                    Refresh</a>
+                <button class="btn btn-active" [routerLink]="['../NodeGroupCreate']" id="nodegroup-add-btn"><i class="fa fa-plus-square-o"></i>
+                    Add
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-body-wrapper">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th class="numeric">Index</th>
+            <th class="numeric">Name</th>
+            <th class="text-left">Description</th>
+            <th class="text-left" width="30%">Hosts</th>
+            <th class="numeric"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="#nodeGroup of nodeGroups">
+            <td>{{nodeGroup.id}}</td>
+            <td>{{nodeGroup.name}}</td>
+            <td>{{nodeGroup.description}}</td>
+            <td>
+                <span class="label" *ngFor="#hostname of nodeGroup.hostnames">
+                    {{hostname}}
+                </span>
+            </td>
+            <td>
+                <div *ngIf="isEditableNodeGroup(nodeGroup)">
+                    <button class="btn yellow btn-sm" (click)="modifyNodeGroup(nodeGroup.id)">Configure</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteNodeGroup(nodeGroup.id)">Delete</button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

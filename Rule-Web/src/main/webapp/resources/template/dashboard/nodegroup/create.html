@@ -1,0 +1,104 @@
+<div class="content-header-wrapper">
+    <p class="ips-page-header"> Create Node Group</p>
+</div>
+
+<div class="content-body-wrapper">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8">
+            <div>
+                <div class="form">
+                    <form class="form" role="form" (ngSubmit)="onSubmit()">
+                        <div class="form-body">
+                            <div class="form-group" id="nodegroup-create-name">
+                                <label>Name</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="Node Group Name" required
+                                           [(ngModel)]="nodeGroup.name" pattern="([A-Za-z)-9][-A-Za-z0-9_.]*)?[A-Za-z)-9]" title="Enter a name with alpha numeric without spaces">
+
+                                </div>
+                            </div>
+                            <div class="form-group" id="nodegroup-create-description">
+                                <label>Description</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="Node Group Description" required
+                                           [(ngModel)]="nodeGroup.description" title="Enter a description to this Node Group">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Type</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <select class="form-control" (change)="onLevelChange($event.target.value)">
+                                        <option *ngFor="#type of types" [value]="type">
+                                            {{type}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Nodes</label>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th class="numeric">
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                                (click)="addAllNodes()">Add all</button>
+                                    </th>
+                                    <th width="20%"> Node Name</th>
+                                    <th class="numeric"> CPUs</th>
+                                    <th class="numeric"> Memory</th>
+                                    <th class="numeric"> Max Pods</th>
+                                    <th class="numeric"> Ready</th>
+                                    <th class="numeric"> Schedulable</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="#node of nodes">
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="addNode(node.nodeName)"
+                                                *ngIf="!isAddedNode(node.nodeName)">Add</button>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="removeNode(node.nodeName)"
+                                                *ngIf="isAddedNode(node.nodeName)">Remove</button>
+                                    </td>
+                                    <td>{{node.nodeName}}</td>
+                                    <td>{{node.cpus}}</td>
+                                    <td>{{node.memory}}</td>
+                                    <td>{{node.maxPods}}</td>
+                                    <td>{{node.ready}}</td>
+                                    <td>{{!node.unschedulable}}</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-active" id="nodegroup-create-btn">Create</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>

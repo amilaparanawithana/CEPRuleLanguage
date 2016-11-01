@@ -1,0 +1,109 @@
+#workspace{
+    overflow: hidden;
+}
+
+.ips-element {
+    position: absolute;
+    pointer-events: none;
+    -webkit-user-select: none;
+    padding: 5px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.ips-element .lbl {
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.end-point {
+    background-color: #ef5350;
+    border-radius: 50px;
+    border: 2px solid #c62828;
+}
+
+.processing-element {
+    background-color: #1565C0;
+    border: 2px solid #01579B;
+}
+
+.junction-point {
+    background-color: #FBC02D;
+    border-radius: 30px;
+    border: 2px solid #F57F17;
+}
+
+.decision-element {
+    margin: 20px;
+    width: 80px !important;
+    height: 80px !important;
+}
+
+.ips-element h4{
+    padding-top: 10px;
+}
+
+.rhombus-outer-wrapper{
+    transform: rotate(45deg);
+
+    background-color: #2E7D32;
+    border: 2px solid #1B5E20;
+    width: 100%;
+    height: 100%;
+}
+
+.rhombus-wrapper {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-45deg);
+}
+
+.ips-element button {
+    pointer-events: auto;
+}
+
+.ips-element button {
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 15px;
+    text-align: center;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.ips-element button.delete {
+    background-color: #C0392B;
+    top: -22px;
+    left: -22px;
+}
+
+.ips-element button.options {
+    background-color: #2980B9;
+    top: -22px;
+    right: -22px;
+    padding: 1px !important;
+}
+
+.ips-element button.link {
+    background-color: #4CAF50;
+    bottom: -22px;
+    right: -22px;
+    padding: 1px !important;
+}
+
+.ips-element button.clone {
+    background-color: #26A69A;
+    bottom: -22px;
+    left: -22px;
+    padding: 1px !important;
+}

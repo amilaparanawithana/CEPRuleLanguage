@@ -1,0 +1,87 @@
+<div class="content-header-wrapper">
+    <p *ngIf="!updateMode" class="ips-page-header"> Create User</p>
+    <p *ngIf="updateMode" class="ips-page-header"> Edit User</p>
+</div>
+
+<div class="content-body-wrapper">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8">
+            <div>
+                <div class="form">
+                    <form class="form" role="form" (ngSubmit)="onSubmit()">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="User Name" required
+                                           [(ngModel)]="user.name">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="User Email" required
+                                           [(ngModel)]="user.email">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Password</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="Must contain atleast 6 charactors" required
+                                           [(ngModel)]="user.password">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Roles for the User</label>
+                                <div class="input-group">
+
+                                    <div *ngFor="#role of roles">
+                                        <div class="checkbox checkbox-inline">
+                                            <input type="checkbox" id="{{role.name}}"
+                                                   [checked]="role.selected"
+                                                   (click)="role.check()">
+                                            <label>
+                                                {{ role.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-active">{{updateMode?'Update':'Create'}}</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>

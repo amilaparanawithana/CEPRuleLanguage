@@ -1,0 +1,22 @@
+<table class="table-responsive table-bordered table">
+    <thead>
+    <tr>
+        <th>Component</th>
+        <th>Status</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="#health of healths">
+        <td>{{health.component}}</td>
+        <td>
+            <label class="label"
+                   [class.label-danger]="!health.working"
+                   [class.label-success]="health.working">
+                {{health.working?'Working':'Not Working'}}
+            </label>
+        </td>
+        <td>{{health.message}}</td>
+    </tr>
+    </tbody>
+</table>

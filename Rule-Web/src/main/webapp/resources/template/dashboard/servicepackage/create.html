@@ -1,0 +1,66 @@
+<div class="content-header-wrapper">
+    <p *ngIf="createNew" class="ips-page-header"> Create Service Package</p>
+    <p *ngIf="!createNew" class="ips-page-header"> Edit Service Package</p>
+</div>
+
+<div class="content-body-wrapper">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8">
+            <div>
+                <div class="form">
+                    <form class="form" role="form" (ngSubmit)="onSubmit()">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label>Service Package Name</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="Service Package Name" required
+                                           [(ngModel)]="servicePackage.name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Max Replication Controllers</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <input type="text" class="form-control"
+                                           placeholder="Number of replication controllers for the cluster" required
+                                           [(ngModel)]="servicePackage.maxReplication">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Service Package level</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <select class="form-control" (change)="onLevelChange($event.target.value)">
+                                        <option *ngFor="#level of levels" [value]="level">
+                                            {{level}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button *ngIf="createNew" type="submit" class="btn btn-active">Create</button>
+                                    <button *ngIf="!createNew" type="submit" class="btn btn-active">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

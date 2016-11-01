@@ -1,0 +1,20 @@
+@import "../styles";
+
+.ips-element-settings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: white;
+    z-index: 9999;
+}
+
+.ips-element-settings.panel{
+    box-shadow: $material_box_shadow;
+}
+
+.ips-element-settings .panel-heading{
+    background-color: #3a5795;
+    color:white;
+    font-weight: bolder;
+}

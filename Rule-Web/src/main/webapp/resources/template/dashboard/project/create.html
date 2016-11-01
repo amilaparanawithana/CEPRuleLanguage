@@ -1,0 +1,74 @@
+<div class="content-header-wrapper">
+    <p class="ips-page-header"> Create Project</p>
+</div>
+
+<div class="content-body-wrapper">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8">
+            <div>
+                <div class="form">
+                    <form class="form" role="form" (ngSubmit)="onSubmit()">
+                        <div class="form-body">
+
+                            <div class="form-group">
+                                <label>Project Name</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-male"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="Project Name" required
+                                           [(ngModel)]="project.name" >
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Cluster Name</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <select class="form-control" (change)="setClusterId($event.target.value)">
+                                        <option *ngFor="#cluster of clusters" value="{{cluster.id}}">
+                                            {{cluster.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Users for Project</label>
+                                <div class="input-group">
+                                    <div *ngFor="#user of users">
+                                        <div class="checkbox checkbox-inline">
+                                            <input type="checkbox" id="user.name" [checked]="user.selected"
+                                                   (click)="user.check()">
+                                            <label for="user.name">
+                                                {{ user.name }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="button" class="btn default" [routerLink]="['../ProjectList']">Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-active">Create</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>

@@ -1,0 +1,32 @@
+/*cluster health loader*/
+
+.cluster-health-loading,
+.node-health-loading {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+.cluster-health-loading svg,
+.node-health-loading svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cluster-health-loading #pulsar {
+  stroke-dasharray: 281;
+  -webkit-animation: dash 3.0s infinite linear forwards;
+  -moz-animation: dash 3.0s infinite linear forwards;
+  -o-animation: dash 3.0s infinite linear forwards;
+  animation: dash 3.0s infinite linear forwards;
+}
+
+.node-health-loading #pulsar {
+  stroke-dasharray: 281;
+  -webkit-animation: dash 3.0s infinite linear forwards;
+  -moz-animation: dash 3.0s infinite linear forwards;
+  -o-animation: dash 3.0s infinite linear forwards;
+  animation: dash 3.0s infinite linear forwards;
+}

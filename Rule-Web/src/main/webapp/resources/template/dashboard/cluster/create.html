@@ -1,0 +1,118 @@
+<div class="content-header-wrapper">
+    <p class="ips-page-header"> Create Cluster</p>
+</div>
+
+<div class="content-body-wrapper">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8">
+            <div>
+                <div class="form">
+                    <form class="form" role="form" (ngSubmit)="onSubmit()">
+                        <div class="form-body">
+                            <div class="form-group" id="cluster-create-name">
+                                <label>Cluster Name</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-cog"></i>
+                                </span>
+                                    <input type="text" class="form-control" placeholder="Cluster Name" required
+                                           [(ngModel)]="cluster.name" pattern="([A-Za-z)-9][-A-Za-z0-9_.]*)?[A-Za-z)-9]" title="Enter a name with alpha numeric without spaces">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Port Range</label>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="input-group" id="cluster-create-port-from">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-compass"></i>
+                                        </span>
+                                            <input type="number" class="form-control" placeholder="from" required
+                                                   min="1001" max="65563"
+                                                   [(ngModel)]="cluster.portFrom">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="input-group" id="cluster-create-port-to">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-compass"></i>
+                                            </span>
+                                            <input type="number" class="form-control" placeholder="to"
+                                                   [(ngModel)]="cluster.portTo" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group"  id="cluster-create-replicas">
+                                <label>Replication Count</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-balance-scale"></i>
+                                </span>
+                                    <input type="number" class="form-control" placeholder="Replication Count"
+                                           [(ngModel)]="cluster.replicationCounter" required></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Select Node Groups for Cluster</label>
+                                <div>
+                                    <table class="table table-striped table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th class="numeric"></th>
+                                            <th width="20%">Name</th>
+                                            <th class="text-left">Description</th>
+                                            <th class="numeric">Hosts</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="#nodeGroup of nodeGroups">
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-sm" (click)="addNodeGroup(nodeGroup.id)"
+                                                        *ngIf="!isAddedNodeGroup(nodeGroup.id)">Add</button>
+                                                <button type="button" class="btn btn-danger btn-sm" (click)="removeNodeGroup(nodeGroup.id)"
+                                                        *ngIf="isAddedNodeGroup(nodeGroup.id)">Remove</button>
+                                            </td>
+                                            <td>{{nodeGroup.name}}</td>
+                                            <td>{{nodeGroup.description}}</td>
+                                            <td>
+                                                <span class="label" *ngFor="#hostname of nodeGroup.hostnames">
+                                                    {{hostname}}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select service package</label>
+                                <select class="form-control" (change)="onPackageChange($event.target.value)">
+                                    <option *ngFor="#servicePackage of servicePackages" [value]="servicePackage.id">
+                                        {{servicePackage.name}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-active" id="cluster-create-btn">Create</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>

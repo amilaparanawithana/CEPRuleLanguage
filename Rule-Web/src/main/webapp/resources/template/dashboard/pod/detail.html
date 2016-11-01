@@ -1,0 +1,273 @@
+<div class="content-header-wrapper">
+    <div class="header-back-arrow" [routerLink]="['/Dashboard/Cluster/Cluster',{id:pod.clusterId}]"></div>
+    <ul class="nav nav-pills" style="width: 400px; margin: 0 auto;">
+        <li class="active"><a data-toggle="tab" href="#tabConfig" (click)="onTabChange('conf')">Configurations</a></li>
+        <li><a data-toggle="tab" href="#tabElements" (click)="onTabChange('jmx')">JMX Beans</a></li>
+        <li><a data-toggle="tab" href="#tabCharts" (click)="onTabChange('stat')">Statistics</a></li>
+    </ul>
+</div>
+
+<div class="content-body-wrapper">
+    <div class="tab-content">
+
+        <div id="tabConfig" class="tab-pane fade in active">
+
+
+            <div class="row">
+                <div class="pull-left">
+                    <p class="ips-page-sub-header">Pod Configurations</p>
+                </div>
+                <div class="pull-right">
+                    <a (click)="toggleDebug(pod)" class="btn btn-default" *ngIf="pod.debugEnabled"> <i
+                            class="fa fa-bug"></i> Disable Debug </a>
+                    <a (click)="toggleDebug(pod)" class="btn btn-default" *ngIf="!pod.debugEnabled"> <i
+                            class="fa fa-bug"></i> Enable Debug </a>
+                </div>
+                <div class="pull-right">
+                    <a class="btn btn-default" [routerLink]="['PodLog']"><i
+                            class="fa fa-archive"></i> Logs</a>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-bordered table-striped table-condensed">
+
+                    <tbody>
+                    <tr>
+                        <td> State</td>
+                        <td>{{pod.state}}</td>
+                    </tr>
+                    <tr>
+                        <td> Running Node</td>
+                        <td> {{pod.runningNode}}</td>
+                    </tr>
+                    <tr>
+                        <td> Restarts</td>
+                        <td class="numeric">{{pod.restarts}}</td>
+                    </tr>
+                    <tr>
+                        <td> Pod IP</td>
+                        <td>{{pod.podIP}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <div id="tabElements" class="tab-pane fade">
+            <div>
+                <div class="row">
+                    <div class="pull-left">
+                        <p class="ips-page-sub-header">Proxy List</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Proxy ID</th>
+                            <th>State</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="#proxy of proxies">
+                            <td>{{proxy.id}}</td>
+                            <td>{{proxy.state}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="pull-left">
+                        <p class="ips-page-sub-header">Transport Listeners</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>State</th>
+                            <th>Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="#listener of listeners">
+                            <td>{{listener.id}}</td>
+                            <td>{{listener.state}}</td>
+                            <td>{{listener.type}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="pull-left">
+                        <p class="ips-page-sub-header">Transport Senders</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>State</th>
+                            <th>Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="#sender of senders">
+                            <td>{{sender.id}}</td>
+                            <td>{{sender.state}}</td>
+                            <td>{{sender.type}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="pull-left">
+                        <p class="ips-page-sub-header">Sequences</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>State</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="#sequence of sequences">
+                            <td>{{sequence.id}}</td>
+                            <td>{{sequence.state}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="pull-left">
+                        <p class="ips-page-sub-header">Deployment Units</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="#du of deploymentUnits">
+                            <td>{{du}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="tabCharts" class="tab-pane fade" style="overflow: hidden;">
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#osMetricsTab" (click)="onChartTabChange('osMetrics')">Operating
+                    System Metrics</a></li>
+                <li><a data-toggle="tab" href="#esbMetricsTab" (click)="onChartTabChange('esbMetrics')">UltraESB
+                    Metrics</a></li>
+                <li><a data-toggle="tab" href="#comMetricsTab" (click)="onChartTabChange('comMetrics')">Communication
+                    Metrics</a></li>
+                <li>
+                    <div style="margin-left: 90px;">
+                        <div id="reportrange" class="pull-right"
+                             style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #eee; width: 300px;">
+                            <i class="fa fa-calendar"></i>&nbsp;
+                            <span></span> <b class="caret"></b>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div id="osMetricsTab" class="tab-pane fade in active">
+                    <div class="row graph-horizontal-bar">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="cpuUsageChart" *ngIf="cpuUsageChart"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="heapUsageChart" *ngIf="heapUsageChart"></chart>
+                        </div>
+                    </div>
+
+                    <div class="row graph-horizontal-bar-last">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="fdUsageChart" *ngIf="fdUsageChart"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="threadUsageChart" *ngIf="threadUsageChart"></chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="esbMetricsTab" class="tab-pane fade">
+                    <div class="row graph-horizontal-bar">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="threadCountChart" *ngIf="threadCountChart" style="width: 200px;"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="fileCacheUsageChart" *ngIf="fileCacheUsageChart"
+                                   style="width: 200px;"></chart>
+                        </div>
+                    </div>
+
+                    <div class="row graph-horizontal-bar">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="failedOutCountChart" *ngIf="failedOutCountChart"
+                                   style="width: 200px;"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="failedInCountChart" *ngIf="failedInCountChart"
+                                   style="width: 200px;"></chart>
+                        </div>
+                    </div>
+
+                    <div class="row graph-horizontal-bar-last">
+                        <div class="col-lg-6" col-lg-no-padding>
+                            <chart [chart]="totalLatencyChart" *ngIf="totalLatencyChart" style="width: 200px;"></chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="comMetricsTab" class="tab-pane fade">
+                    <div class="row graph-horizontal-bar-last">
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="receivedCountChart" *ngIf="receivedCountChart"
+                                   style="width: 200px;"></chart>
+                        </div>
+                        <div class="col-lg-6 col-lg-no-padding">
+                            <chart [chart]="sentCountChart" *ngIf="sentCountChart" style="width: 200px;"></chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

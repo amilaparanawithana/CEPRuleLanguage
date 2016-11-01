@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <title>UltraIPS</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="resources/global/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/global/vendor/fontawesome/font-awesome.min.css"/>
+    <link rel="stylesheet" href="resources/global/vendor/sidebar/sidebar.css">
+    <link rel="stylesheet" href="resources/global/ips/sass/main.css">
+    <!--<link rel="stylesheet" href="resources/global/ips/builder.css">-->
+    <link rel="stylesheet" href="resources/global/vendor/datepicker/daterangepicker.css">
+    <link rel="stylesheet" href="resources/global/vendor/dropzone/dropzone.css">
+
+    <script src="resources/global/vendor/jquery/jquery-2.2.0.min.js"></script>
+
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+
+    <!--Drag and Drop-->
+    <script src="resources/global/vendor/jointjs/lodash.min.js"></script>
+    <script src="resources/global/vendor/jointjs/backbone-min.js"></script>
+    <script src="resources/global/vendor/jointjs/joint.js"></script>
+    <link rel="stylesheet" href="resources/global/vendor/jointjs/joint.css">
+    <link rel="stylesheet" href="resources/global/vendor/jointjs/ips.css">
+    <!--end of drag and drop dependencies-->
+
+    <!--Tour dependencies-->
+    <link rel="stylesheet" href="resources/global/vendor/tour/bootstrap-tour.css" />
+    <script src="resources/global/vendor/tour/bootstrap-tour.js"></script>
+
+    <!--Configure SystemJS -->
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+         System.import('app/boot').then(null, console.error.bind(console));
+    </script>
+</head>
+<body>
+<ips-app>loading..</ips-app>
+
+<script src="resources/global/vendor/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="resources/global/ips/ipsapp.js" type="text/javascript"></script>
+<script type="text/javascript">
+    google.load('visualization', '1.0', {'packages': ['corechart']});
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        console.log('charts loaded');
+    }
+</script>
+
+<!--For date range picker-->
+<script type="text/javascript" src="resources/global/vendor/datepicker/moment.min.js"></script>
+<script type="text/javascript" src="resources/global/vendor/datepicker/daterangepicker.js"></script>
+
+<!--Dropzone-->
+<script type="text/javascript" src="resources/global/vendor/dropzone/dropzone.js"></script>
+
+<!--Numeral library-->
+<script type="text/javascript" src="resources/global/vendor/numeral/numeral.min.js"></script>
+
+<!--Dragula library-->
+<script type="text/javascript" src="resources/global/vendor/dragula/dragula.min.js"></script>
+
+</body>
+</html>
