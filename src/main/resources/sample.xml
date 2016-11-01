@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<query>
+    <select>
+        <attributes>
+            <attribute as="asat">atr1</attribute>
+        </attributes>
+        <operators>
+            <operator connectWith="AND">oper1</operator>
+        </operators>
+    </select>
+    <fromStream>samplefromstream</fromStream>
+    <filter>
+        <conditions>
+            <condition>con1</condition>
+            <condition connect="AND">con2</condition>
+        </conditions>
+    </filter>
+    <insertInto>insert-stream</insertInto>
+</query>
