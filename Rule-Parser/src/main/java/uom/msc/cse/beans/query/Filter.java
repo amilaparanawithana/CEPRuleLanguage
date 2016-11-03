@@ -15,6 +15,8 @@ public class Filter {
     @XmlElementWrapper(name = "conditions")
     @XmlElement(name = "condition", type = Condition.class)
     private List<Condition> conditions;
+    @XmlElement(name = "having", type = String.class)
+    private String having;
 
     public List<Condition> getConditions() {
         return conditions;
@@ -24,5 +26,11 @@ public class Filter {
         this.conditions = conditions;
     }
 
+    public String getHaving() {
+        return having;
+    }
 
+    public void setHaving(String having) {
+        this.having = having;
+    }
 }

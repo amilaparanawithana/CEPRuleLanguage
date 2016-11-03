@@ -22,6 +22,8 @@ public class Query {
     private String fromStream;
     @XmlElement(name = "insertInto")
     private String insertInto;
+    @XmlElement(name = "group-by")
+    private String groupBy;
 
 
     public Select getSelect() {
@@ -54,5 +56,13 @@ public class Query {
 
     public void setInsertInto(String insertInto) {
         this.insertInto = insertInto;
+    }
+
+    public String getGroupBy() {
+        return groupBy;
+    }
+
+    public void setGroupBy(String groupBy) {
+        this.groupBy = groupBy;
     }
 }

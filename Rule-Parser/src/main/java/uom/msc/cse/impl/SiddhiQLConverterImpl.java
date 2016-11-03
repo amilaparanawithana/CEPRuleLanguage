@@ -76,15 +76,47 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         return query;
     }
 
+    /**
+     * Create the Siddhi query from the Query object created from the XML
+     *
+     * @param query query object created from the XML
+     * @return Siddhi query
+     */
     private String createSQLWithQuery(Query query) {
+
         StringBuilder queryString = new StringBuilder(QueryKeyWords.FROM);
-        queryString.append(QueryKeyWords.SPACE).append(query.getFromStream()).append(QueryKeyWords.SPACE);
+        queryString.append(QueryKeyWords.SPACE).append(query.getFromStream()).append(QueryKeyWords.SPACE)
+                .append(QueryKeyWords.SELECT).append(QueryKeyWords.SPACE);
 
+        // setting select
+        if (query.getSelect().getAll()) {
+            queryString.append("*");
+        } else {
+            final int[] numberOfAttributes = {query.getSelect().getAttributes().size()};
+            query.getSelect().getAttributes().forEach(attr -> {
 
+                queryString.append(attr.getAttribute()).append(QueryKeyWords.SPACE);
+                if (attr.getAs() != null) {
+                    queryString.append(QueryKeyWords.AS).append(QueryKeyWords.SPACE).append(attr.getAs()).append(QueryKeyWords.SPACE);
+                }
+                numberOfAttributes[0] = numberOfAttributes[0] - 1;
 
+                if (numberOfAttributes[0] > 0) {
+                    queryString.append(QueryKeyWords.COMMA).append(QueryKeyWords.SPACE);
+                }
+            });
+        }
 
+        // group by
+        if (query.getGroupBy() != null) {
+            queryString.append(QueryKeyWords.GROUP_BY).append(QueryKeyWords.SPACE).append(query.getGroupBy()).append(QueryKeyWords.SPACE);
+        }
 
-        return "";
+        //INSERT-INTO
+        queryString.append(QueryKeyWords.INSERT_INTO).append(QueryKeyWords.SPACE)
+                .append(query.getInsertInto());
+
+        return queryString.toString();
     }
 
     public String SiddhiQLToXML(String sql) {

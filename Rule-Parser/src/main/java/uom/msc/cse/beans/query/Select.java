@@ -4,21 +4,19 @@ import javax.xml.bind.annotation.*;
 import java.util.List;
 
 /**
+ *
  * @author Amila Paranawithana
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Select {
 
     @XmlAttribute(name = "all")
-    private Boolean all;
+    private Boolean all = false;
 
+    //select roomNo as roomNumber
     @XmlElementWrapper(name = "attributes")
     @XmlElement(name = "attribute")
     private List<Attribute> attributes;
-
-    @XmlElementWrapper(name = "operators")
-    @XmlElement(name = "operator", type = Operation.class)
-    private List<Operation> operators;
 
     public Boolean getAll() {
         return all;
@@ -36,11 +34,4 @@ public class Select {
         this.attributes = attributes;
     }
 
-    public List<Operation> getOperators() {
-        return operators;
-    }
-
-    public void setOperators(List<Operation> operators) {
-        this.operators = operators;
-    }
 }

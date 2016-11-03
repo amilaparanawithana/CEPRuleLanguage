@@ -2,14 +2,17 @@
 <query>
     <select>
         <attributes>
-            <attribute as="asat">atr1</attribute>
+            <attribute as="attr1o">atr1</attribute>
+            <attribute as="attr2o" type="DEFAULT">atr2</attribute>
         </attributes>
-        <operators>
+        <!--<operators>
             <operator connectWith="AND">oper1</operator>
-        </operators>
+        </operators>-->
     </select>
     <fromStream>samplefromstream</fromStream>
+    <group-by>grp1</group-by>
     <filter>
+        <having>having1</having>
         <conditions>
             <condition>con1</condition>
             <condition connect="AND">con2</condition>
