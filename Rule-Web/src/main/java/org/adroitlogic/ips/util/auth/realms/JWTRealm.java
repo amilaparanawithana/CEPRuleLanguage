@@ -1,7 +1,6 @@
 package org.adroitlogic.ips.util.auth.realms;
 
 import org.adroitlogic.ips.services.userManagement.DBAuthService;
-import org.adroitlogic.ips.services.userManagement.PermissionService;
 import org.adroitlogic.ips.util.auth.tokens.JWTAuthenticationToken;
 import org.adroitlogic.ips.util.auth.tokens.JsonUsernamePasswordObject;
 import org.adroitlogic.ips.util.auth.util.AuthDataContainer;
@@ -23,8 +22,6 @@ public class JWTRealm extends AuthorizingRealm {
 
     private static final Logger logger = LogManager.getLogger(JWTRealm.class);
 
-    @Autowired
-    private PermissionService permissionService;
     @Autowired
     private DBAuthService dbAuthService;
 

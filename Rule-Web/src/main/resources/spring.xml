@@ -105,7 +105,7 @@
                 <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
             </props>
         </property>
-        <property name="packagesToScan" value="org.adroitlogic.ips.model.db"/>
+        <property name="packagesToScan" value="org.adroitlogic.ips.beans.db"/>
     </bean>
 
     <!-- Configure the transaction manager bean -->
@@ -116,7 +116,7 @@
     <tx:annotation-driven/>
 
     <jpa:repositories base-package="org.adroitlogic.ips.repository"/>
-    <context:component-scan base-package="org.adroitlogic.ips.model.db"/>
+    <context:component-scan base-package="org.adroitlogic.ips.beans.db"/>
 
     <!--Turn off sessions of shiro-->
     <bean id="sessionStorageEvaluator" class="org.apache.shiro.mgt.DefaultSessionStorageEvaluator">
@@ -189,6 +189,7 @@
     <context:component-scan base-package="org.adroitlogic.ips.rest.controllers"/>
 
     <bean name="dbAuthService" class="org.adroitlogic.ips.services.userManagement.DBAuthService"/>
+    <bean name="ldapAuthService" class="org.adroitlogic.ips.services.userManagement.LdapAuthService"/>
     <bean name="tenantFactory" class="org.adroitlogic.ips.util.annotations.TenantFactory"/>
 
 </beans>
