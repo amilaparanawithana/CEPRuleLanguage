@@ -1,6 +1,6 @@
 <div class="content-header-wrapper">
     <div class="row">
-        <div class="col-md-5"><p class="ips-page-header"> Projects</p></div>
+        <div class="col-md-5"><p class="ips-page-header">Convert XML to Query</p></div>
         <div class="col-md-7">
             <div class="pull-right">
                 <a href="javascript:;" class="btn btn-default" (click)="fetchProjects()"><i class="fa fa-refresh"></i>
@@ -14,26 +14,36 @@
 </div>
 
 <div class="content-body-wrapper">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th width="20%"> Index</th>
-            <th class="text-left">Name</th>
-            <th class="numeric">Cluster</th>
-            <th class="numeric"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="#project of projects">
-            <td>{{project.id}}</td>
-            <td>{{project.name}}</td>
-            <td>{{project.clusterId}}</td>
-            <td>
-                <button class="btn btn-default btn-sm" [routerLink]="['../Project',{id:project.id}]">Configure</button>
-                <button class="btn btn-danger btn-sm" (click)="deleteProject(project.id)">Delete</button>
-            </td>
-        </tr>
+    <div class="col-lg-8">
+        <div>
+            <div class="form">
+                <form class="form" role="form" (ngSubmit)="onSubmit()">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label>XML format</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-users"></i>
+                                </span>
+                                <input type="text-box" class="form-control"
+                                       placeholder="<query><select>/select<></query>"
+                                       required
+                                       [(ngModel)]="group.name" maxlength="1000">
 
-        </tbody>
-    </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-active">{{updateMode?'Update':'Create'}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

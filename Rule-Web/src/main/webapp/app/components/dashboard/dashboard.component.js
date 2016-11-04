@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "./dashhome.component", "./cluster/cluster.component", "./nodegroup/nodegroup.component", "./user/user.component", "./role/role.component", "./project/project.component", "./pod/pod.component", "./feedback.component", "./audit/audit.component", "../../services/auth.service", "../../providers/jwt.provider", "../../services/ui.service", "../../modules/alert/alert.component", "./builder/builder.component", "./pod/pod.log.component", "../../modules/tour/tour.component", "./cluster/cluster.logger.list.component", "./troubleshoot/troubleshoot.component", "./datasource/datasource.component", "./servicepackage/servicepackage.component"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/router", "./dashhome.component", "./user/user.component", "./role/role.component", "./project/project.component", "./feedback.component", "./audit/audit.component", "../../services/auth.service", "../../providers/jwt.provider", "../../services/ui.service", "../../modules/alert/alert.component", "./builder/builder.component", "../../modules/tour/tour.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,7 +13,7 @@ System.register(["angular2/core", "angular2/router", "./dashhome.component", "./
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, router_1, dashhome_component_1, cluster_component_1, nodegroup_component_1, user_component_1, role_component_1, project_component_1, pod_component_1, feedback_component_1, audit_component_1, auth_service_1, jwt_provider_1, ui_service_1, alert_component_1, builder_component_1, pod_log_component_1, tour_component_1, cluster_logger_list_component_1, troubleshoot_component_1, datasource_component_1, servicepackage_component_1;
+    var core_1, router_1, dashhome_component_1, user_component_1, role_component_1, project_component_1, feedback_component_1, audit_component_1, auth_service_1, jwt_provider_1, ui_service_1, alert_component_1, builder_component_1, tour_component_1;
     var DashboardComponent;
     return {
         setters:[
@@ -26,12 +26,6 @@ System.register(["angular2/core", "angular2/router", "./dashhome.component", "./
             function (dashhome_component_1_1) {
                 dashhome_component_1 = dashhome_component_1_1;
             },
-            function (cluster_component_1_1) {
-                cluster_component_1 = cluster_component_1_1;
-            },
-            function (nodegroup_component_1_1) {
-                nodegroup_component_1 = nodegroup_component_1_1;
-            },
             function (user_component_1_1) {
                 user_component_1 = user_component_1_1;
             },
@@ -40,9 +34,6 @@ System.register(["angular2/core", "angular2/router", "./dashhome.component", "./
             },
             function (project_component_1_1) {
                 project_component_1 = project_component_1_1;
-            },
-            function (pod_component_1_1) {
-                pod_component_1 = pod_component_1_1;
             },
             function (feedback_component_1_1) {
                 feedback_component_1 = feedback_component_1_1;
@@ -65,23 +56,8 @@ System.register(["angular2/core", "angular2/router", "./dashhome.component", "./
             function (builder_component_1_1) {
                 builder_component_1 = builder_component_1_1;
             },
-            function (pod_log_component_1_1) {
-                pod_log_component_1 = pod_log_component_1_1;
-            },
             function (tour_component_1_1) {
                 tour_component_1 = tour_component_1_1;
-            },
-            function (cluster_logger_list_component_1_1) {
-                cluster_logger_list_component_1 = cluster_logger_list_component_1_1;
-            },
-            function (troubleshoot_component_1_1) {
-                troubleshoot_component_1 = troubleshoot_component_1_1;
-            },
-            function (datasource_component_1_1) {
-                datasource_component_1 = datasource_component_1_1;
-            },
-            function (servicepackage_component_1_1) {
-                servicepackage_component_1 = servicepackage_component_1_1;
             }],
         execute: function() {
             DashboardComponent = (function () {
@@ -131,11 +107,6 @@ System.register(["angular2/core", "angular2/router", "./dashhome.component", "./
                             component: user_component_1.UserComponent
                         },
                         {
-                            path: '/cluster/...',
-                            name: 'Cluster',
-                            component: cluster_component_1.ClusterComponent
-                        },
-                        {
                             path: '/role/...',
                             name: 'Role',
                             component: role_component_1.RoleComponent
@@ -146,26 +117,6 @@ System.register(["angular2/core", "angular2/router", "./dashhome.component", "./
                             component: project_component_1.ProjectComponent
                         },
                         {
-                            path: '/pod/:id/:name/...',
-                            name: 'Pod',
-                            component: pod_component_1.PodComponent
-                        },
-                        {
-                            path: '/podlog',
-                            name: 'AllPodLogs',
-                            component: pod_log_component_1.PodLogComponent
-                        },
-                        {
-                            path: '/loggers',
-                            name: 'ClusterLoggers',
-                            component: cluster_logger_list_component_1.ClusterLoggerListComponent
-                        },
-                        {
-                            path: '/troubleshoot',
-                            name: 'Troubleshoot',
-                            component: troubleshoot_component_1.TroubleshootComponent
-                        },
-                        {
                             path: '/audit/...',
                             name: 'Audit',
                             component: audit_component_1.AuditComponent
@@ -174,21 +125,6 @@ System.register(["angular2/core", "angular2/router", "./dashhome.component", "./
                             path: '/builder',
                             name: 'Builder',
                             component: builder_component_1.BuilderComponent
-                        },
-                        {
-                            path: '/datasource/...',
-                            name: 'Datasource',
-                            component: datasource_component_1.DatasourceComponent
-                        },
-                        {
-                            path: '/nodegroup/...',
-                            name: 'NodeGroup',
-                            component: nodegroup_component_1.NodeGroupComponent
-                        },
-                        {
-                            path: '/servicepackage/...',
-                            name: 'ServicePackage',
-                            component: servicepackage_component_1.ServicePackageComponent
                         }
                     ]),
                     __param(2, core_1.Inject(jwt_provider_1.JwtProvider)), 

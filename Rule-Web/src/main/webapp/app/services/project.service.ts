@@ -5,7 +5,6 @@ import {Injectable, Inject} from "angular2/core";
 import {Http} from "angular2/http";
 import {Project} from "../models/project";
 import {RestService} from "./rest.service";
-import {ClusterService} from "./cluster.service";
 import {DeploymentConfig} from "../models/deploymentConfig";
 import {MultipartUploader} from "./multipart/multipart-uploader";
 import {MultipartItem} from "./multipart/multipart-item";
@@ -19,8 +18,6 @@ export class ProjectService {
 
     constructor(private http:Http, @Inject(RestService)
     private restService:RestService,
-                @Inject(ClusterService)
-                private clusterService:ClusterService,
                 @Inject(UserService)
                 private userService:UserService,
                 private jwtProvider:JwtProvider) {

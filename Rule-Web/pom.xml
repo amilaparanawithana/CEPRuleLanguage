@@ -255,6 +255,13 @@
             <artifactId>reflections</artifactId>
             <version>0.9.10</version>
         </dependency>
+
+        <dependency>
+            <groupId>uom.msc</groupId>
+            <artifactId>cse</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

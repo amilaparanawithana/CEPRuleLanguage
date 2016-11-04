@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../../../services/project.service", "angular2/router", "../../../services/rest.service", "../../../services/cluster.service", "../../../services/user.service", "../../../services/ui/feedback.service", "../../../modules/alert/alert.service", "../../../modules/alert/alert.component", "../abstract.component"], function(exports_1, context_1) {
+System.register(["angular2/core", "../../../services/project.service", "angular2/router", "../../../services/rest.service", "../../../services/user.service", "../../../services/ui/feedback.service", "../../../modules/alert/alert.service", "../abstract.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
@@ -18,7 +18,7 @@ System.register(["angular2/core", "../../../services/project.service", "angular2
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, project_service_1, router_1, rest_service_1, cluster_service_1, user_service_1, feedback_service_1, alert_service_1, alert_component_1, abstract_component_1;
+    var core_1, project_service_1, router_1, rest_service_1, user_service_1, feedback_service_1, alert_service_1, abstract_component_1;
     var ProjectListComponent;
     return {
         setters:[
@@ -34,9 +34,6 @@ System.register(["angular2/core", "../../../services/project.service", "angular2
             function (rest_service_1_1) {
                 rest_service_1 = rest_service_1_1;
             },
-            function (cluster_service_1_1) {
-                cluster_service_1 = cluster_service_1_1;
-            },
             function (user_service_1_1) {
                 user_service_1 = user_service_1_1;
             },
@@ -45,9 +42,6 @@ System.register(["angular2/core", "../../../services/project.service", "angular2
             },
             function (alert_service_1_1) {
                 alert_service_1 = alert_service_1_1;
-            },
-            function (alert_component_1_1) {
-                alert_component_1 = alert_component_1_1;
             },
             function (abstract_component_1_1) {
                 abstract_component_1 = abstract_component_1_1;
@@ -60,44 +54,13 @@ System.register(["angular2/core", "../../../services/project.service", "angular2
                     this.projectService = projectService;
                     this.feedBackService = feedBackService;
                     this.alertService = alertService;
-                    this.fetchProjects();
                 }
-                ProjectListComponent.prototype.fetchProjects = function () {
-                    var _this = this;
-                    this.feedBackService.showPreloader = true;
-                    this.projectService.getAll().subscribe(function (data) {
-                        _this.projects = [];
-                        if (data.length > 0) {
-                            _this.projects = data;
-                        }
-                        else {
-                            _this.feedBackService.warning = "No Projects are present at the moment";
-                        }
-                        _this.feedBackService.showPreloader = false;
-                    }, function (err) {
-                        _super.prototype.handleServiceError.call(_this, _this.feedBackService, err);
-                    });
-                };
-                ProjectListComponent.prototype.deleteProject = function (projectId) {
-                    var _this = this;
-                    this.alertService.showAlert(new alert_component_1.AlertConfiguration("Do you really want to delete this project?", "This action will delete all your configuration files uploaded under this project and this will also shutdown all the ultraesb instances relevant for this project.", function () {
-                        _this.feedBackService.showPreloader = true;
-                        _this.projectService.deleteProject(projectId).subscribe(function (data) {
-                            _this.fetchProjects();
-                            _this.feedBackService.showPreloader = false;
-                            _this.feedBackService.success = data.json().msg;
-                        }, function (err) {
-                            _this.fetchProjects();
-                            _super.prototype.handleServiceError.call(_this, _this.feedBackService, err);
-                        });
-                    }));
-                };
                 ProjectListComponent = __decorate([
                     core_1.Component({
                         selector: 'project-list-component',
                         templateUrl: '../../../../resources/template/dashboard/project/list.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [project_service_1.ProjectService, rest_service_1.RestService, cluster_service_1.ClusterService, user_service_1.UserService]
+                        providers: [project_service_1.ProjectService, rest_service_1.RestService, user_service_1.UserService]
                     }),
                     __param(1, core_1.Inject(feedback_service_1.FeedBackService)),
                     __param(2, core_1.Inject(alert_service_1.AlertService)), 

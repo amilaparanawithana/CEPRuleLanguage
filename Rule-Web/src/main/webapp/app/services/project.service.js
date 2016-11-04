@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/http", "../models/project", "./rest.service", "./cluster.service", "../models/deploymentConfig", "../providers/jwt.provider", "./user.service"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/http", "../models/project", "./rest.service", "../models/deploymentConfig", "../providers/jwt.provider", "./user.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13,7 +13,7 @@ System.register(["angular2/core", "angular2/http", "../models/project", "./rest.
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, http_1, project_1, rest_service_1, cluster_service_1, deploymentConfig_1, jwt_provider_1, user_service_1;
+    var core_1, http_1, project_1, rest_service_1, deploymentConfig_1, jwt_provider_1, user_service_1;
     var ProjectService, UploadStatus;
     return {
         setters:[
@@ -29,9 +29,6 @@ System.register(["angular2/core", "angular2/http", "../models/project", "./rest.
             function (rest_service_1_1) {
                 rest_service_1 = rest_service_1_1;
             },
-            function (cluster_service_1_1) {
-                cluster_service_1 = cluster_service_1_1;
-            },
             function (deploymentConfig_1_1) {
                 deploymentConfig_1 = deploymentConfig_1_1;
             },
@@ -43,10 +40,9 @@ System.register(["angular2/core", "angular2/http", "../models/project", "./rest.
             }],
         execute: function() {
             ProjectService = (function () {
-                function ProjectService(http, restService, clusterService, userService, jwtProvider) {
+                function ProjectService(http, restService, userService, jwtProvider) {
                     this.http = http;
                     this.restService = restService;
-                    this.clusterService = clusterService;
                     this.userService = userService;
                     this.jwtProvider = jwtProvider;
                     this.baseUrl = restService.getBaseUrl('project');
@@ -124,9 +120,8 @@ System.register(["angular2/core", "angular2/http", "../models/project", "./rest.
                 ProjectService = __decorate([
                     core_1.Injectable(),
                     __param(1, core_1.Inject(rest_service_1.RestService)),
-                    __param(2, core_1.Inject(cluster_service_1.ClusterService)),
-                    __param(3, core_1.Inject(user_service_1.UserService)), 
-                    __metadata('design:paramtypes', [http_1.Http, rest_service_1.RestService, cluster_service_1.ClusterService, user_service_1.UserService, jwt_provider_1.JwtProvider])
+                    __param(2, core_1.Inject(user_service_1.UserService)), 
+                    __metadata('design:paramtypes', [http_1.Http, rest_service_1.RestService, user_service_1.UserService, jwt_provider_1.JwtProvider])
                 ], ProjectService);
                 return ProjectService;
             }());

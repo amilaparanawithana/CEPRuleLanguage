@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "./project.create.component", "./project.list.component", "./project.config.component"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/router", "./project.list.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "angular2/router", "./project.create.component
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, project_create_component_1, project_list_component_1, project_config_component_1;
+    var core_1, router_1, project_list_component_1;
     var ProjectComponent;
     return {
         setters:[
@@ -20,14 +20,8 @@ System.register(["angular2/core", "angular2/router", "./project.create.component
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (project_create_component_1_1) {
-                project_create_component_1 = project_create_component_1_1;
-            },
             function (project_list_component_1_1) {
                 project_list_component_1 = project_list_component_1_1;
-            },
-            function (project_config_component_1_1) {
-                project_config_component_1 = project_config_component_1_1;
             }],
         execute: function() {
             ProjectComponent = (function () {
@@ -41,19 +35,9 @@ System.register(["angular2/core", "angular2/router", "./project.create.component
                     }),
                     router_1.RouteConfig([
                         {
-                            path: '/:id',
-                            name: 'Project',
-                            component: project_config_component_1.ProjectConfigComponent
-                        },
-                        {
                             path: '/',
                             name: 'ProjectList',
                             component: project_list_component_1.ProjectListComponent
-                        },
-                        {
-                            path: '/new',
-                            name: 'ProjectCreate',
-                            component: project_create_component_1.ProjectCreateComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [])
