@@ -1,0 +1,601 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ '/home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp',
+5 verbose install   [ 'angular2',
+5 verbose install     'es6-promise',
+5 verbose install     'es6-shim',
+5 verbose install     'ng2-bs3-modal',
+5 verbose install     'reflect-metadata',
+5 verbose install     'rxjs',
+5 verbose install     'systemjs',
+5 verbose install     'zone.js',
+5 verbose install     'concurrently',
+5 verbose install     'lite-server',
+5 verbose install     'typescript' ] ]
+6 info preinstall IPS-Frontend@1.0.0
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping angular2@2.0.0-beta.9 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+9 verbose already installed skipping es6-promise@^3.0.2 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+10 verbose already installed skipping es6-shim@^0.33.3 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+11 verbose cache add [ 'ng2-bs3-modal@^0.7.0', null ]
+12 verbose cache add name=undefined spec="ng2-bs3-modal@^0.7.0" args=["ng2-bs3-modal@^0.7.0",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'ng2-bs3-modal@^0.7.0',
+13 verbose parsed url   path: 'ng2-bs3-modal@^0.7.0',
+13 verbose parsed url   href: 'ng2-bs3-modal@^0.7.0' }
+14 verbose cache add name="ng2-bs3-modal" spec="^0.7.0" args=["ng2-bs3-modal","^0.7.0"]
+15 verbose parsed url { protocol: null,
+15 verbose parsed url   slashes: null,
+15 verbose parsed url   auth: null,
+15 verbose parsed url   host: null,
+15 verbose parsed url   port: null,
+15 verbose parsed url   hostname: null,
+15 verbose parsed url   hash: null,
+15 verbose parsed url   search: null,
+15 verbose parsed url   query: null,
+15 verbose parsed url   pathname: '^0.7.0',
+15 verbose parsed url   path: '^0.7.0',
+15 verbose parsed url   href: '^0.7.0' }
+16 verbose addNamed [ 'ng2-bs3-modal', '^0.7.0' ]
+17 verbose addNamed [ null, '>=0.7.0-0 <0.8.0-0' ]
+18 verbose already installed skipping reflect-metadata@0.1.2 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+19 silly lockFile 5ff4cf1a-ng2-bs3-modal-0-7-0 ng2-bs3-modal@^0.7.0
+20 verbose lock ng2-bs3-modal@^0.7.0 /home/amila/.npm/5ff4cf1a-ng2-bs3-modal-0-7-0.lock
+21 silly addNameRange { name: 'ng2-bs3-modal',
+21 silly addNameRange   range: '>=0.7.0-0 <0.8.0-0',
+21 silly addNameRange   hasData: false }
+22 verbose already installed skipping rxjs@5.0.0-beta.2 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+23 verbose already installed skipping zone.js@0.5.15 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+24 verbose already installed skipping systemjs@0.19.24 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+25 verbose already installed skipping concurrently@^2.0.0 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+26 verbose already installed skipping lite-server@^2.1.0 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+27 verbose already installed skipping typescript@^1.8.7 /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+28 verbose url raw ng2-bs3-modal
+29 verbose url resolving [ 'https://registry.npmjs.org/', './ng2-bs3-modal' ]
+30 verbose url resolved https://registry.npmjs.org/ng2-bs3-modal
+31 info trying registry request attempt 1 at 15:20:20
+32 verbose etag "4D1352M25EVS8RPCCUQDHZTLW"
+33 http GET https://registry.npmjs.org/ng2-bs3-modal
+34 http 200 https://registry.npmjs.org/ng2-bs3-modal
+35 silly registry.get cb [ 200,
+35 silly registry.get   { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
+35 silly registry.get     etag: '"9K9RY1UZUVCE8VN9AT7YGICVZ"',
+35 silly registry.get     'content-type': 'application/json',
+35 silly registry.get     'cache-control': 'max-age=300',
+35 silly registry.get     'content-length': '105096',
+35 silly registry.get     'accept-ranges': 'bytes',
+35 silly registry.get     date: 'Fri, 04 Nov 2016 09:50:21 GMT',
+35 silly registry.get     via: '1.1 varnish',
+35 silly registry.get     age: '1',
+35 silly registry.get     connection: 'keep-alive',
+35 silly registry.get     'x-served-by': 'cache-sin6920-SIN',
+35 silly registry.get     'x-cache': 'MISS',
+35 silly registry.get     'x-cache-hits': '0',
+35 silly registry.get     'x-timer': 'S1478253020.809780,VS0,VE1052',
+35 silly registry.get     vary: 'Accept-Encoding' } ]
+36 silly addNameRange number 2 { name: 'ng2-bs3-modal',
+36 silly addNameRange   range: '>=0.7.0-0 <0.8.0-0',
+36 silly addNameRange   hasData: true }
+37 silly addNameRange versions [ 'ng2-bs3-modal',
+37 silly addNameRange   [ '0.1.0',
+37 silly addNameRange     '0.1.1',
+37 silly addNameRange     '0.1.2',
+37 silly addNameRange     '0.1.3',
+37 silly addNameRange     '0.1.4',
+37 silly addNameRange     '0.1.5',
+37 silly addNameRange     '0.1.6',
+37 silly addNameRange     '0.1.7',
+37 silly addNameRange     '0.2.0',
+37 silly addNameRange     '0.2.1',
+37 silly addNameRange     '0.2.2',
+37 silly addNameRange     '0.3.0',
+37 silly addNameRange     '0.3.1',
+37 silly addNameRange     '0.4.0',
+37 silly addNameRange     '0.4.1',
+37 silly addNameRange     '0.4.2',
+37 silly addNameRange     '0.4.3',
+37 silly addNameRange     '0.4.4',
+37 silly addNameRange     '0.4.5',
+37 silly addNameRange     '0.4.6',
+37 silly addNameRange     '0.4.7',
+37 silly addNameRange     '0.5.0',
+37 silly addNameRange     '0.5.1',
+37 silly addNameRange     '0.5.2',
+37 silly addNameRange     '0.6.0',
+37 silly addNameRange     '0.6.1',
+37 silly addNameRange     '0.7.0',
+37 silly addNameRange     '0.8.0',
+37 silly addNameRange     '0.8.1',
+37 silly addNameRange     '0.9.0',
+37 silly addNameRange     '0.9.1',
+37 silly addNameRange     '0.9.2',
+37 silly addNameRange     '0.10.0',
+37 silly addNameRange     '0.10.1',
+37 silly addNameRange     '0.10.2',
+37 silly addNameRange     '0.10.3',
+37 silly addNameRange     '0.10.4' ] ]
+38 verbose addNamed [ 'ng2-bs3-modal', '0.7.0' ]
+39 verbose addNamed [ '0.7.0', '0.7.0' ]
+40 silly lockFile de78e856-ng2-bs3-modal-0-7-0 ng2-bs3-modal@0.7.0
+41 verbose lock ng2-bs3-modal@0.7.0 /home/amila/.npm/de78e856-ng2-bs3-modal-0-7-0.lock
+42 silly lockFile de78e856-ng2-bs3-modal-0-7-0 ng2-bs3-modal@0.7.0
+43 silly lockFile de78e856-ng2-bs3-modal-0-7-0 ng2-bs3-modal@0.7.0
+44 silly lockFile 5ff4cf1a-ng2-bs3-modal-0-7-0 ng2-bs3-modal@^0.7.0
+45 silly lockFile 5ff4cf1a-ng2-bs3-modal-0-7-0 ng2-bs3-modal@^0.7.0
+46 silly resolved [ { name: 'ng2-bs3-modal',
+46 silly resolved     version: '0.7.0',
+46 silly resolved     description: 'Angular2 Boostrap3 Modal Component',
+46 silly resolved     main: 'ng2-bs3-modal.js',
+46 silly resolved     scripts:
+46 silly resolved      { peer: 'npm install es6-promise@^3.0.2 es6-shim@^0.33.3 reflect-metadata@0.1.2 rxjs@5.0.0-beta.0 zone.js@0.5.14',
+46 silly resolved        lint: 'tslint ./src/**/*.ts',
+46 silly resolved        clean: 'rimraf ./bundles/ ./components/ ./directives/ ./ng2-bs3-modal.js ./ng2-bs3-modal.d.ts',
+46 silly resolved        tsc: 'tsc --project . --declaration',
+46 silly resolved        'tsc-test': 'tsc --project ./test',
+46 silly resolved        'tsc-single': 'tsc --project . --rootDir ./src --module system --outFile ./bundles/ng2-bs3-modal.js',
+46 silly resolved        uglify: 'uglifyjs ./bundles/ng2-bs3-modal.js --output ./bundles/ng2-bs3-modal.min.js',
+46 silly resolved        bundles: 'npm run tsc-single && npm run uglify',
+46 silly resolved        build: 'npm run clean && npm run typings && npm run lint && npm run tsc && npm run bundles',
+46 silly resolved        prepublish: 'npm run build',
+46 silly resolved        typings: 'typings install',
+46 silly resolved        test: 'karma start --single-run',
+46 silly resolved        'test-watch': 'karma start' },
+46 silly resolved     repository:
+46 silly resolved      { type: 'git',
+46 silly resolved        url: 'git+ssh://git@github.com/dougludlow/ng2-bs3-modal.git' },
+46 silly resolved     keywords: [ 'angular2', 'bootstrap', 'modal', 'component' ],
+46 silly resolved     author: { name: 'Douglas Ludlow', email: 'doug.ludlow@gmail.com' },
+46 silly resolved     license: 'ISC',
+46 silly resolved     bugs: { url: 'https://github.com/dougludlow/ng2-bs3-modal/issues' },
+46 silly resolved     homepage: 'https://github.com/dougludlow/ng2-bs3-modal#readme',
+46 silly resolved     devDependencies:
+46 silly resolved      { '@angular/common': '^2.0.0-rc.4',
+46 silly resolved        '@angular/compiler': '^2.0.0-rc.4',
+46 silly resolved        '@angular/core': '^2.0.0-rc.4',
+46 silly resolved        '@angular/platform-browser': '^2.0.0-rc.4',
+46 silly resolved        '@angular/platform-browser-dynamic': '^2.0.0-rc.4',
+46 silly resolved        '@angular/router': '3.0.0-beta.2',
+46 silly resolved        bootstrap: '^3.3.6',
+46 silly resolved        'es6-shim': '^0.35.0',
+46 silly resolved        jasmine: '^2.4.1',
+46 silly resolved        jquery: '^2.2.1',
+46 silly resolved        karma: '^0.13.21',
+46 silly resolved        'karma-chrome-launcher': '^0.2.2',
+46 silly resolved        'karma-jasmine': '^0.3.7',
+46 silly resolved        'karma-phantomjs-launcher': '^1.0.0',
+46 silly resolved        'karma-spec-reporter': '0.0.24',
+46 silly resolved        'phantomjs-prebuilt': '2.1.7',
+46 silly resolved        'reflect-metadata': '^0.1.3',
+46 silly resolved        rimraf: '^2.5.1',
+46 silly resolved        rxjs: '5.0.0-beta.6',
+46 silly resolved        systemjs: '^0.19.23',
+46 silly resolved        tslint: '^3.7.1',
+46 silly resolved        typescript: '^1.8.9',
+46 silly resolved        typings: '^0.7.9',
+46 silly resolved        'uglify-js': '^2.6.2',
+46 silly resolved        'zone.js': '^0.6.12' },
+46 silly resolved     peerDependencies:
+46 silly resolved      { '@angular/common': '^2.0.0-rc.1',
+46 silly resolved        '@angular/compiler': '^2.0.0-rc.1',
+46 silly resolved        '@angular/core': '^2.0.0-rc.1',
+46 silly resolved        '@angular/platform-browser': '^2.0.0-rc.1',
+46 silly resolved        '@angular/platform-browser-dynamic': '^2.0.0-rc.1',
+46 silly resolved        bootstrap: '~3.3.x' },
+46 silly resolved     readme: '# ng2-bs3-modal [![npm version](https://badge.fury.io/js/ng2-bs3-modal.svg)](http://badge.fury.io/js/ng2-bs3-modal) [![npm downloads](https://img.shields.io/npm/dm/ng2-bs3-modal.svg)](https://npmjs.org/ng2-bs3-modal) [![Build Status](https://travis-ci.org/dougludlow/ng2-bs3-modal.svg?branch=master)](https://travis-ci.org/dougludlow/ng2-bs3-modal)\nAngular2 Bootstrap3 Modal Component\n\n## Demo\nhttp://dougludlow.github.io/ng2-bs3-modal/\n\n## Dependencies\n\n`ng2-bs3-modal` depends on bootstrap which depends on jquery, you\'ll need to include both scripts before ng2-bs3-modal:\n\n```html\n<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>\n<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>\n```  \n\nOr, if you\'re using [SystemJS](https://github.com/systemjs/systemjs), configure it to load them. And import them in your typscript.\n\n## Install\n\n```bash\n> npm install --save ng2-bs3-modal\n```\n    \nInclude a reference to the bundle in your html:\n\n```html\n<script src="node_modules/ng2-bs3-modal/bundles/ng2-bs3-modal.js"></script>\n```\n    \nOr, if you\'re using [SystemJS](https://github.com/systemjs/systemjs), add a mapping to your System.config:\n\n```javascript\nSystem.config({\n    defaultJSExtensions: true,\n    map: {\n        \'ng2-bs3-modal\': \'node_modules/ng2-bs3-modal\'\n    }\n});\n```\n\nThen import and include in your component\'s directives:\n\n```typescript\nimport { MODAL_DIRECTIVES } from \'ng2-bs3-modal/ng2-bs3-modal\';\n\n@Component({\n    directives: [MODAL_DIRECTIVES]\n})\nexport class MyComponent {\n    ...    \n}\n```\n\nSee examples for [npm](https://github.com/dougludlow/ng2-bs3-modal-demo-npm), [SystemJS](https://github.com/dougludlow/ng2-bs3-modal-demo-systemjs), [jspm](https://github.com/dougludlow/ng2-bs3-modal-demo-jspm), and [angular-cli](https://github.com/dougludlow/ng2-bs3-modal/issues/31).\n    \n## API\n\n### ModalComponent\n\n#### Inputs\n\n- `animation: boolean`, default: `true`\n\n   Specify `false` to simply show the modal rather than having it fade in/out of view.\n   \n- `backdrop: string | boolean`, default: `true`\n\n   Specify `\'static\'` for a backdrop which doesn\'t close the modal on click or `false` for no backdrop.\n   \n- `keyboard: boolean`, default: `true`\n\n   Closes the modal when escape key is pressed. Specify `false` to disable.\n   \n- `size: string`, default: `undefined`\n\n   Specify `\'sm\'` for small and `\'lg\'` for large.\n\n#### Outputs\n\n- `onClose: EventEmitter`\n\n   Emits when `ModalComponent.close()` is called. \n\n- `onDismiss: EventEmitter`\n    \n   Emits when `ModalComponent.dismiss()` is called, or when the modal is dismissed with the keyboard or backdrop. \n\n- `onOpen: EventEmitter`\n    \n   Emits when `ModalComponent.open()` is called.  \n\n#### Methods\n\n- `open(size?: string): Promise`\n\n   Opens the modal. Size is optional. Specify `\'sm\'` for small and `\'lg\'` for large to override size. Returns a promise that resolves when the modal is completely shown.\n   \n- `close(): Promise`\n\n   Closes the modal. Causes `onClose` to be emitted. Returns a promise that resolves when the modal is completely hidden.\n\n- `dismiss(): Promise`\n\n   Dismisses the modal. Causes `onDismiss` to be emitted. Returns a promise that resolves when the modal is completely hidden.\n\n### ModalHeaderComponent\n\n#### Inputs\n\n- `show-close: boolean`, default: `false`\n\n   Show or hide the close button in the header. Specify `true` to show.\n   \n### ModalFooterComponent\n\n#### Inputs\n\n- `show-default-buttons: boolean`, default: `false`\n\n   Show or hide the default \'Close\' and \'Dismiss\' buttons in the footer. Specify `true` to show.\n\n- `close-button-label: string`, default: `\'Close\'`\n\n   Change the label in the default \'Close\' button in the footer. Has no effect if show-default-buttons aren\'t set.\n\n- `dismiss-button-label: string`, default: `\'Dismiss\'`\n\n   Change the label in the default \'Dismiss\' button in the footer. Has no effect if show-default-buttons aren\'t set.\n\n## Examples\n\n### Default modal\n\n```html\n<button type="button" class="btn btn-default" (click)="modal.open()">Open me!</button>\n\n<modal #modal>\n    <modal-header [show-close]="true">\n        <h4 class="modal-title">I\'m a modal!</h4>\n    </modal-header>\n    <modal-body>\n        Hello World!\n    </modal-body>\n    <modal-footer [show-default-buttons]="true"></modal-footer>\n</modal>\n```\n    \n![Example](demo/images/modal.png)\n    \n### Static modal\n\nThis will create a modal that cannot be closed with the escape key or by clicking outside of the modal.\n\n```html\n<modal #modal [keyboard]="false" [backdrop]="\'static\'">\n    <modal-header [show-close]="false">\n        <h4 class="modal-title">I\'m a modal!</h4>\n    </modal-header>\n    <modal-body>\n        Hello World!\n    </modal-body>\n    <modal-footer [show-default-buttons]="true"></modal-footer>\n</modal>\n```\n    \n### Use custom buttons in footer\n\n```html    \n<modal #modal>\n    <modal-header>\n        <h4 class="modal-title">I\'m a modal!</h4>\n    </modal-header>\n    <modal-body>\n        Hello World!\n    </modal-body>\n    <modal-footer>\n        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>\n        <button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>\n    </modal-footer>\n</modal>\n```\n    \n![Example](demo/images/modal-custom-footer.png)\n    \n### Opening and closing the modal from a parent component\n\n```typescript\nimport { Component, ViewChild } from \'@angular/core\';\nimport { MODAL_DIRECTIVES, ModalComponent } from \'ng2-bs3-modal/ng2-bs3-modal\';\n\n@Component({\n    selector: \'parent-component\',\n    directives: [MODAL_DIRECTIVES],\n    template: `\n        <modal #myModal>\n            ...\n        </modal>\n    `\n})\nexport class ParentComponent {\n    @ViewChild(\'myModal\')\n    modal: ModalComponent;\n\n    close() {\n        this.modal.close();\n    }\n    \n    open() {\n        this.modal.open();\n    }\n}\n```\n\n### Autofocus on a textbox when modal is opened\n\n```html    \n<modal #modal>\n    <modal-header>\n        <h4 class="modal-title">I\'m a modal!</h4>\n    </modal-header>\n    <modal-body>\n        <div class="form-group">\n            <label for="textbox">I\'m a textbox!</label>\n            <input autofocus type="text" class="form-control" id="textbox">\n        </div>        \n    </modal-body>\n    <modal-footer [show-default-buttons]="true"></modal-footer>\n</modal>\n```\n\n## Building\n\n```bash\ngit clone https://github.com/dougludlow/ng2-bs3-modal.git\nnpm install\nnpm run build\n```\n\n## Testing\n\n```bash\nnpm test\n```\n\nTo tell karma to watch for changes:\n```bash\nnpm run test-watch\n```\n\n## Bugs/Contributions\n\nReport all bugs and feature requests on the [issue tracker](https://github.com/dougludlow/ng2-bs3-modal/issues).\n\nContributions are welcome! Feel free to open a [pull request](https://github.com/dougludlow/ng2-bs3-modal/pulls). \n',
+46 silly resolved     readmeFilename: 'README.md',
+46 silly resolved     _id: 'ng2-bs3-modal@0.7.0',
+46 silly resolved     _from: 'ng2-bs3-modal@^0.7.0' } ]
+47 info install ng2-bs3-modal@0.7.0 into /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+48 info installOne ng2-bs3-modal@0.7.0
+49 info /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp/node_modules/ng2-bs3-modal unbuild
+50 verbose tar unpack /home/amila/.npm/ng2-bs3-modal/0.7.0/package.tgz
+51 silly lockFile d3500f9b-ebapp-node-modules-ng2-bs3-modal tar:///home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp/node_modules/ng2-bs3-modal
+52 verbose lock tar:///home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp/node_modules/ng2-bs3-modal /home/amila/.npm/d3500f9b-ebapp-node-modules-ng2-bs3-modal.lock
+53 silly lockFile d30dadbf--ng2-bs3-modal-0-7-0-package-tgz tar:///home/amila/.npm/ng2-bs3-modal/0.7.0/package.tgz
+54 verbose lock tar:///home/amila/.npm/ng2-bs3-modal/0.7.0/package.tgz /home/amila/.npm/d30dadbf--ng2-bs3-modal-0-7-0-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 silly gunzTarPerm extractEntry package.json
+57 silly gunzTarPerm extractEntry .npmignore
+58 silly gunzTarPerm extractEntry README.md
+59 silly gunzTarPerm extractEntry ng2-bs3-modal.js
+60 silly gunzTarPerm extractEntry karma.conf.js
+61 silly gunzTarPerm extractEntry components/modal-body.js
+62 silly gunzTarPerm extractEntry components/modal-footer.js
+63 silly gunzTarPerm extractEntry components/modal-header.js
+64 silly gunzTarPerm extractEntry components/modal-instance.js
+65 silly gunzTarPerm extractEntry components/modal.js
+66 silly gunzTarPerm extractEntry components/modal-body.d.ts
+67 silly gunzTarPerm extractEntry components/modal-footer.d.ts
+68 silly gunzTarPerm extractEntry components/modal-header.d.ts
+69 silly gunzTarPerm extractEntry components/modal-instance.d.ts
+70 silly gunzTarPerm extractEntry components/modal.d.ts
+71 silly gunzTarPerm extractEntry directives/autofocus.js
+72 silly gunzTarPerm extractEntry directives/autofocus.d.ts
+73 silly gunzTarPerm extractEntry .travis.yml
+74 silly gunzTarPerm extractEntry ng2-bs3-modal.d.ts
+75 silly gunzTarPerm extractEntry bundles/ng2-bs3-modal.js
+76 silly gunzTarPerm extractEntry bundles/ng2-bs3-modal.min.js
+77 silly gunzTarPerm extractEntry LICENSE.md
+78 silly gunzTarPerm extractEntry src/ng2-bs3-modal/components/modal-body.ts
+79 silly gunzTarPerm extractEntry src/ng2-bs3-modal/components/modal-footer.ts
+80 silly gunzTarPerm extractEntry src/ng2-bs3-modal/components/modal-header.ts
+81 silly gunzTarPerm extractEntry src/ng2-bs3-modal/components/modal-instance.ts
+82 silly gunzTarPerm extractEntry src/ng2-bs3-modal/components/modal.ts
+83 silly gunzTarPerm extractEntry src/ng2-bs3-modal/directives/autofocus.ts
+84 silly gunzTarPerm extractEntry src/ng2-bs3-modal/ng2-bs3-modal.ts
+85 silly gunzTarPerm extractEntry typings/browser/ambient/es6-shim/index.d.ts
+86 silly gunzTarPerm extractEntry typings/browser/ambient/jasmine/index.d.ts
+87 silly gunzTarPerm extractEntry typings/browser.d.ts
+88 silly gunzTarPerm extractEntry typings/main/ambient/es6-shim/index.d.ts
+89 silly gunzTarPerm extractEntry typings/main/ambient/jasmine/index.d.ts
+90 silly gunzTarPerm extractEntry typings/main.d.ts
+91 silly gunzTarPerm extractEntry typings.json
+92 silly lockFile d3500f9b-ebapp-node-modules-ng2-bs3-modal tar:///home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp/node_modules/ng2-bs3-modal
+93 silly lockFile d3500f9b-ebapp-node-modules-ng2-bs3-modal tar:///home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp/node_modules/ng2-bs3-modal
+94 silly lockFile d30dadbf--ng2-bs3-modal-0-7-0-package-tgz tar:///home/amila/.npm/ng2-bs3-modal/0.7.0/package.tgz
+95 silly lockFile d30dadbf--ng2-bs3-modal-0-7-0-package-tgz tar:///home/amila/.npm/ng2-bs3-modal/0.7.0/package.tgz
+96 info preinstall ng2-bs3-modal@0.7.0
+97 verbose readDependencies using package.json deps
+98 verbose readDependencies using package.json deps
+99 silly resolved []
+100 verbose about to build /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp/node_modules/ng2-bs3-modal
+101 info build /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp/node_modules/ng2-bs3-modal
+102 verbose linkStuff [ false,
+102 verbose linkStuff   false,
+102 verbose linkStuff   false,
+102 verbose linkStuff   '/home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp/node_modules' ]
+103 info linkStuff ng2-bs3-modal@0.7.0
+104 verbose linkBins ng2-bs3-modal@0.7.0
+105 verbose linkMans ng2-bs3-modal@0.7.0
+106 verbose rebuildBundles ng2-bs3-modal@0.7.0
+107 info install ng2-bs3-modal@0.7.0
+108 info postinstall ng2-bs3-modal@0.7.0
+109 verbose readDependencies using package.json deps
+110 verbose cache add [ '@angular/common@^2.0.0-rc.1', null ]
+111 verbose cache add name=undefined spec="@angular/common@^2.0.0-rc.1" args=["@angular/common@^2.0.0-rc.1",null]
+112 verbose parsed url { protocol: null,
+112 verbose parsed url   slashes: null,
+112 verbose parsed url   auth: null,
+112 verbose parsed url   host: null,
+112 verbose parsed url   port: null,
+112 verbose parsed url   hostname: null,
+112 verbose parsed url   hash: null,
+112 verbose parsed url   search: null,
+112 verbose parsed url   query: null,
+112 verbose parsed url   pathname: '@angular/common@^2.0.0-rc.1',
+112 verbose parsed url   path: '@angular/common@^2.0.0-rc.1',
+112 verbose parsed url   href: '@angular/common@^2.0.0-rc.1' }
+113 verbose cache add name="" spec="angular/common@^2.0.0-rc.1" args=["","angular/common@^2.0.0-rc.1"]
+114 verbose parsed url { protocol: null,
+114 verbose parsed url   slashes: null,
+114 verbose parsed url   auth: null,
+114 verbose parsed url   host: null,
+114 verbose parsed url   port: null,
+114 verbose parsed url   hostname: null,
+114 verbose parsed url   hash: null,
+114 verbose parsed url   search: null,
+114 verbose parsed url   query: null,
+114 verbose parsed url   pathname: 'angular/common@^2.0.0-rc.1',
+114 verbose parsed url   path: 'angular/common@^2.0.0-rc.1',
+114 verbose parsed url   href: 'angular/common@^2.0.0-rc.1' }
+115 verbose cache add name="angular/common" spec="^2.0.0-rc.1" args=["angular/common","^2.0.0-rc.1"]
+116 verbose parsed url { protocol: null,
+116 verbose parsed url   slashes: null,
+116 verbose parsed url   auth: null,
+116 verbose parsed url   host: null,
+116 verbose parsed url   port: null,
+116 verbose parsed url   hostname: null,
+116 verbose parsed url   hash: null,
+116 verbose parsed url   search: null,
+116 verbose parsed url   query: null,
+116 verbose parsed url   pathname: '^2.0.0-rc.1',
+116 verbose parsed url   path: '^2.0.0-rc.1',
+116 verbose parsed url   href: '^2.0.0-rc.1' }
+117 verbose addNamed [ 'angular/common', '^2.0.0-rc.1' ]
+118 verbose addNamed [ null, '>=2.0.0-rc.1 <3.0.0-0' ]
+119 silly lockFile ec8cab01-angular-common-2-0-0-rc-1 angular/common@^2.0.0-rc.1
+120 verbose lock angular/common@^2.0.0-rc.1 /home/amila/.npm/ec8cab01-angular-common-2-0-0-rc-1.lock
+121 verbose cache add [ '@angular/compiler@^2.0.0-rc.1', null ]
+122 verbose cache add name=undefined spec="@angular/compiler@^2.0.0-rc.1" args=["@angular/compiler@^2.0.0-rc.1",null]
+123 verbose parsed url { protocol: null,
+123 verbose parsed url   slashes: null,
+123 verbose parsed url   auth: null,
+123 verbose parsed url   host: null,
+123 verbose parsed url   port: null,
+123 verbose parsed url   hostname: null,
+123 verbose parsed url   hash: null,
+123 verbose parsed url   search: null,
+123 verbose parsed url   query: null,
+123 verbose parsed url   pathname: '@angular/compiler@^2.0.0-rc.1',
+123 verbose parsed url   path: '@angular/compiler@^2.0.0-rc.1',
+123 verbose parsed url   href: '@angular/compiler@^2.0.0-rc.1' }
+124 verbose cache add name="" spec="angular/compiler@^2.0.0-rc.1" args=["","angular/compiler@^2.0.0-rc.1"]
+125 verbose parsed url { protocol: null,
+125 verbose parsed url   slashes: null,
+125 verbose parsed url   auth: null,
+125 verbose parsed url   host: null,
+125 verbose parsed url   port: null,
+125 verbose parsed url   hostname: null,
+125 verbose parsed url   hash: null,
+125 verbose parsed url   search: null,
+125 verbose parsed url   query: null,
+125 verbose parsed url   pathname: 'angular/compiler@^2.0.0-rc.1',
+125 verbose parsed url   path: 'angular/compiler@^2.0.0-rc.1',
+125 verbose parsed url   href: 'angular/compiler@^2.0.0-rc.1' }
+126 verbose cache add name="angular/compiler" spec="^2.0.0-rc.1" args=["angular/compiler","^2.0.0-rc.1"]
+127 verbose parsed url { protocol: null,
+127 verbose parsed url   slashes: null,
+127 verbose parsed url   auth: null,
+127 verbose parsed url   host: null,
+127 verbose parsed url   port: null,
+127 verbose parsed url   hostname: null,
+127 verbose parsed url   hash: null,
+127 verbose parsed url   search: null,
+127 verbose parsed url   query: null,
+127 verbose parsed url   pathname: '^2.0.0-rc.1',
+127 verbose parsed url   path: '^2.0.0-rc.1',
+127 verbose parsed url   href: '^2.0.0-rc.1' }
+128 verbose addNamed [ 'angular/compiler', '^2.0.0-rc.1' ]
+129 verbose addNamed [ null, '>=2.0.0-rc.1 <3.0.0-0' ]
+130 silly lockFile 63b718b1-angular-compiler-2-0-0-rc-1 angular/compiler@^2.0.0-rc.1
+131 verbose lock angular/compiler@^2.0.0-rc.1 /home/amila/.npm/63b718b1-angular-compiler-2-0-0-rc-1.lock
+132 verbose cache add [ '@angular/core@^2.0.0-rc.1', null ]
+133 verbose cache add name=undefined spec="@angular/core@^2.0.0-rc.1" args=["@angular/core@^2.0.0-rc.1",null]
+134 verbose parsed url { protocol: null,
+134 verbose parsed url   slashes: null,
+134 verbose parsed url   auth: null,
+134 verbose parsed url   host: null,
+134 verbose parsed url   port: null,
+134 verbose parsed url   hostname: null,
+134 verbose parsed url   hash: null,
+134 verbose parsed url   search: null,
+134 verbose parsed url   query: null,
+134 verbose parsed url   pathname: '@angular/core@^2.0.0-rc.1',
+134 verbose parsed url   path: '@angular/core@^2.0.0-rc.1',
+134 verbose parsed url   href: '@angular/core@^2.0.0-rc.1' }
+135 verbose cache add name="" spec="angular/core@^2.0.0-rc.1" args=["","angular/core@^2.0.0-rc.1"]
+136 verbose parsed url { protocol: null,
+136 verbose parsed url   slashes: null,
+136 verbose parsed url   auth: null,
+136 verbose parsed url   host: null,
+136 verbose parsed url   port: null,
+136 verbose parsed url   hostname: null,
+136 verbose parsed url   hash: null,
+136 verbose parsed url   search: null,
+136 verbose parsed url   query: null,
+136 verbose parsed url   pathname: 'angular/core@^2.0.0-rc.1',
+136 verbose parsed url   path: 'angular/core@^2.0.0-rc.1',
+136 verbose parsed url   href: 'angular/core@^2.0.0-rc.1' }
+137 verbose cache add name="angular/core" spec="^2.0.0-rc.1" args=["angular/core","^2.0.0-rc.1"]
+138 verbose parsed url { protocol: null,
+138 verbose parsed url   slashes: null,
+138 verbose parsed url   auth: null,
+138 verbose parsed url   host: null,
+138 verbose parsed url   port: null,
+138 verbose parsed url   hostname: null,
+138 verbose parsed url   hash: null,
+138 verbose parsed url   search: null,
+138 verbose parsed url   query: null,
+138 verbose parsed url   pathname: '^2.0.0-rc.1',
+138 verbose parsed url   path: '^2.0.0-rc.1',
+138 verbose parsed url   href: '^2.0.0-rc.1' }
+139 verbose addNamed [ 'angular/core', '^2.0.0-rc.1' ]
+140 verbose addNamed [ null, '>=2.0.0-rc.1 <3.0.0-0' ]
+141 silly lockFile ed51d5ef-angular-core-2-0-0-rc-1 angular/core@^2.0.0-rc.1
+142 verbose lock angular/core@^2.0.0-rc.1 /home/amila/.npm/ed51d5ef-angular-core-2-0-0-rc-1.lock
+143 verbose cache add [ '@angular/platform-browser@^2.0.0-rc.1', null ]
+144 verbose cache add name=undefined spec="@angular/platform-browser@^2.0.0-rc.1" args=["@angular/platform-browser@^2.0.0-rc.1",null]
+145 verbose parsed url { protocol: null,
+145 verbose parsed url   slashes: null,
+145 verbose parsed url   auth: null,
+145 verbose parsed url   host: null,
+145 verbose parsed url   port: null,
+145 verbose parsed url   hostname: null,
+145 verbose parsed url   hash: null,
+145 verbose parsed url   search: null,
+145 verbose parsed url   query: null,
+145 verbose parsed url   pathname: '@angular/platform-browser@^2.0.0-rc.1',
+145 verbose parsed url   path: '@angular/platform-browser@^2.0.0-rc.1',
+145 verbose parsed url   href: '@angular/platform-browser@^2.0.0-rc.1' }
+146 verbose cache add name="" spec="angular/platform-browser@^2.0.0-rc.1" args=["","angular/platform-browser@^2.0.0-rc.1"]
+147 verbose parsed url { protocol: null,
+147 verbose parsed url   slashes: null,
+147 verbose parsed url   auth: null,
+147 verbose parsed url   host: null,
+147 verbose parsed url   port: null,
+147 verbose parsed url   hostname: null,
+147 verbose parsed url   hash: null,
+147 verbose parsed url   search: null,
+147 verbose parsed url   query: null,
+147 verbose parsed url   pathname: 'angular/platform-browser@^2.0.0-rc.1',
+147 verbose parsed url   path: 'angular/platform-browser@^2.0.0-rc.1',
+147 verbose parsed url   href: 'angular/platform-browser@^2.0.0-rc.1' }
+148 verbose cache add name="angular/platform-browser" spec="^2.0.0-rc.1" args=["angular/platform-browser","^2.0.0-rc.1"]
+149 verbose parsed url { protocol: null,
+149 verbose parsed url   slashes: null,
+149 verbose parsed url   auth: null,
+149 verbose parsed url   host: null,
+149 verbose parsed url   port: null,
+149 verbose parsed url   hostname: null,
+149 verbose parsed url   hash: null,
+149 verbose parsed url   search: null,
+149 verbose parsed url   query: null,
+149 verbose parsed url   pathname: '^2.0.0-rc.1',
+149 verbose parsed url   path: '^2.0.0-rc.1',
+149 verbose parsed url   href: '^2.0.0-rc.1' }
+150 verbose addNamed [ 'angular/platform-browser', '^2.0.0-rc.1' ]
+151 verbose addNamed [ null, '>=2.0.0-rc.1 <3.0.0-0' ]
+152 silly lockFile 3af8af41-ular-platform-browser-2-0-0-rc-1 angular/platform-browser@^2.0.0-rc.1
+153 verbose lock angular/platform-browser@^2.0.0-rc.1 /home/amila/.npm/3af8af41-ular-platform-browser-2-0-0-rc-1.lock
+154 verbose cache add [ '@angular/platform-browser-dynamic@^2.0.0-rc.1', null ]
+155 verbose cache add name=undefined spec="@angular/platform-browser-dynamic@^2.0.0-rc.1" args=["@angular/platform-browser-dynamic@^2.0.0-rc.1",null]
+156 verbose parsed url { protocol: null,
+156 verbose parsed url   slashes: null,
+156 verbose parsed url   auth: null,
+156 verbose parsed url   host: null,
+156 verbose parsed url   port: null,
+156 verbose parsed url   hostname: null,
+156 verbose parsed url   hash: null,
+156 verbose parsed url   search: null,
+156 verbose parsed url   query: null,
+156 verbose parsed url   pathname: '@angular/platform-browser-dynamic@^2.0.0-rc.1',
+156 verbose parsed url   path: '@angular/platform-browser-dynamic@^2.0.0-rc.1',
+156 verbose parsed url   href: '@angular/platform-browser-dynamic@^2.0.0-rc.1' }
+157 verbose cache add name="" spec="angular/platform-browser-dynamic@^2.0.0-rc.1" args=["","angular/platform-browser-dynamic@^2.0.0-rc.1"]
+158 verbose parsed url { protocol: null,
+158 verbose parsed url   slashes: null,
+158 verbose parsed url   auth: null,
+158 verbose parsed url   host: null,
+158 verbose parsed url   port: null,
+158 verbose parsed url   hostname: null,
+158 verbose parsed url   hash: null,
+158 verbose parsed url   search: null,
+158 verbose parsed url   query: null,
+158 verbose parsed url   pathname: 'angular/platform-browser-dynamic@^2.0.0-rc.1',
+158 verbose parsed url   path: 'angular/platform-browser-dynamic@^2.0.0-rc.1',
+158 verbose parsed url   href: 'angular/platform-browser-dynamic@^2.0.0-rc.1' }
+159 verbose cache add name="angular/platform-browser-dynamic" spec="^2.0.0-rc.1" args=["angular/platform-browser-dynamic","^2.0.0-rc.1"]
+160 verbose parsed url { protocol: null,
+160 verbose parsed url   slashes: null,
+160 verbose parsed url   auth: null,
+160 verbose parsed url   host: null,
+160 verbose parsed url   port: null,
+160 verbose parsed url   hostname: null,
+160 verbose parsed url   hash: null,
+160 verbose parsed url   search: null,
+160 verbose parsed url   query: null,
+160 verbose parsed url   pathname: '^2.0.0-rc.1',
+160 verbose parsed url   path: '^2.0.0-rc.1',
+160 verbose parsed url   href: '^2.0.0-rc.1' }
+161 verbose addNamed [ 'angular/platform-browser-dynamic', '^2.0.0-rc.1' ]
+162 verbose addNamed [ null, '>=2.0.0-rc.1 <3.0.0-0' ]
+163 silly lockFile bc14035c-tform-browser-dynamic-2-0-0-rc-1 angular/platform-browser-dynamic@^2.0.0-rc.1
+164 verbose lock angular/platform-browser-dynamic@^2.0.0-rc.1 /home/amila/.npm/bc14035c-tform-browser-dynamic-2-0-0-rc-1.lock
+165 verbose cache add [ 'bootstrap@~3.3.x', null ]
+166 verbose cache add name=undefined spec="bootstrap@~3.3.x" args=["bootstrap@~3.3.x",null]
+167 verbose parsed url { protocol: null,
+167 verbose parsed url   slashes: null,
+167 verbose parsed url   auth: null,
+167 verbose parsed url   host: null,
+167 verbose parsed url   port: null,
+167 verbose parsed url   hostname: null,
+167 verbose parsed url   hash: null,
+167 verbose parsed url   search: null,
+167 verbose parsed url   query: null,
+167 verbose parsed url   pathname: 'bootstrap@~3.3.x',
+167 verbose parsed url   path: 'bootstrap@~3.3.x',
+167 verbose parsed url   href: 'bootstrap@~3.3.x' }
+168 verbose cache add name="bootstrap" spec="~3.3.x" args=["bootstrap","~3.3.x"]
+169 verbose parsed url { protocol: null,
+169 verbose parsed url   slashes: null,
+169 verbose parsed url   auth: null,
+169 verbose parsed url   host: null,
+169 verbose parsed url   port: null,
+169 verbose parsed url   hostname: null,
+169 verbose parsed url   hash: null,
+169 verbose parsed url   search: null,
+169 verbose parsed url   query: null,
+169 verbose parsed url   pathname: '~3.3.x',
+169 verbose parsed url   path: '~3.3.x',
+169 verbose parsed url   href: '~3.3.x' }
+170 verbose addNamed [ 'bootstrap', '~3.3.x' ]
+171 verbose addNamed [ null, '>=3.3.0-0 <3.4.0-0' ]
+172 silly lockFile 2739a45a-bootstrap-3-3-x bootstrap@~3.3.x
+173 verbose lock bootstrap@~3.3.x /home/amila/.npm/2739a45a-bootstrap-3-3-x.lock
+174 silly addNameRange { name: 'angular/common',
+174 silly addNameRange   range: '>=2.0.0-rc.1 <3.0.0-0',
+174 silly addNameRange   hasData: false }
+175 silly addNameRange { name: 'bootstrap',
+175 silly addNameRange   range: '>=3.3.0-0 <3.4.0-0',
+175 silly addNameRange   hasData: false }
+176 silly addNameRange { name: 'angular/compiler',
+176 silly addNameRange   range: '>=2.0.0-rc.1 <3.0.0-0',
+176 silly addNameRange   hasData: false }
+177 silly addNameRange { name: 'angular/core',
+177 silly addNameRange   range: '>=2.0.0-rc.1 <3.0.0-0',
+177 silly addNameRange   hasData: false }
+178 silly addNameRange { name: 'angular/platform-browser',
+178 silly addNameRange   range: '>=2.0.0-rc.1 <3.0.0-0',
+178 silly addNameRange   hasData: false }
+179 silly addNameRange { name: 'angular/platform-browser-dynamic',
+179 silly addNameRange   range: '>=2.0.0-rc.1 <3.0.0-0',
+179 silly addNameRange   hasData: false }
+180 verbose url raw bootstrap
+181 verbose url resolving [ 'https://registry.npmjs.org/', './bootstrap' ]
+182 verbose url resolved https://registry.npmjs.org/bootstrap
+183 info trying registry request attempt 1 at 15:20:22
+184 verbose etag "6YNJCO5HUC636G04LBISPU02T"
+185 http GET https://registry.npmjs.org/bootstrap
+186 verbose url raw angular/platform-browser
+187 verbose url resolving [ 'https://registry.npmjs.org/', './angular/platform-browser' ]
+188 verbose url resolved https://registry.npmjs.org/angular/platform-browser
+189 info trying registry request attempt 1 at 15:20:22
+190 http GET https://registry.npmjs.org/angular/platform-browser
+191 verbose url raw angular/compiler
+192 verbose url resolving [ 'https://registry.npmjs.org/', './angular/compiler' ]
+193 verbose url resolved https://registry.npmjs.org/angular/compiler
+194 info trying registry request attempt 1 at 15:20:22
+195 http GET https://registry.npmjs.org/angular/compiler
+196 verbose url raw angular/core
+197 verbose url resolving [ 'https://registry.npmjs.org/', './angular/core' ]
+198 verbose url resolved https://registry.npmjs.org/angular/core
+199 info trying registry request attempt 1 at 15:20:22
+200 http GET https://registry.npmjs.org/angular/core
+201 verbose url raw angular/common
+202 verbose url resolving [ 'https://registry.npmjs.org/', './angular/common' ]
+203 verbose url resolved https://registry.npmjs.org/angular/common
+204 info trying registry request attempt 1 at 15:20:22
+205 http GET https://registry.npmjs.org/angular/common
+206 verbose url raw angular/platform-browser-dynamic
+207 verbose url resolving [ 'https://registry.npmjs.org/',
+207 verbose url resolving   './angular/platform-browser-dynamic' ]
+208 verbose url resolved https://registry.npmjs.org/angular/platform-browser-dynamic
+209 info trying registry request attempt 1 at 15:20:22
+210 http GET https://registry.npmjs.org/angular/platform-browser-dynamic
+211 http 404 https://registry.npmjs.org/angular/core
+212 silly registry.get cb [ 404,
+212 silly registry.get   { 'content-type': 'application/json',
+212 silly registry.get     'cache-control': 'max-age=0',
+212 silly registry.get     'content-length': '2',
+212 silly registry.get     'accept-ranges': 'bytes',
+212 silly registry.get     date: 'Fri, 04 Nov 2016 09:50:23 GMT',
+212 silly registry.get     via: '1.1 varnish',
+212 silly registry.get     age: '0',
+212 silly registry.get     connection: 'keep-alive',
+212 silly registry.get     'x-served-by': 'cache-sin6925-SIN',
+212 silly registry.get     'x-cache': 'MISS',
+212 silly registry.get     'x-cache-hits': '0',
+212 silly registry.get     'x-timer': 'S1478253022.926396,VS0,VE248',
+212 silly registry.get     vary: 'Accept-Encoding' } ]
+213 silly addNameRange number 2 { name: 'angular/core',
+213 silly addNameRange   range: '>=2.0.0-rc.1 <3.0.0-0',
+213 silly addNameRange   hasData: true }
+214 silly addNameRange versions [ undefined, [] ]
+215 error TypeError: Cannot read property 'latest' of undefined
+215 error     at next (/usr/share/npm/lib/cache.js:687:35)
+215 error     at /usr/share/npm/lib/cache.js:675:5
+215 error     at saved (/usr/share/npm/node_modules/npm-registry-client/lib/get.js:142:7)
+215 error     at /usr/lib/nodejs/graceful-fs/polyfills.js:133:7
+215 error     at Object.oncomplete (fs.js:107:15)
+216 error If you need help, you may report this log at:
+216 error     <http://github.com/isaacs/npm/issues>
+216 error or email it to:
+216 error     <npm-@googlegroups.com>
+217 error System Linux 3.16.0-48-generic
+218 error command "/usr/bin/nodejs" "/usr/bin/npm" "install"
+219 error cwd /home/amila/MSc/Project/CEPRuleLanguage/Rule-Web/src/main/webapp
+220 error node -v v0.10.25
+221 error npm -v 1.3.10
+222 error type non_object_property_load
+223 verbose exit [ 1, true ]
