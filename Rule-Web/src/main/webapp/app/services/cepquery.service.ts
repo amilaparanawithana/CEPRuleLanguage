@@ -12,7 +12,7 @@ import {Observable} from "rxjs/Observable";
 import {UserService} from "./user.service";
 
 @Injectable()
-export class ProjectService {
+export class CepqueryService {
     baseUrl:string;
 
     constructor(private http:Http, @Inject(RestService)
@@ -20,34 +20,16 @@ export class ProjectService {
                 @Inject(UserService)
                 private userService:UserService,
                 private jwtProvider:JwtProvider) {
-        this.baseUrl = restService.getBaseUrl('project');
+        this.baseUrl = restService.getBaseUrl('cepquery');
         this.restService = restService;
     }
 
-    getById(id:number) {
-
-    }
-
-    /**
-     * Obtains all the projects belongs to the user
-     * @returns {Observable<R>}
-     */
-    getAll() {
+    convert(){
 
     }
 
 
-}
 
-export class UploadStatus {
-    fileName:string;
-    successful:boolean;
-    msg:string;
 
-    constructor(fileName:string, successful:boolean, msg:string) {
-        this.fileName = fileName;
-        this.successful = successful;
-        this.msg = msg;
-    }
 
 }

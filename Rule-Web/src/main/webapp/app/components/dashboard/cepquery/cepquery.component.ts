@@ -3,9 +3,9 @@
  */
 import {Component} from "angular2/core";
 import {ROUTER_DIRECTIVES, RouteConfig} from "angular2/router";
-import {ProjectListComponent} from "./project.list.component";
+import {XmltoqueryComponent} from "./xmltoquery.component";
 @Component({
-    selector: 'project-component',
+    selector: 'cepquery-component',
     template: `<router-outlet></router-outlet>`,
     directives: [ROUTER_DIRECTIVES]
 })
@@ -13,10 +13,10 @@ import {ProjectListComponent} from "./project.list.component";
 @RouteConfig([
     {
         path: '/',
-        name: 'ProjectList',
-        component: ProjectListComponent
+        name: 'Xmltoquery',
+        component: XmltoqueryComponent
     }
 ])
 
-export class ProjectComponent {
+export class CepqueryComponent {
 }

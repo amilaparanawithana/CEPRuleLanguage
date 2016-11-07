@@ -2,8 +2,6 @@
  * @author Amila Paranawithana
  */
 import {Component, Inject} from "angular2/core";
-import {ProjectService} from "../../../services/project.service";
-import {Project} from "../../../models/project";
 import {ROUTER_DIRECTIVES} from "angular2/router";
 import {RestService} from "../../../services/rest.service";
 import {UserService} from "../../../services/user.service";
@@ -11,22 +9,37 @@ import {FeedBackService, FeedbackType} from "../../../services/ui/feedback.servi
 import {AlertService} from "../../../modules/alert/alert.service";
 import {AlertConfiguration} from "../../../modules/alert/alert.component";
 import {AbstractComponent} from "../abstract.component";
+import {Cepquery} from "../../../models/cepquery";
+import {CepqueryService} from "../../../services/cepquery.service";
 @Component({
-    selector: 'project-list-component',
-    templateUrl: '../../../../resources/template/dashboard/project/list.html',
+    selector: 'xmltoquery-component',
+    templateUrl: '../../../../resources/template/dashboard/cepquery/list.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [ProjectService, RestService, UserService]
+    providers: [CepqueryService, RestService, UserService]
 })
 
-export class ProjectListComponent extends AbstractComponent {
-    projects:Array<Project>;
+export class XmltoqueryComponent extends AbstractComponent {
 
-    constructor(private projectService:ProjectService,
+    query = new Cepquery();
+
+    constructor(private cepqueryService:CepqueryService,
                 @Inject(FeedBackService)
                 private feedBackService:FeedBackService,
                 @Inject(AlertService)
                 private alertService:AlertService) {
         super();
+    }
+
+
+    convert(){
+       /* this.projectService.fetchVersions(this.projectId).subscribe(
+            data=> {
+
+            },
+            err => {
+                super.handleServiceError(this.feedBackService, err);
+            }
+        )*/
     }
 
 }

@@ -6,7 +6,6 @@ import {RouteConfig, ROUTER_DIRECTIVES, Router} from "angular2/router";
 import {DashHomeComponent} from "./dashhome.component";
 import {UserComponent} from "./user/user.component";
 import {RoleComponent} from "./role/role.component";
-import {ProjectComponent} from "./project/project.component";
 import {FeedbackComponent} from "./feedback.component";
 import {AuditComponent} from "./audit/audit.component";
 import {AuthService} from "../../services/auth.service";
@@ -15,6 +14,7 @@ import {UIService} from "../../services/ui.service";
 import {AlertComponent} from "../../modules/alert/alert.component";
 import {BuilderComponent} from "./builder/builder.component";
 import {TourComponent} from "../../modules/tour/tour.component";
+import {CepqueryComponent} from "./cepquery/cepquery.component";
 
 declare let Tour:any;
 
@@ -43,9 +43,9 @@ declare let Tour:any;
         component: RoleComponent
     },
     {
-        path: '/project/...',
-        name: 'Project',
-        component: ProjectComponent
+        path: '/cepquery/...',
+        name: 'Cepquery',
+        component: CepqueryComponent
     },
     {
         path: '/audit/...',
