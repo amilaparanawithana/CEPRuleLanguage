@@ -1,6 +1,5 @@
 /**
- * @author Chathura Widanage
- * @author Sajith Dilshan
+ * @author Amila Paranawithana
  */
 import {Component, Inject} from "angular2/core";
 import {ProjectService} from "../../../services/project.service";

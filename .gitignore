@@ -24,3 +24,5 @@ Rule-Web/src/main/webapp/resources/global/ips/sass/main.css.map
 Rule-Web/src/main/webapp/dist/*
 Rule-Web/src/main/webapp/app.min.js
 Rule-Web/src/main/webapp/vendors.min.js
+
+Rule-Parser/.idea/*
