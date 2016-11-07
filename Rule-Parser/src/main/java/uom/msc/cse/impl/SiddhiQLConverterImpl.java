@@ -29,14 +29,14 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
 
     public String XMLToSiddhiQL(String xml) {
         String query = "";
-
+        System.out.println("came to convert to siddhi");
         try {
             StringReader reader = new StringReader(xml);
             JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             Query queryObj = (Query) jaxbUnmarshaller.unmarshal(reader);
-            System.out.println(queryObj.getFromStream());
+            query = createSQLWithQuery(queryObj);
         } catch (JAXBException ex) {
             logger.error("Error while converting XML to JAXB object");
             if (logger.isDebugEnabled()) {
@@ -49,7 +49,6 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
     public String XMLToSiddhiQL(File xmlFile) {
         String query = "";
 
-        System.out.println("sssssssssssss");
         //TODO validate the incoming xml request over a XSD
         //validateXML();
         try {
@@ -57,12 +56,6 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             Query queryObj = (Query) jaxbUnmarshaller.unmarshal(xmlFile);
-            /*System.out.println(queryObj.getFromStream());
-            System.out.println(queryObj.getSelect().getOperators().get(0).getConnectWith());
-            System.out.println(queryObj.getSelect().getOperators().get(0).getOperation());
-            System.out.println(queryObj.getSelect().getAttributes().get(0).getAttribute());
-            System.out.println(queryObj.getSelect().getAttributes().get(0).getAs());
-            System.out.println(queryObj.getFilter().getConditions().get(0).getCondition());*/
 
             query = createSQLWithQuery(queryObj);
 

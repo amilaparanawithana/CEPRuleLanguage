@@ -20,7 +20,7 @@ import {CepqueryService} from "../../../services/cepquery.service";
 
 export class XmltoqueryComponent extends AbstractComponent {
 
-    query = new Cepquery();
+    cepquery = new Cepquery();
 
     constructor(private cepqueryService:CepqueryService,
                 @Inject(FeedBackService)
@@ -31,15 +31,18 @@ export class XmltoqueryComponent extends AbstractComponent {
     }
 
 
-    convert(){
-       /* this.projectService.fetchVersions(this.projectId).subscribe(
+    convertXML(type:string){
+        console.log("eeeeeeeeeeeeeeeeeee");
+        this.cepquery.queryType = type;
+        this.cepqueryService.convertXmlToQuery(this.cepquery).subscribe(
             data=> {
-
+                this.cepquery = data;
+                console.log(this.cepquery.query);
             },
             err => {
                 super.handleServiceError(this.feedBackService, err);
             }
-        )*/
+        )
     }
 
 }
