@@ -23,8 +23,6 @@ import java.util.*;
 
 /**
  * @author Amila Paranawithana
- * @author Sajith Dilshan
- * @author Chathura Widanage
  */
 public class AuditLogService {
 
@@ -121,7 +119,7 @@ public class AuditLogService {
             results.forEach(auditLog ->
                     auditLogResources.add(createResource(auditLog))
             );
-            DataTableResponse<AuditLogResource> dataTableResponse=new DataTableResponse<>();
+            DataTableResponse<AuditLogResource> dataTableResponse = new DataTableResponse<>();
             dataTableResponse.setDataRows(auditLogResources);
             dataTableResponse.setTotalEntries(results.getTotalElements());
             dataTableResponse.setCurrentPage(results.getNumber());

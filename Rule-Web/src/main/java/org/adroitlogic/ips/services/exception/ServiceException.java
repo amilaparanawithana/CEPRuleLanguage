@@ -4,19 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author dimuthu
+ * @author Amila Paranawithana
  */
 public class ServiceException extends Exception {
 
     //String message;
     String subject;
-    Map<String,String> metaInfoMap = new HashMap<>();
+    Map<String, String> metaInfoMap = new HashMap<>();
     String title;
     ExType exceptionType;
 
-    public ServiceException(){
-        
+    public ServiceException() {
+
     }
+
     public ServiceException(String msg, Exception e) {
         super(msg, e);
     }
@@ -24,7 +25,7 @@ public class ServiceException extends Exception {
     public ServiceException(String msg) {
         super(msg);
     }
-    
+
     public ServiceException(String msg, Object... args) {
         super(processMsg(msg, args));
     }
@@ -33,8 +34,8 @@ public class ServiceException extends Exception {
     public ServiceException(String msg, Exception e, Object... args) {
         super(processMsg(msg, args), e);
     }
-    
-    public ServiceException(String message, String subject, Map<String,String> metaInfoMap) {
+
+    public ServiceException(String message, String subject, Map<String, String> metaInfoMap) {
         super(message);
         this.subject = subject;
         this.metaInfoMap = metaInfoMap;
@@ -51,11 +52,11 @@ public class ServiceException extends Exception {
     }
 
     public enum ExType {
-        WARN,ERROR
+        WARN, ERROR
     }
 
     private static String processMsg(String message, Object... args) {
-        
+
         int index = 0;
         while (message.contains("{}") && args.length < index) {
             message = message.replaceFirst("\\{\\}", String.valueOf(args[index++]));

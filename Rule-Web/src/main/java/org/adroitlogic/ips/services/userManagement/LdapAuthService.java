@@ -15,7 +15,7 @@ import static org.springframework.ldap.query.LdapQueryBuilder.query;
 /**
  * This class will be used to query the ldap server.
  *
- * @author Chathura Widanage
+ * @author Amila Paranawithana
  */
 public class LdapAuthService {
 

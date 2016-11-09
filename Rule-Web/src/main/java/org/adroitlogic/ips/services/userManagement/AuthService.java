@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Utility methods implementation for authentication and authorization
  *
  * @author Amila Paranawithana
- * @author Chathura Widanage
  */
 public class AuthService {
 

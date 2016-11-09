@@ -1,7 +1,7 @@
 package org.adroitlogic.ips.rest.resources;
 
 /**
- * @author chathura
+ * @author Amila Paranawithana
  */
 public class CustomMessageResource {
     private String msg;

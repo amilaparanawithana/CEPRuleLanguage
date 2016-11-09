@@ -19,7 +19,7 @@ import java.security.SecureRandom;
 /**
  * This class will handel application wide un handled exceptions.
  *
- * @author chathura widanage
+ * @author Amila Paranawithana
  */
 @Provider
 public class ExceptionMapper implements ExtendedExceptionMapper<Exception> {

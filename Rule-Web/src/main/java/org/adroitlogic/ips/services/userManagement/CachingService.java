@@ -12,8 +12,7 @@ import java.util.Set;
 import static org.adroitlogic.ips.services.userManagement.CachingService.ExpirationTimeUnit.MILLISECONDS;
 
 /**
- * @author Sajith Dilshan
- * @author Chathura Widanage
+ * @author Amila Paranawithana
  */
 public class CachingService {
 

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author amila paranawithana
+ * @author Amila Paranawithana
  *         User related functionalities impementation
  */
 public class UserService {

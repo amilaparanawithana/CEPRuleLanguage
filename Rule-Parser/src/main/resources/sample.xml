@@ -5,9 +5,6 @@
             <attribute as="attr1o">atr1</attribute>
             <attribute as="attr2o" type="DEFAULT">atr2</attribute>
         </attributes>
-        <!--<operators>
-            <operator connectWith="AND">oper1</operator>
-        </operators>-->
     </select>
     <fromStream>samplefromstream</fromStream>
     <group-by>grp1</group-by>

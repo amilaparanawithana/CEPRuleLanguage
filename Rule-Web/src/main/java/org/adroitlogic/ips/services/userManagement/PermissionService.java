@@ -19,8 +19,6 @@ import java.util.stream.Collectors;
 
 /**
  * @author Amila Paranawithana
- * @author Sajith Dilshan
- * @author Chathura Widanage
  *         Web application controller permission services
  */
 public class PermissionService {

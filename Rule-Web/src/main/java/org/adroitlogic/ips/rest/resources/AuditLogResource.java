@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * @author amila paranawithana
- * Represent the JAXRS bean for the AuditLog
+ *         Represent the JAXRS bean for the AuditLog
  */
 public class AuditLogResource {
 

@@ -22,8 +22,6 @@ import java.util.stream.Collectors;
 
 /**
  * @author Amila Paranawithana
- * @author Sajith Dilshan
- * @author Chathura Widanage
  *         User role related functions
  */
 public class RoleService {
