@@ -4,13 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import uom.msc.cse.api.SiddhiQLConverter;
 import uom.msc.cse.beans.query.Query;
+import uom.msc.cse.exceptions.ParserException;
 import uom.msc.cse.util.QueryKeyWords;
+import uom.msc.cse.util.QueryUtil;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.io.StringReader;
 
 /**
  * @author Amila Paranawithana
@@ -27,45 +25,21 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
     private SiddhiQLConverterImpl() {
     }
 
-    public String XMLToSiddhiQL(String xml) {
+    public String XMLToSiddhiQL(String xml) throws ParserException {
         String query = "";
-        System.out.println("came to convert to siddhi");
-        try {
-            StringReader reader = new StringReader(xml);
-            JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
-
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Query queryObj = (Query) jaxbUnmarshaller.unmarshal(reader);
-            query = createSQLWithQuery(queryObj);
-        } catch (JAXBException ex) {
-            logger.error("Error while converting XML to JAXB object");
-            if (logger.isDebugEnabled()) {
-                logger.debug("Error in converting XML string : {} to JAXB object", xml);
-            }
-        }
+        logger.info("Converting the XML to SiddhiQL query..");
+        Query queryObj = QueryUtil.convertXMLStringToBean(xml);
+        query = createSQLWithQuery(queryObj);
         return query;
     }
 
-    public String XMLToSiddhiQL(File xmlFile) {
+    public String XMLToSiddhiQL(File xmlFile) throws ParserException {
         String query = "";
-
         //TODO validate the incoming xml request over a XSD
         //validateXML();
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
-
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Query queryObj = (Query) jaxbUnmarshaller.unmarshal(xmlFile);
-
-            query = createSQLWithQuery(queryObj);
-
-
-        } catch (JAXBException ex) {
-            logger.error("Error while converting XML to JAXB object");
-            if (logger.isDebugEnabled()) {
-                logger.debug("Error in converting XML string : {} to JAXB object", xmlFile.getName());
-            }
-        }
+        logger.info("Converting the XML to SiddhiQL query..");
+        Query queryObj = QueryUtil.convertXMLFileToBean(xmlFile);
+        query = createSQLWithQuery(queryObj);
         return query;
     }
 
@@ -77,37 +51,17 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
      */
     private String createSQLWithQuery(Query query) {
 
-        StringBuilder queryString = new StringBuilder(QueryKeyWords.FROM);
-        queryString.append(QueryKeyWords.SPACE).append(query.getFromStream()).append(QueryKeyWords.SPACE)
-                .append(QueryKeyWords.SELECT).append(QueryKeyWords.SPACE);
-
+        StringBuilder queryString = new StringBuilder();
+        //setting from
+        QueryUtil.setFrom(query.getFromStream(),queryString).append(QueryKeyWords.SPACE);
         // setting select
-        if (query.getSelect().getAll()) {
-            queryString.append("*");
-        } else {
-            final int[] numberOfAttributes = {query.getSelect().getAttributes().size()};
-            query.getSelect().getAttributes().forEach(attr -> {
-
-                queryString.append(attr.getAttribute()).append(QueryKeyWords.SPACE);
-                if (attr.getAs() != null) {
-                    queryString.append(QueryKeyWords.AS).append(QueryKeyWords.SPACE).append(attr.getAs()).append(QueryKeyWords.SPACE);
-                }
-                numberOfAttributes[0] = numberOfAttributes[0] - 1;
-
-                if (numberOfAttributes[0] > 0) {
-                    queryString.append(QueryKeyWords.COMMA).append(QueryKeyWords.SPACE);
-                }
-            });
-        }
-
+        QueryUtil.setSelect(query.getSelect(),queryString);
         // group by
         if (query.getGroupBy() != null) {
-            queryString.append(QueryKeyWords.GROUP_BY).append(QueryKeyWords.SPACE).append(query.getGroupBy()).append(QueryKeyWords.SPACE);
+            QueryUtil.setGroupBy(query.getGroupBy(),queryString).append(QueryKeyWords.SPACE);
         }
-
         //INSERT-INTO
-        queryString.append(QueryKeyWords.INSERT_INTO).append(QueryKeyWords.SPACE)
-                .append(query.getInsertInto());
+        QueryUtil.setInsertInto(query.getInsertInto(),queryString).append(QueryKeyWords.SPACE);
 
         return queryString.toString();
     }

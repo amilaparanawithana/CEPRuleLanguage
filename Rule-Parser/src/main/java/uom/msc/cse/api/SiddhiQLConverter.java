@@ -1,5 +1,7 @@
 package uom.msc.cse.api;
 
+import uom.msc.cse.exceptions.ParserException;
+
 import java.io.File;
 
 /**
@@ -7,9 +9,9 @@ import java.io.File;
  */
 public interface SiddhiQLConverter {
 
-    String XMLToSiddhiQL(String xml);
+    String XMLToSiddhiQL(String xml)  throws ParserException;
 
-    String XMLToSiddhiQL(File xmlFile);
+    String XMLToSiddhiQL(File xmlFile) throws ParserException;
 
     String SiddhiQLToXML(String sql);
 }

@@ -36,6 +36,7 @@ public class Main {
                 "</query>";
 //        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
         System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xml));
+        System.out.println(Parser.getEsperConverter().XMLToEsper(xmlFile));
 
     }
 }
