@@ -53,19 +53,19 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
 
         StringBuilder queryString = new StringBuilder();
         //setting from
-        QueryUtil.setFrom(query.getFromStream(),queryString).append(QueryKeyWords.SPACE);
+        QueryUtil.setFrom(query.getFromStream(), queryString).append(QueryKeyWords.SPACE);
         // setting select
-        QueryUtil.setSelect(query.getSelect(),queryString);
+        QueryUtil.setSelect(query.getSelect(), queryString);
         // group by
         if (query.getGroupBy() != null) {
-            QueryUtil.setGroupBy(query.getGroupBy(),queryString).append(QueryKeyWords.SPACE);
+            QueryUtil.setGroupBy(query.getGroupBy(), queryString).append(QueryKeyWords.SPACE);
         }
         // having
-        if(query.getFilter().getHaving() !=null){
-            QueryUtil.setHaving(query.getFilter().getHaving(),queryString).append(QueryKeyWords.SPACE);
+        if (query.getFilter().getHaving() != null) {
+            QueryUtil.setHaving(query.getFilter().getHaving(), queryString).append(QueryKeyWords.SPACE);
         }
         //INSERT-INTO
-        QueryUtil.setInsertInto(query.getInsertInto(),queryString).append(QueryKeyWords.SPACE);
+        QueryUtil.setInsertInto(query.getInsertInto(), queryString).append(QueryKeyWords.SPACE);
 
 
         return queryString.toString();

@@ -24,9 +24,6 @@
                         </div>
 
                         <div style="text-align:center" class="form-group">
-                            <!--<label>Convert To</label>-->
-                            <!--<div class="input-group">-->
-
                                 <select style="background-color: #3f51b5;height: 30px;width: 150px;color: white;font-weight: bolder"
                                         (change)="convertXML($event.target.value)">
                                     <option value="select">Convert To</option>
@@ -34,17 +31,17 @@
                                     <option value="esper">ESPER - EPL</option>
                                     <option value="stream">STREAM - CQL</option>
                                 </select>
-                            <!--</div>-->
                         </div>
 
                         <div class="form-group">
-                            <label>converted</label>
+                            <label>Converted to {{cepquery.queryType}}</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="fa fa-users"></i>
                                 </span>
-                                <input rows="10" cols="50" class="form-control" style="font-size: 16px;width: 700px"
+                                <textarea rows="3" cols="50" class="form-control" style="font-size: 16px;width: 700px"
                                        [(ngModel)]="cepquery.query">
+                                </textarea>
                             </div>
                         </div>
 
