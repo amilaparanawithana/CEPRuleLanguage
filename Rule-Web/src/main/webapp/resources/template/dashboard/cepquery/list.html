@@ -14,7 +14,7 @@
                             <label>XML format</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="fa fa-users"></i>
+                                    <i class="fa fa-leaf"></i>
                                 </span>
                                 <textarea rows="10" cols="50" class="form-control" style="font-size: 16px;height: 300px;width: 700px"
                                        placeholder="<query><select>/select<></query>" [(ngModel)]="cepquery.xml" required>
@@ -24,12 +24,12 @@
                         </div>
 
                         <div style="text-align:center" class="form-group">
-                                <select style="background-color: #3f51b5;height: 30px;width: 150px;color: white;font-weight: bolder"
+                                <select class="select-list"
                                         (change)="convertXML($event.target.value)">
-                                    <option value="select">Convert To</option>
-                                    <option value="siddhi">SIDDHI - SiddhiQL</option>
-                                    <option value="esper">ESPER - EPL</option>
-                                    <option value="stream">STREAM - CQL</option>
+                                    <option value="select">Select Convert Language</option>
+                                    <option value="siddhi"> ** SIDDHI - SiddhiQL **</option>
+                                    <option value="esper">** ESPER - EPL **</option>
+                                    <option value="stream">** STREAM - CQL **</option>
                                 </select>
                         </div>
 
@@ -37,7 +37,7 @@
                             <label>Converted to {{cepquery.queryType}}</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="fa fa-users"></i>
+                                    <i class="fa fa-code"></i>
                                 </span>
                                 <textarea rows="3" cols="50" class="form-control" style="font-size: 16px;width: 700px"
                                        [(ngModel)]="cepquery.query">

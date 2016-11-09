@@ -116,6 +116,18 @@
     background: none;
 }
 
+.select-list{
+    background-color: #3f51b5;
+    height: 36px;
+    width: 200px;
+    color: white;
+    font-weight: bolder;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    margin-left: 130px;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 200px;
