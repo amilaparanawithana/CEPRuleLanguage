@@ -5,11 +5,12 @@ package uom.msc.cse.util;
  */
 public class QueryKeyWords {
 
-    public static final String SELECT = "SELECT";
-    public static final String FROM = "FROM";
-    public static final String INSERT_INTO = "INSERT INTO";
+    public static final String SELECT = "select";
+    public static final String FROM = "from";
+    public static final String INSERT_INTO = "insert into";
     public static final String AS = "as";
     public static final String GROUP_BY = "group by";
+    public static final String HAVING = "having";
 
 
     public static final String SPACE = " ";

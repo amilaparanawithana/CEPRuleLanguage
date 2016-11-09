@@ -51,6 +51,10 @@ public class EsperConverterImpl implements EsperConverter {
         if (query.getGroupBy() != null) {
             QueryUtil.setGroupBy(query.getGroupBy(),queryString).append(QueryKeyWords.SPACE);
         }
+        // having
+        if(query.getFilter().getHaving() !=null){
+            QueryUtil.setHaving(query.getFilter().getHaving(),queryString).append(QueryKeyWords.SPACE);
+        }
         return queryString.toString();
 
     }

@@ -60,8 +60,13 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         if (query.getGroupBy() != null) {
             QueryUtil.setGroupBy(query.getGroupBy(),queryString).append(QueryKeyWords.SPACE);
         }
+        // having
+        if(query.getFilter().getHaving() !=null){
+            QueryUtil.setHaving(query.getFilter().getHaving(),queryString).append(QueryKeyWords.SPACE);
+        }
         //INSERT-INTO
         QueryUtil.setInsertInto(query.getInsertInto(),queryString).append(QueryKeyWords.SPACE);
+
 
         return queryString.toString();
     }

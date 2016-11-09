@@ -31,7 +31,6 @@ public class QueryUtil {
                 logger.debug("Error in converting XML string : {} to JAXB object", xmlFile.getName());
             }
             throw new ParserException("Error while converting the XML file content to JAXB model", e);
-
         }
     }
 
@@ -48,7 +47,6 @@ public class QueryUtil {
                 logger.debug("Error in converting XML string : {} to JAXB object", xml);
             }
             throw new ParserException("Error while converting XML to JAXB object", e);
-
         }
     }
 
@@ -87,6 +85,11 @@ public class QueryUtil {
 
     public static StringBuilder setInsertInto(String insertInto, StringBuilder queryString) {
         queryString.append(QueryKeyWords.INSERT_INTO).append(QueryKeyWords.SPACE).append(insertInto);
+        return queryString;
+    }
+
+    public static StringBuilder setHaving(String having, StringBuilder queryString) {
+        queryString.append(QueryKeyWords.HAVING).append(QueryKeyWords.SPACE).append(having);
         return queryString;
     }
 

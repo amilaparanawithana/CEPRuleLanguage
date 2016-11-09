@@ -30,7 +30,6 @@ public class XmlToQueryController extends AbstractRestController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response convertXmlToQuery(CepqueryResource cepqueryResource) {
         try {
-            System.out.println("ssxcxc");
             return sendSuccessResponse(xmlToQueryService.convertXmlToQuery(cepqueryResource));
         } catch (ServiceException e) {
             return handleServiceException(e);
