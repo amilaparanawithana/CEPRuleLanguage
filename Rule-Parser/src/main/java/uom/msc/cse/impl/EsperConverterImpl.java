@@ -76,6 +76,17 @@ public class EsperConverterImpl implements EsperConverter {
             queryString.setLength(queryString.length() - 1);
             queryString.append("(").append(query.getFilter()).append(")").append(QueryKeyWords.SPACE);
         }
+        // window
+        if(query.getWindow() != null) {
+            queryString.setLength(queryString.length() - 1);
+            queryString.append(".win:").append(query.getWindow().getFunc()).append("(");
+
+            query.getWindow().getParameters().forEach(parameter -> {
+                queryString.append(parameter.getValue()).append(",");
+            });
+            queryString.setLength(queryString.length() - 1);
+            queryString.append(")").append(QueryKeyWords.SPACE);
+        }
         // group by
         if (query.getGroupBy() != null) {
             QueryUtil.setGroupBy(query.getGroupBy(), queryString).append(QueryKeyWords.SPACE);

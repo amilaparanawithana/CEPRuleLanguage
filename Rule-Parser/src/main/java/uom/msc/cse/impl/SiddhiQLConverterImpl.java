@@ -69,14 +69,25 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
     private String createSQLWithQuery(Query query) {
 
         StringBuilder queryString = new StringBuilder();
-        //setting from
+        // from
         QueryUtil.setFrom(query.getFromStream(), queryString).append(QueryKeyWords.SPACE);
-        //filter
+        // filter
         if (query.getFilter() != null) {
             queryString.setLength(queryString.length() - 1);
             queryString.append("[").append(query.getFilter()).append("]").append(QueryKeyWords.SPACE);
         }
-        // setting select
+        // window
+        if(query.getWindow() != null) {
+            queryString.setLength(queryString.length() - 1);
+            queryString.append("#window.").append(query.getWindow().getFunc()).append("(");
+
+            query.getWindow().getParameters().forEach(parameter -> {
+               queryString.append(parameter.getValue()).append(",");
+            });
+            queryString.setLength(queryString.length() - 1);
+            queryString.append(")").append(QueryKeyWords.SPACE);
+        }
+        // select
         QueryUtil.setSelect(query.getSelect(), queryString);
         // group by
         if (query.getGroupBy() != null) {

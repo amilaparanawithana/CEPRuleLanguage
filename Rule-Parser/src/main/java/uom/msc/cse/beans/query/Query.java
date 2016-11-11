@@ -26,6 +26,8 @@ public class Query {
     private String having;
     @XmlElement(name = "filter", type = String.class)
     private String filter;
+    @XmlElement(name = "window")
+    private Window window;
 
     public Select getSelect() {
         return select;
@@ -73,5 +75,13 @@ public class Query {
 
     public void setFilter(String filter) {
         this.filter = filter;
+    }
+
+    public Window getWindow() {
+        return window;
+    }
+
+    public void setWindow(Window window) {
+        this.window = window;
     }
 }

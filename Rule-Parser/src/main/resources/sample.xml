@@ -7,9 +7,15 @@
         </attributes>
     </select>
     <fromStream>samplefromstream</fromStream>
+    <filter>condition</filter>
+    <window func="time">
+        <parameters>
+            <parameter>para1</parameter>
+            <parameter>para2</parameter>
+        </parameters>
+    </window>
     <group-by>grp1</group-by>
     <having>having1</having>
-    <filter>condition</filter>
     <insertInto>insert-stream</insertInto>
 </query>
 
