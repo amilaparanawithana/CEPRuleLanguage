@@ -16,15 +16,16 @@ public class Query {
 
     @XmlElement(name = "select")
     private Select select;
-    @XmlElement(name = "filter")
-    private Filter filter;
     @XmlElement(name = "fromStream")
     private String fromStream;
     @XmlElement(name = "insertInto")
     private String insertInto;
     @XmlElement(name = "group-by")
     private String groupBy;
-
+    @XmlElement(name = "having", type = String.class)
+    private String having;
+    @XmlElement(name = "filter", type = String.class)
+    private String filter;
 
     public Select getSelect() {
         return select;
@@ -42,14 +43,6 @@ public class Query {
         this.fromStream = fromStream;
     }
 
-    public Filter getFilter() {
-        return filter;
-    }
-
-    public void setFilter(Filter filter) {
-        this.filter = filter;
-    }
-
     public String getInsertInto() {
         return insertInto;
     }
@@ -64,5 +57,21 @@ public class Query {
 
     public void setGroupBy(String groupBy) {
         this.groupBy = groupBy;
+    }
+
+    public String getHaving() {
+        return having;
+    }
+
+    public void setHaving(String having) {
+        this.having = having;
+    }
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
     }
 }

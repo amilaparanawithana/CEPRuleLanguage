@@ -8,12 +8,16 @@
     </select>
     <fromStream>samplefromstream</fromStream>
     <group-by>grp1</group-by>
-    <filter>
-        <having>having1</having>
-        <conditions>
-            <condition>con1</condition>
-            <condition connect="AND">con2</condition>
-        </conditions>
-    </filter>
+    <having>having1</having>
+    <filter>condition</filter>
     <insertInto>insert-stream</insertInto>
 </query>
+
+
+<!--
+<filter>
+<conditions>
+    <condition>con1</condition>
+    <condition connect="AND">con2</condition>
+</conditions>
+</filter>-->

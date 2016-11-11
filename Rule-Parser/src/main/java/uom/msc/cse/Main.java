@@ -25,8 +25,8 @@ public class Main {
                 "    </select>\n" +
                 "    <fromStream>samplefromstream</fromStream>\n" +
                 "    <group-by>grp1</group-by>\n" +
+                "    <having>having1</having>\n" +
                 "    <filter>\n" +
-                "        <having>having1</having>\n" +
                 "        <conditions>\n" +
                 "            <condition>con1</condition>\n" +
                 "            <condition connect=\"AND\">con2</condition>\n" +
@@ -35,7 +35,7 @@ public class Main {
                 "    <insertInto>insert-stream</insertInto>\n" +
                 "</query>";
 //        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
-        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xml));
+        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
         System.out.println(Parser.getEsperConverter().XMLToEsper(xmlFile));
 
     }

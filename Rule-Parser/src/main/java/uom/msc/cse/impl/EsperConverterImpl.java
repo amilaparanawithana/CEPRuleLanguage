@@ -47,14 +47,20 @@ public class EsperConverterImpl implements EsperConverter {
         QueryUtil.setSelect(query.getSelect(), queryString);
         // set from
         QueryUtil.setFrom(query.getFromStream(), queryString).append(QueryKeyWords.SPACE);
+        //filter
+        if(query.getFilter() != null) {
+            queryString.setLength(queryString.length() - 1);
+            queryString.append("(").append(query.getFilter()).append(")").append(QueryKeyWords.SPACE);
+        }
         // group by
         if (query.getGroupBy() != null) {
             QueryUtil.setGroupBy(query.getGroupBy(), queryString).append(QueryKeyWords.SPACE);
         }
         // having
-        if (query.getFilter().getHaving() != null) {
-            QueryUtil.setHaving(query.getFilter().getHaving(), queryString).append(QueryKeyWords.SPACE);
+        if (query.getHaving() != null) {
+            QueryUtil.setHaving(query.getHaving(), queryString).append(QueryKeyWords.SPACE);
         }
+
         return queryString.toString();
 
     }
