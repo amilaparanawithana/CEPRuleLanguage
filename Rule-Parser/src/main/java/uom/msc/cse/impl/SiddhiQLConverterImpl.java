@@ -11,6 +11,9 @@ import uom.msc.cse.util.QueryUtil;
 import java.io.File;
 
 /**
+ * Siddhi-SiddhiQl language parser.
+ * This contains the XML to SiddhiQL and SiddhiQL to XML language parser logic implementation
+ *
  * @author Amila Paranawithana
  */
 public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQLConverter {
@@ -25,6 +28,13 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
     private SiddhiQLConverterImpl() {
     }
 
+    /**
+     * Maps a XML string to a Query object with jaxb and convert to a SiddhiQL
+     *
+     * @param xml incoing xml string
+     * @return SiddhiQL query
+     * @throws ParserException
+     */
     public String XMLToSiddhiQL(String xml) throws ParserException {
         String query = "";
         logger.info("Converting the XML to SiddhiQL query..");
@@ -33,6 +43,13 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         return query;
     }
 
+    /**
+     * Maps a XML file to a Query object with jaxb and convert to a SiddhiQL
+     *
+     * @param xmlFile incoming xml file
+     * @return SiddhiQL query
+     * @throws ParserException
+     */
     public String XMLToSiddhiQL(File xmlFile) throws ParserException {
         String query = "";
         //TODO validate the incoming xml request over a XSD
@@ -55,7 +72,7 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         //setting from
         QueryUtil.setFrom(query.getFromStream(), queryString).append(QueryKeyWords.SPACE);
         //filter
-        if(query.getFilter() != null){
+        if (query.getFilter() != null) {
             queryString.setLength(queryString.length() - 1);
             queryString.append("[").append(query.getFilter()).append("]").append(QueryKeyWords.SPACE);
         }
@@ -71,7 +88,6 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         }
         //INSERT-INTO
         QueryUtil.setInsertInto(query.getInsertInto(), queryString).append(QueryKeyWords.SPACE);
-
 
         return queryString.toString();
     }

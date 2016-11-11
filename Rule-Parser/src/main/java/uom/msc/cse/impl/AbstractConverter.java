@@ -7,6 +7,4 @@ public class AbstractConverter {
 
     public void validateXML(){}
 
-
-
 }
