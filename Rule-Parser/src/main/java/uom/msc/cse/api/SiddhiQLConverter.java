@@ -9,9 +9,9 @@ import java.io.File;
  */
 public interface SiddhiQLConverter {
 
-    String XMLToSiddhiQL(String xml)  throws ParserException;
+    String XMLToSiddhiQL(String xml) throws ParserException;
 
     String XMLToSiddhiQL(File xmlFile) throws ParserException;
 
-    String SiddhiQLToXML(String sql);
+    String SiddhiQLToXML(String sql) throws ParserException;
 }

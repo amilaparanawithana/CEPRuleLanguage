@@ -8,9 +8,11 @@ import uom.msc.cse.exceptions.ParserException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.StringReader;
+import java.io.StringWriter;
 
 /**
  * @author Amila Paranawithana
@@ -47,6 +49,19 @@ public class QueryUtil {
                 logger.debug("Error in converting XML string : {} to JAXB object", xml);
             }
             throw new ParserException("Error while converting XML to JAXB object", e);
+        }
+    }
+
+    public static String convertQueryToXML(Query query) throws ParserException {
+        try {
+            java.io.StringWriter sw = new StringWriter();
+            JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
+            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            jaxbMarshaller.marshal(query,sw);
+            return sw.toString();
+        } catch (JAXBException e) {
+            logger.error("Error while converting Query object to XML");
+            throw new ParserException("Error while converting Query to XML", e);
         }
     }
 

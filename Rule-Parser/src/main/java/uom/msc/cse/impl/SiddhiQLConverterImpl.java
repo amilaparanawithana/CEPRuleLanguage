@@ -9,6 +9,8 @@ import uom.msc.cse.util.QueryKeyWords;
 import uom.msc.cse.util.QueryUtil;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Siddhi-SiddhiQl language parser.
@@ -103,7 +105,14 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         return queryString.toString();
     }
 
-    public String SiddhiQLToXML(String sql) {
-        return null;
+    public String SiddhiQLToXML(String sql) throws ParserException {
+        Query query = new Query();
+        String[] split = sql.split(" ");
+        List<String> splitList =  Arrays.asList(split);
+        //fromstream
+        int fromIndx = splitList.indexOf(QueryKeyWords.FROM);
+        String fromStream = splitList.get(fromIndx + 1).split("\\[")[0];
+        query.setFromStream(fromStream);
+        return QueryUtil.convertQueryToXML(query);
     }
 }

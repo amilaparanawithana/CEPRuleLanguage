@@ -35,8 +35,9 @@ public class Main {
                 "    <insertInto>insert-stream</insertInto>\n" +
                 "</query>";
 //        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
-        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
-        System.out.println(Parser.getEsperConverter().XMLToEsper(xmlFile));
+//        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
+//        System.out.println(Parser.getEsperConverter().XMLToEsper(xmlFile));
+        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML("from samplefromstream[condition]#window.time(para1,para2) select atr1 as attr1o , atr2 as attr2o group by grp1 having having1 insert into insert-stream "));
 
     }
 }
