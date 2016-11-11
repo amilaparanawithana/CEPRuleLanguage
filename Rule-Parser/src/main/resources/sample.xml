@@ -19,11 +19,3 @@
     <insertInto>insert-stream</insertInto>
 </query>
 
-
-<!--
-<filter>
-<conditions>
-    <condition>con1</condition>
-    <condition connect="AND">con2</condition>
-</conditions>
-</filter>-->

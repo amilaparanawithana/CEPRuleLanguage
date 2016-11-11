@@ -40,12 +40,14 @@
         <property name="superUserGroup" value="SUPER"/>
     </bean>
 
-    <bean id="cachingService" class="org.adroitlogic.ips.services.userManagement.CachingService" init-method="init">
-        <property name="hostName" value="localhost"/>
-        <property name="port" value="6379"/>
-    </bean>
 
+    <!--Enable this to use redis cache-->
+    <!--<bean id="cachingService" class="org.adroitlogic.ips.services.RedisCachingService" init-method="init">
+        <property name="hostName" value="${redis.hostname}"/>
+        <property name="port" value="${redis.port}"/>
+    </bean>-->
 
+    <bean id="cachingService" class="org.adroitlogic.ips.services.userManagement.InMemoryCachingService"/>
 
     <bean id="roleService" class="org.adroitlogic.ips.services.userManagement.RoleService">
 

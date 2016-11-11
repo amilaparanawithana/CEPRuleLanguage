@@ -3,7 +3,7 @@ package org.adroitlogic.ips.util.auth.filters;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
 import net.minidev.json.JSONArray;
-import org.adroitlogic.ips.services.userManagement.CachingService;
+import org.adroitlogic.ips.services.userManagement.AbstractCachingService;
 import org.adroitlogic.ips.util.auth.tokens.JWTAuthenticationToken;
 import org.adroitlogic.ips.util.auth.tokens.JWTTokenManager;
 import org.adroitlogic.ips.util.auth.util.AuthDataContainer;
@@ -42,7 +42,7 @@ public class JWTAuthorizationFilter extends AuthorizationFilter {
     @Autowired
     private JWTTokenEncrypt jwtTokenEncrypt;
     @Autowired
-    private CachingService cachingService;
+    private AbstractCachingService abstractCachingService;
 
     public JWTAuthorizationFilter(String authUrl) {
         this.authUrl = authUrl;
@@ -78,7 +78,7 @@ public class JWTAuthorizationFilter extends AuthorizationFilter {
 
                 final String username = jwtClaimsSet.getSubject();
 
-                if (!authHeader.equals(cachingService.getValueFromCache(username))) {
+                if (!authHeader.equals(abstractCachingService.getValueFromCache(username))) {
                     logger.warn("Received an invalid JWT Token");
                     return false;
                 }

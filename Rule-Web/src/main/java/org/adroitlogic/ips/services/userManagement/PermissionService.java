@@ -30,7 +30,7 @@ public class PermissionService {
     @Autowired
     private RoleRepository roleRepository;
     @Autowired
-    private CachingService cachingService;
+    private AbstractCachingService abstractCachingService;
     @Autowired
     private UserService userService;
 
@@ -99,7 +99,7 @@ public class PermissionService {
     public void deleteCacheForUser(String username) {
         try {
             logger.debug("Deleting old cache for the user {}", username);
-            this.cachingService.deleteKey(username);
+            this.abstractCachingService.deleteKey(username);
         } catch (Exception ex) {
             //hiding exceptions for the application, since cache is just a performance booster
             logger.error("Error in deleting cache for user {}", username, ex);
@@ -134,7 +134,7 @@ public class PermissionService {
         try {
             logger.debug("Caching new permissions set for the user {}, permission set has {} permissions.",
                     username, permissionsSet.size());
-            this.cachingService.addToSet(username, permissionsSet.toArray(new String[permissionsSet.size()]));
+            this.abstractCachingService.addToSet(username, permissionsSet.toArray(new String[permissionsSet.size()]));
         } catch (Exception ex) {
             //hiding exceptions for the application, since cache is just a performance booster
             logger.error("Error in deleting cache for user {}", username, ex);

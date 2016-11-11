@@ -77,12 +77,12 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
             queryString.append("[").append(query.getFilter()).append("]").append(QueryKeyWords.SPACE);
         }
         // window
-        if(query.getWindow() != null) {
+        if (query.getWindow() != null) {
             queryString.setLength(queryString.length() - 1);
             queryString.append("#window.").append(query.getWindow().getFunc()).append("(");
 
             query.getWindow().getParameters().forEach(parameter -> {
-               queryString.append(parameter.getValue()).append(",");
+                queryString.append(parameter.getValue()).append(",");
             });
             queryString.setLength(queryString.length() - 1);
             queryString.append(")").append(QueryKeyWords.SPACE);

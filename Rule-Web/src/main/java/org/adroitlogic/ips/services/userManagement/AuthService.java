@@ -31,7 +31,7 @@ public class AuthService {
     @Autowired
     private JWTTokenEncrypt jwtTokenEncrypt;
     @Autowired
-    private CachingService cachingService;
+    private AbstractCachingService abstractCachingService;
 
     /**
      * Will attempt to authenticate a user
@@ -54,7 +54,7 @@ public class AuthService {
 
             final String generatedToken = jwtTokenManager.generateToken(usernamePasswordToken.getUsername());
             final String encryptedToken = jwtTokenEncrypt.encrypt(generatedToken);
-            cachingService.addToCache(authJsonToken.getUsername(), encryptedToken);
+            abstractCachingService.addToCache(authJsonToken.getUsername(), encryptedToken);
             return encryptedToken;
         } catch (AuthenticationException authEx) {
             logger.warn("Failed to authenticate user {} due to invalid credentials.", authJsonToken.getUsername(), authEx);

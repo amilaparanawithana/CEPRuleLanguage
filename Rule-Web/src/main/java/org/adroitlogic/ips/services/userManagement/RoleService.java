@@ -37,7 +37,7 @@ public class RoleService {
     @Autowired
     private AuditLogService auditLogService;
     @Autowired
-    private CachingService cachingService;
+    private AbstractCachingService abstractCachingService;
 
 
     /**
@@ -88,7 +88,7 @@ public class RoleService {
     public void update(RoleResource roleResource, int id, String user) throws ServiceException {
         logger.debug("Updating new role :{}", roleResource.getName());
 
-        cachingService.deleteAllKeyValues();
+        abstractCachingService.deleteAllKeyValues();
         try {
             Role role = roleRepository.findOne(id);
             if (role != null) {
@@ -121,7 +121,7 @@ public class RoleService {
     public void delete(int roleId, String user) throws ServiceException {
         logger.debug("Deleting role with ID :{}", roleId);
 
-        cachingService.deleteAllKeyValues();
+        abstractCachingService.deleteAllKeyValues();
         try {
             Role role = roleRepository.findOne(roleId);
             if (role != null && role.getUsers() == null) {

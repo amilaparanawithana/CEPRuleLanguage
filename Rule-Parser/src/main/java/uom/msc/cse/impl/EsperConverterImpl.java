@@ -77,7 +77,7 @@ public class EsperConverterImpl implements EsperConverter {
             queryString.append("(").append(query.getFilter()).append(")").append(QueryKeyWords.SPACE);
         }
         // window
-        if(query.getWindow() != null) {
+        if (query.getWindow() != null) {
             queryString.setLength(queryString.length() - 1);
             queryString.append(".win:").append(query.getWindow().getFunc()).append("(");
 
