@@ -1,0 +1,56 @@
+<div class="content-header-wrapper">
+    <div class="row">
+        <div class="col-md-5"><p class="ips-page-header">Convert Query to XML</p></div>
+    </div>
+</div>
+
+<div class="content-body-wrapper">
+    <div class="col-lg-8">
+        <div>
+            <div class="form">
+                <form class="form" role="form" (ngSubmit)="onSubmit()">
+                    <div class="form-body">
+
+                        <div class="form-group">
+                            <label>Enter query </label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-code"></i>
+                                </span>
+                                <textarea rows="3" cols="50" class="form-control" style="font-size: 16px;width: 700px"
+                                          placeholder="from samplefromstream select atr1 as attr1o insert into insert-stream"
+                                          [(ngModel)]="cepquery.query" required>
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div style="text-align:center" class="form-group">
+                            <div class="row">
+                                <select class="select-list"
+                                        (change)="selectQueryType($event.target.value)">
+                                    <option value="select">Select Convert Language</option>
+                                    <option value="siddhi"> ** SIDDHI - SiddhiQL **</option>
+                                    <option value="esper">** ESPER - EPL **</option>
+                                    <option value="stream">** STREAM - CQL **</option>
+                                </select>
+                                <button (click)="convertToXML()" class="btn btn-active">CONVERT</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>XML format</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-leaf"></i>
+                                </span>
+                                <textarea rows="10" cols="50" class="form-control" style="font-size: 16px;height: 300px;width: 700px"
+                                           [(ngModel)]="cepquery.xml">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

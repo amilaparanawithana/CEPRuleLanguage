@@ -20,13 +20,16 @@ export class CepqueryService {
                 @Inject(UserService)
                 private userService:UserService,
                 private jwtProvider:JwtProvider) {
-        this.baseUrl = restService.getBaseUrl('xmltoquery');
+        this.baseUrl = restService.getBaseUrl("");
         this.restService = restService;
     }
 
     convertXmlToQuery(cepQuery:Cepquery){
-        return this.restService.post(this.baseUrl, JSON.stringify(cepQuery)).map(res=>res.json());
+        return this.restService.post(this.baseUrl + 'xmltoquery', JSON.stringify(cepQuery)).map(res=>res.json());
     }
 
+    convertQueryToXML(cepQuery:Cepquery){
+        return this.restService.post(this.baseUrl + 'querytoxml', JSON.stringify(cepQuery)).map(res=>res.json());
+    }
 
 }

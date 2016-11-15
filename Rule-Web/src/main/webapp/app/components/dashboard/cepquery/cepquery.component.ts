@@ -4,6 +4,7 @@
 import {Component} from "angular2/core";
 import {ROUTER_DIRECTIVES, RouteConfig} from "angular2/router";
 import {XmltoqueryComponent} from "./xmltoquery.component";
+import {QuerytoxmlComponent} from "./querytoxml.component";
 @Component({
     selector: 'cepquery-component',
     template: `<router-outlet></router-outlet>`,
@@ -12,9 +13,14 @@ import {XmltoqueryComponent} from "./xmltoquery.component";
 
 @RouteConfig([
     {
-        path: '/',
+        path: '/Xmltoquery',
         name: 'Xmltoquery',
         component: XmltoqueryComponent
+    },
+    {
+        path: '/Querytoxml',
+        name: 'Querytoxml',
+        component: QuerytoxmlComponent
     }
 ])
 

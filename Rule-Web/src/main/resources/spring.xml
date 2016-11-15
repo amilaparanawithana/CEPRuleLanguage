@@ -194,5 +194,6 @@
     <bean name="ldapAuthService" class="org.adroitlogic.ips.services.userManagement.LdapAuthService"/>
     <bean name="tenantFactory" class="org.adroitlogic.ips.util.annotations.TenantFactory"/>
     <bean name="xmlToQueryService" class="org.adroitlogic.ips.services.converters.XMLToQueryService"/>
+    <bean name="queryToXMLService" class="org.adroitlogic.ips.services.converters.QueryToXMLService"/>
 
 </beans>
