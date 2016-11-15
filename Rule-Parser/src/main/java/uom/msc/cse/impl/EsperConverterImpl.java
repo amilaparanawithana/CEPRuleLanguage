@@ -33,7 +33,7 @@ public class EsperConverterImpl implements EsperConverter {
      * @throws ParserException
      */
     @Override
-    public String XMLToEsper(String xml) throws ParserException {
+    public String XMLToEPL(String xml) throws ParserException {
         Query query = QueryUtil.convertXMLStringToBean(xml);
         return createSQLWithQuery(query);
     }
@@ -46,12 +46,12 @@ public class EsperConverterImpl implements EsperConverter {
      * @throws ParserException
      */
     @Override
-    public String XMLToEsper(File xml) throws ParserException {
+    public String XMLToEPL(File xml) throws ParserException {
         Query query = QueryUtil.convertXMLFileToBean(xml);
         return createSQLWithQuery(query);
     }
 
-    public String EsperToXML(String esperQuery) {
+    public String EPLToXML(String esperQuery) {
         return null;
     }
 
