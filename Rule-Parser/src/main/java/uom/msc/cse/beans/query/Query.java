@@ -16,16 +16,16 @@ public class Query {
 
     @XmlElement(name = "select")
     private Select select;
-    @XmlElement(name = "insertInto")
-    private String insertInto;
-    @XmlElement(name = "group-by")
-    private String groupBy;
-    @XmlElement(name = "having", type = String.class)
-    private String having;
     @XmlElement(name = "from")
     private From from;
     @XmlElement(name = "where")
     private String where;
+    @XmlElement(name = "group-by")
+    private String groupBy;
+    @XmlElement(name = "having", type = String.class)
+    private String having;
+    @XmlElement(name = "insertInto")
+    private String insertInto;
 
     public Select getSelect() {
         return select;
