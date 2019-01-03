@@ -1,74 +1,11 @@
-<!DOCTYPE web-app PUBLIC
-        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
 
-<web-app>
-    <display-name>Archetype Created Web Application</display-name>
-    <servlet>
-        <servlet-name>jersey-serlvet</servlet-name>
-        <servlet-class>
-            org.glassfish.jersey.servlet.ServletContainer
-        </servlet-class>
-        <init-param>
-            <param-name>jersey.config.server.provider.classnames</param-name>
-            <param-value>org.glassfish.jersey.media.multipart.MultiPartFeature;org.adroitlogic.ips.util.CorsResponseFilter</param-value>
-        </init-param>
-        <init-param>
-            <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>org.adroitlogic.ips.rest.controllers;org.adroitlogic.ips.util.annotations;org.adroitlogic.ips.rest.exceptions</param-value>
-        </init-param>
-        <init-param>
-            <param-name>jersey.config.server.provider.scanning.recursive</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <init-param>
-            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <!--<init-param>
-            <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>org.adroitlogic.ips.web.rest</param-value>
-        </init-param>-->
-        <!--<init-param>
-            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-            <param-value>true</param-value>
-        </init-param>-->
-        <load-on-startup>1</load-on-startup>
-
-    </servlet>
-
-   <!-- <listener>
-        <listener-class>
-            org.adroitlogic.ips.config.IPSServletContextListener
-        </listener-class>
-    </listener>-->
-    
-    <context-param>
-       <param-name>contextConfigLocation</param-name>
-       <param-value>classpath:spring.xml</param-value>
-   </context-param>
-
-   <listener>
-       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-   </listener>
-
-    <servlet-mapping>
-        <servlet-name>jersey-serlvet</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
-
-    <!--Applying shiro filter defined in spring.xml to all the request-->
-    <filter>
-        <filter-name>shiroFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <init-param>
-            <param-name>targetFilterLifecycle</param-name>
-            <param-value>true</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>shiroFilter</filter-name>
-        <url-pattern>/rest/*</url-pattern>
-    </filter-mapping>
-
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <welcome-file-list>
+        <!--<welcome-file>index.jsp</welcome-file>-->
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>
