@@ -16,5 +16,3 @@ group by roomNo
 having avgTemp > 30
 insert into AlertStream;
 
-select tick.symbol from StockTick.win:time(10) as tick, News.win:time(10) as news
-where news.symbol = tick.symbol

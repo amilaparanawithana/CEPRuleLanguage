@@ -24,10 +24,10 @@ public class ConverterService {
     {
 
         try {
-        cepqueryResource.setQuery(Parser.getEsperConverter().XMLToEPL(cepqueryResource.getXml()));
+        cepqueryResource.setQuery(Parser.getEsperConverter().XMLToEPL(cepqueryResource.getXml().trim()));
 
         } catch (Exception e) {
-            throw new EServiceException("Could not convert the XML to EPL");
+            throw new EServiceException("Could not convert the XML to EPL",e);
         }
         return cepqueryResource;
     }
@@ -43,10 +43,10 @@ public class ConverterService {
     {
 
         try {
-            cepqueryResource.setQuery(Parser.getSiddiConverter().XMLToSiddhiQL(cepqueryResource.getXml()));
+            cepqueryResource.setQuery(Parser.getSiddiConverter().XMLToSiddhiQL(cepqueryResource.getXml().trim()));
 
         } catch (Exception e) {
-            throw new EServiceException("Could not convert the XML to EPL");
+            throw new EServiceException("Could not convert the XML to EPL",e);
         }
         return cepqueryResource;
     }
@@ -62,10 +62,10 @@ public class ConverterService {
     {
 
         try {
-            cepqueryResource.setQuery(Parser.getStreamConverter().XMLToCQL(cepqueryResource.getXml()));
+            cepqueryResource.setQuery(Parser.getStreamConverter().XMLToCQL(cepqueryResource.getXml().trim()));
 
         } catch (Exception e) {
-            throw new EServiceException("Could not convert the XML to EPL");
+            throw new EServiceException("Could not convert the XML to EPL",e);
         }
         return cepqueryResource;
     }
@@ -81,10 +81,10 @@ public class ConverterService {
     {
 
         try {
-            cepqueryResource.setXml(Parser.getEsperConverter().EPLToXML(cepqueryResource.getQuery()));
+            cepqueryResource.setXml(Parser.getEsperConverter().EPLToXML(cepqueryResource.getQuery().trim()));
 
         } catch (Exception e) {
-            throw new EServiceException("Could not convert the XML to EPL");
+            throw new EServiceException("Could not convert the XML to EPL", e);
         }
         return cepqueryResource;
     }
@@ -100,10 +100,10 @@ public class ConverterService {
     {
 
         try {
-            cepqueryResource.setXml(Parser.getSiddiConverter().SiddhiQLToXML(cepqueryResource.getQuery()));
+            cepqueryResource.setXml(Parser.getSiddiConverter().SiddhiQLToXML(cepqueryResource.getQuery().trim()));
 
         } catch (Exception e) {
-            throw new EServiceException("Could not convert the XML to EPL");
+            throw new EServiceException("Could not convert the XML to EPL",e);
         }
         return cepqueryResource;
     }
@@ -119,10 +119,10 @@ public class ConverterService {
     {
 
         try {
-            cepqueryResource.setXml(Parser.getStreamConverter().CQLToXML(cepqueryResource.getQuery()));
+            cepqueryResource.setXml(Parser.getStreamConverter().CQLToXML(cepqueryResource.getQuery().trim()));
 
         } catch (Exception e) {
-            throw new EServiceException("Could not convert the XML to EPL");
+            throw new EServiceException("Could not convert the XML to EPL",e);
         }
         return cepqueryResource;
     }

@@ -56,35 +56,45 @@ public class EsperConverterImpl implements EsperConverter {
 
     public String EPLToXML(String esperQuery) {
 
-
+        esperQuery = esperQuery.trim().replace("\n"," ");
         Query query = new Query();
-        // set insert into
-        String insertInto = QueryUtil.getStringBetweenEPLBreakers(esperQuery,"insert into");
-        query.setInsertInto(insertInto.trim());
-
 
         // set select
         Select select = new Select();
         List<Attribute> attributes = new ArrayList<>();
+        List<Function> functions = new ArrayList<>();
+
         String selectPortion = QueryUtil.getStringBetweenEPLBreakers(esperQuery,"select");
         if(selectPortion.trim().equalsIgnoreCase("*") ) {
             select.setAll(true);
         } else {
             List<String> selectVariables = Arrays.asList(selectPortion.split(","));
             selectVariables.forEach(a-> {
-                Attribute att = new Attribute();
-                if(a.contains("as")) {
-                    String[] s = a.split("as");
-                    att.setAttribute(s[0].trim());
-                    att.setAs(s[1].trim());
+                if(a.contains("(") && a.contains(")")) {
+                    Function f = new Function();
+                    f.setFunc(a.split("\\(")[0].trim());
+                    f.setField(a.split("\\(")[1].split("\\)")[0].trim());
+                    if(a.contains("as")) {
+                        String[] s = a.split("as");
+                        f.setAs(s[1].trim());
+                    }
+                    functions.add(f);
                 } else {
-                    att.setAttribute(a.trim());
+                    Attribute att = new Attribute();
+                    if(a.contains("as")) {
+                        String[] s = a.split("as");
+                        att.setAttribute(s[0].trim());
+                        att.setAs(s[1].trim());
+                    } else {
+                        att.setAttribute(a.trim());
+                    }
+                    attributes.add(att);
                 }
 
-                attributes.add(att);
             });
         }
         select.setAttributes(attributes);
+        select.setFunctions(functions);
         query.setSelect(select);
 
         //from
@@ -92,7 +102,7 @@ public class EsperConverterImpl implements EsperConverter {
             From from = new From();
             String fromString = QueryUtil.getStringBetweenEPLBreakers(esperQuery,"from");
             List<Stream> streams = new ArrayList<>();
-            if(fromString.contains(",")) {
+            if(fromString.contains(",")) { //join
                 List<String> fullFrom = Arrays.asList(fromString.split(","));
                 fullFrom.forEach(fromBlk -> {
                     Stream stream = new Stream();
@@ -119,6 +129,12 @@ public class EsperConverterImpl implements EsperConverter {
         if(esperQuery.contains(" group by ")) {
             String groupByPortion = QueryUtil.getStringBetweenEPLBreakers(esperQuery,"group by");
             query.setGroupBy(groupByPortion.trim());
+        }
+
+        //having
+        if(esperQuery.contains(" having ")) {
+            String havingPortion = QueryUtil.getStringBetweenEPLBreakers(esperQuery,"having");
+            query.setHaving(havingPortion.trim());
         }
 
         return QueryUtil.convertQueryToXML(query);
@@ -186,28 +202,33 @@ public class EsperConverterImpl implements EsperConverter {
     private void setFromStream(String fromBlk, Stream stream) {
 
         if(fromBlk.contains(".")) {
-            stream.setName(fromBlk.split("\\.")[0].trim());
+            String nameAndCon = fromBlk.split("\\.")[0].trim();
+            if(nameAndCon.contains("(")){
+                stream.setName(nameAndCon.split("\\(")[0]);
+                stream.setFilter(nameAndCon.split("\\(")[1].split("\\)")[0]);
+            } else {
+                stream.setName(nameAndCon);
+            }
         }
         if(fromBlk.contains("win:")) {
             Window window = new Window();
             window.setFunc(fromBlk.split("win:")[1].split("\\(")[0].trim());
             List<Parameter> windowParams = new ArrayList<>();
-            String parametersStrin = fromBlk.split("\\(")[1].split("\\)")[0];
+            String parametersStrin = fromBlk.split(".win")[1].split("\\(")[1].split("\\)")[0];
 
             if(parametersStrin.contains(",")) {
                 Arrays.asList(parametersStrin.split(",")).forEach(param -> {
                     windowParams.add(new Parameter(param));
                 });
-                window.setParameters(windowParams);
             } else {
-                windowParams.add(new Parameter(parametersStrin));
-                window.setParameters(windowParams);
+                windowParams.add(new Parameter(parametersStrin.trim()));
             }
+            window.setParameters(windowParams);
             stream.setWindow(window);
         }
 
-       if(fromBlk.split("\\)").length > 1) {
-           stream.setAs(fromBlk.split("\\)")[1].trim());
+       if(fromBlk.contains("as")) {
+           stream.setAs(fromBlk.split("as")[1].trim());
        }
     }
 }

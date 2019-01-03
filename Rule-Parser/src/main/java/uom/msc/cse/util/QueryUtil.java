@@ -9,6 +9,12 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -50,7 +56,8 @@ public class QueryUtil {
             JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.marshal(query,sw);
-            return sw.toString();
+//            return sw.toString();
+            return QueryUtil.prettyFormat(sw.toString());
         } catch (JAXBException e) {
             throw new ParserException("Error while converting Query to XML", e);
         }
@@ -128,7 +135,7 @@ public class QueryUtil {
 
     public static String SiddhigetStringBetweenSiddhiBreakers(String sql, String startPattern) {
         String getHalf = sql.split(startPattern)[1];
-        final int[] nextFirstBreakIndx = {10000000};
+        final int[] nextFirstBreakIndx = {1000000000};
         QueryKeyWords.breakingKeyWords.forEach(word -> {
             if(getHalf.contains(word)) {
                 int indx = getHalf.indexOf(word);
@@ -143,7 +150,7 @@ public class QueryUtil {
 
     public static String getStringBetweenEPLBreakers(String sql, String startPattern) {
         String getHalf = sql.split(startPattern)[1];
-        final int[] nextFirstBreakIndx = {10000000};
+        final int[] nextFirstBreakIndx = {1000000000};
         QueryKeyWords.eplBreakingKeyWords.forEach(word -> {
             if(getHalf.contains(word)) {
                 int indx = getHalf.indexOf(word);
@@ -154,6 +161,26 @@ public class QueryUtil {
         });
         String betweenString = getHalf.substring(0,nextFirstBreakIndx[0]);
         return betweenString;
+    }
+
+    public static String prettyFormat(String input, int indent) {
+        try {
+            Source xmlInput = new StreamSource(new StringReader(input));
+            StringWriter stringWriter = new StringWriter();
+            StreamResult xmlOutput = new StreamResult(stringWriter);
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            transformerFactory.setAttribute("indent-number", indent);
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.transform(xmlInput, xmlOutput);
+            return xmlOutput.getWriter().toString();
+        } catch (Exception e) {
+            throw new RuntimeException(e); // simple exception handling, please review it
+        }
+    }
+
+    public static String prettyFormat(String input) {
+        return prettyFormat(input, 2);
     }
 
 }

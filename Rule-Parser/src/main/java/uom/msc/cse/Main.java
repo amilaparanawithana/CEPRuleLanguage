@@ -32,11 +32,12 @@ public class Main {
 
         // ------------ ESPER --------------------
 
-        String eplQuery = "insert into CombinedEvent\n" +
-                "select A.customerId as custId, A.timestamp - B.timestamp as latency\n" +
-                "  from EventA.win:time(30 min) A, EventB.win:time(30 min) B\n" +
-                " where A.txnId = B.txnId;";
-//        System.out.println(Parser.getEsperConverter().EPLToXML(eplQuery));
+        String eplQuery = "select tickDataFeed, stddev(price)\n" +
+                "from StockTickEvent(symbol='IBM').win:length(10) as st\n" +
+                "where volume > 1000\n" +
+                "group by tickDataFeed\n" +
+                "having stddev(price) > 0.8;";
+        System.out.println(Parser.getEsperConverter().EPLToXML(eplQuery));
 //        System.out.println(Parser.getEsperConverter().XMLToEPL(xmlFile));
 
 
@@ -44,7 +45,7 @@ public class Main {
         // ____________ CQL -----------------------
 
 //        xml to cql
-        System.out.println(Parser.getStreamConverter().XMLToCQL(xmlFile));
+//        System.out.println(Parser.getStreamConverter().XMLToCQL(xmlFile));
 
 
 

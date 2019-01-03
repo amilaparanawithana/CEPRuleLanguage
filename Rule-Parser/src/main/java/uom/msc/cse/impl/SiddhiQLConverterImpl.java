@@ -119,6 +119,10 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
 
         Query query = new Query();
 
+        // set insert into
+        String insertInto = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql,"insert into");
+        query.setInsertInto(insertInto.trim());
+
         //fromstream
         From from = new From();
         List<Stream> streams = new ArrayList<>();
