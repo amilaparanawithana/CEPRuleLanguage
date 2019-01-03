@@ -4,6 +4,8 @@ import uom.msc.cse.api.CQLConvertor;
 import uom.msc.cse.beans.query.Query;
 import uom.msc.cse.beans.query.Window;
 import uom.msc.cse.exceptions.ParserException;
+import uom.msc.cse.util.QueryKeyWords;
+import uom.msc.cse.util.QueryUtil;
 
 import java.io.File;
 

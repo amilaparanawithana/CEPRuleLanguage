@@ -3,6 +3,8 @@ package uom.msc.cse.impl;
 import uom.msc.cse.api.SiddhiQLConverter;
 import uom.msc.cse.beans.query.*;
 import uom.msc.cse.exceptions.ParserException;
+import uom.msc.cse.util.QueryKeyWords;
+import uom.msc.cse.util.QueryUtil;
 
 import java.io.File;
 import java.util.ArrayList;
