@@ -1,20 +1,46 @@
 package uom.msc.cse.util;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * @author Amila Paranawithana
  */
-public class QueryKeyWords {
+public interface QueryKeyWords {
 
-    public static final String SELECT = "select";
-    public static final String FROM = "from";
-    public static final String INSERT_INTO = "insert into";
-    public static final String AS = "as";
-    public static final String GROUP_BY = "group by";
-    public static final String HAVING = "having";
+    // breaking keywords
+    String SELECT = "select";
+    String FROM = "from";
+    String INSERT_INTO = "insert into";
+    String GROUP_BY = "group by";
+    String HAVING = "having";
+
+    //siddhi
+    String WINDOW = "#window";
+
+    //epl
+    String AS = "as";
+    String WHERE = "where";
 
 
-    public static final String SPACE = " ";
-    public static final String COMMA = ",";
+    String SPACE = " ";
+    String COMMA = ",";
+    String TERMINATOR = ";";
+
+    // aggregate function keywords
+    String AVG = "avg";
+    String MAX = "max";
+    String SUM = "sum";
+    String COUNT = "count";
+
+    List<String> breakingKeyWords = Stream.of(GROUP_BY, HAVING, INSERT_INTO,SELECT,TERMINATOR).collect(Collectors.toList());
+
+    List<String> eplBreakingKeyWords = Stream.of(GROUP_BY, HAVING, INSERT_INTO, SELECT, FROM, WHERE, TERMINATOR).collect(Collectors.toList());
+
+    List<String> aggFuncs = Stream.of(AVG, MAX, SUM, COUNT).collect(Collectors.toList());
+
+
 
 
 

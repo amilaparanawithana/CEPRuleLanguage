@@ -1,0 +1,19 @@
+<query>
+    <from>
+        <streams>
+            <stream>
+                <name>tempetarureStream</name>
+            </stream>
+        </streams>
+    </from>
+    <select>
+        <attributes>
+            <attribute as="rm">roomNo</attribute>
+            <attribute>location</attribute>
+        </attributes>
+    </select>
+    <where>roomNo>100</where>
+</query>
+
+
+

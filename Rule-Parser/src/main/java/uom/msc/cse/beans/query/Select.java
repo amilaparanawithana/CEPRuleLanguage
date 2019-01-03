@@ -18,6 +18,18 @@ public class Select {
     @XmlElement(name = "attribute")
     private List<Attribute> attributes;
 
+    @XmlElementWrapper(name = "functions")
+    @XmlElement(name = "function")
+    private List<Function> functions;
+
+    public Select() {
+    }
+
+    public Select(List<Attribute> attributes, List<Function> functions) {
+        this.attributes = attributes;
+        this.functions = functions;
+    }
+
     public Boolean getAll() {
         return all;
     }
@@ -34,4 +46,11 @@ public class Select {
         this.attributes = attributes;
     }
 
+    public List<Function> getFunctions() {
+        return functions;
+    }
+
+    public void setFunctions(List<Function> functions) {
+        this.functions = functions;
+    }
 }

@@ -13,6 +13,13 @@ public class Parameter {
     @XmlValue
     String value;
 
+    public Parameter() {
+    }
+
+    public Parameter(String value) {
+        this.value = value;
+    }
+
     public String getValue() {
         return value;
     }

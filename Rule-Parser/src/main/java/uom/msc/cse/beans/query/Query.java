@@ -16,18 +16,16 @@ public class Query {
 
     @XmlElement(name = "select")
     private Select select;
-    @XmlElement(name = "fromStream")
-    private String fromStream;
     @XmlElement(name = "insertInto")
     private String insertInto;
     @XmlElement(name = "group-by")
     private String groupBy;
     @XmlElement(name = "having", type = String.class)
     private String having;
-    @XmlElement(name = "filter", type = String.class)
-    private String filter;
-    @XmlElement(name = "window")
-    private Window window;
+    @XmlElement(name = "from")
+    private From from;
+    @XmlElement(name = "where")
+    private String where;
 
     public Select getSelect() {
         return select;
@@ -35,14 +33,6 @@ public class Query {
 
     public void setSelect(Select select) {
         this.select = select;
-    }
-
-    public String getFromStream() {
-        return fromStream;
-    }
-
-    public void setFromStream(String fromStream) {
-        this.fromStream = fromStream;
     }
 
     public String getInsertInto() {
@@ -69,19 +59,19 @@ public class Query {
         this.having = having;
     }
 
-    public String getFilter() {
-        return filter;
+    public From getFrom() {
+        return from;
     }
 
-    public void setFilter(String filter) {
-        this.filter = filter;
+    public void setFrom(From from) {
+        this.from = from;
     }
 
-    public Window getWindow() {
-        return window;
+    public String getWhere() {
+        return where;
     }
 
-    public void setWindow(Window window) {
-        this.window = window;
+    public void setWhere(String where) {
+        this.where = where;
     }
 }
