@@ -146,48 +146,60 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         query.setFrom(from);
 
         // on
-        if (fromString.contains(" on ")) {
+        if (sql.contains("on")) {
             String onPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "on ");
             query.setWhere(onPortion.trim());
         }
 
         //select
-        if (sql.contains("select ")) {
+        if (sql.contains("select")) {
             String selectPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "select ");
             List<Attribute> attributes = new ArrayList<>();
+            List<Function> funcList = new ArrayList<>();
             Arrays.asList(selectPortion.split(",")).forEach(a -> {
                 Attribute at = new Attribute();
-                if (a.contains("as")) {
-                    at.setAttribute(a.split("as")[0]);
-                    at.setAs(a.split("as")[1].trim());
+                if(!(a.contains("(") && a.contains(")"))) {
+                    if (a.contains("as")) {
+                        at.setAttribute(a.split("as")[0]);
+                        at.setAs(a.split("as")[1].trim());
+                    } else {
+                        at.setAttribute(a.trim());
+                    }
+                    attributes.add(at);
                 } else {
-                    at.setAttribute(a.trim());
+                    // aggregate functions of select
+                    QueryKeyWords.aggFuncs.forEach(func -> {
+                        if (a.contains(func)) {
+                            String s = selectPortion.split(func + "\\(")[1];
+                            Function f = new Function();
+                            f.setFunc(func);
+                            f.setField(s.split("\\)")[0]);
+                            if(a.contains("as")) {
+                                f.setAs(a.split("as")[1].trim());
+                            }
+                            funcList.add(f);
+                        }
+                    });
                 }
-                attributes.add(at);
-            });
 
 
-            List<Function> funcList = new ArrayList<>();
-            // aggregate functions of select
-            QueryKeyWords.aggFuncs.forEach(func -> {
-                if (selectPortion.contains(func)) {
-                    String s = selectPortion.split(func + "\\(")[1];
-                    Function f = new Function();
-                    f.setFunc(func);
-                    f.setField(s.split("\\)")[0]);
-                    f.setAs(s.split("as ")[1].trim());
-                    funcList.add(f);
-                }
             });
 
             query.setSelect(new Select(attributes, funcList));
         }
 
         //group by
-        if (sql.contains(" group by ")) {
-            String selectPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, " group by");
+        if (sql.contains("group by")) {
+            String selectPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "group by ");
             query.setGroupBy(selectPortion.trim());
         }
+
+        // having
+        if (sql.contains("having")) {
+            String havingPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "having ");
+            query.setHaving(havingPortion.trim());
+        }
+
 
 
         return QueryUtil.convertQueryToXML(query);
@@ -200,10 +212,14 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
             stream.setName(fromBlk.split("\\[")[0].trim());
         } else if (fromBlk.contains("#window")) {
             stream.setName(fromBlk.split("#window")[0].trim());
-        } else if (fromBlk.contains("as")) {
-            stream.setName(fromBlk.split("as")[0].trim());
+        }
+
+        if (fromBlk.contains("as") && !fromBlk.contains("[") && !fromBlk.contains("#window")) {
+            stream.setAs(fromBlk.split("as")[0].trim());
             stream.setAs(fromBlk.split("as")[1].trim());
-        } else {
+        } else if (fromBlk.contains("as")){
+            stream.setAs(fromBlk.split("as")[1].trim());
+        } else if(!fromBlk.contains("as") && !fromBlk.contains("[") && !fromBlk.contains("#window")) {
             stream.setName(fromBlk.trim());
         }
 

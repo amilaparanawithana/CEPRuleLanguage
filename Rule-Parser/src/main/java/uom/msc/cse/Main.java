@@ -19,7 +19,11 @@ public class Main {
                 " where A.txnId = B.txnId;";*/
 
 
-        String siddhiQuery = "from sampletream[condition]#window.time(para1,para2) select atr1 as attr1o , atr2 as attr2o, avg(temp) as avgTemp group by grp1 having havcondi insert into insert-stream;";
+        String siddhiQuery = "from TempStream[temp > 30.0]#window.time(1 min) as T\n" +
+                "  join RegulatorStream[isOn == false]#window.length(1) as R\n" +
+                "  on T.roomNo == R.roomNo\n" +
+                "select T.roomNo, R.deviceID, 'start' as action\n" +
+                "insert into RegulatorActionStream;";
 
 
         // --------------Siddhi -----------------
