@@ -120,16 +120,17 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         Query query = new Query();
 
         // set insert into
-        String insertInto = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql,"insert into");
+        String insertInto = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql,"insert into ");
         query.setInsertInto(insertInto.trim());
 
         //fromstream
         From from = new From();
         List<Stream> streams = new ArrayList<>();
-        String fromString = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "from");
-        if (fromString.contains("join")) {
+        String fromString = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "from ");
 
-            List<String> fullFrom = Arrays.asList(fromString.split("join"));
+        if (fromString.contains(" join ")) {
+
+            List<String> fullFrom = Arrays.asList(fromString.split("join "));
             fullFrom.forEach(fromBlk -> {
                 Stream stream = new Stream();
                 setFromStream(fromBlk, stream);
@@ -145,12 +146,14 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         query.setFrom(from);
 
         // on
-        String onPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "on");
-        query.setWhere(onPortion.trim());
+        if (fromString.contains(" on ")) {
+            String onPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "on ");
+            query.setWhere(onPortion.trim());
+        }
 
         //select
-        if (sql.contains("select")) {
-            String selectPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "select");
+        if (sql.contains("select ")) {
+            String selectPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "select ");
             List<Attribute> attributes = new ArrayList<>();
             Arrays.asList(selectPortion.split(",")).forEach(a -> {
                 Attribute at = new Attribute();
@@ -181,8 +184,8 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         }
 
         //group by
-        if (sql.contains("group by")) {
-            String selectPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, "group by");
+        if (sql.contains(" group by ")) {
+            String selectPortion = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql, " group by");
             query.setGroupBy(selectPortion.trim());
         }
 

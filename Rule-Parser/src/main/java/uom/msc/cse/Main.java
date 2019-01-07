@@ -19,11 +19,12 @@ public class Main {
                 " where A.txnId = B.txnId;";*/
 
 
+        String siddhiQuery = "from sampletream[condition]#window.time(para1,para2) select atr1 as attr1o , atr2 as attr2o, avg(temp) as avgTemp group by grp1 having havcondi insert into insert-stream;";
 
 
         // --------------Siddhi -----------------
 //        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
-//        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML("from samplefromstream[condition]#window.time(para1,para2) select atr1 as attr1o , atr2 as attr2o, avg(temp) as avgTemp group by grp1 having having1 insert into insert-stream "));
+        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML(siddhiQuery));
 //        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML("from TempStream[temp > 30.0]#window.time(1 min) as T\n" +
 //                "  join RegulatorStream[isOn == false]#window.length(1) as R\n" +
 //                "  on T.roomNo == R.roomNo\n" +
@@ -32,12 +33,10 @@ public class Main {
 
         // ------------ ESPER --------------------
 
-        String eplQuery = "select tickDataFeed, stddev(price)\n" +
-                "from StockTickEvent(symbol='IBM').win:length(10) as st\n" +
-                "where volume > 1000\n" +
-                "group by tickDataFeed\n" +
-                "having stddev(price) > 0.8;";
-        System.out.println(Parser.getEsperConverter().EPLToXML(eplQuery));
+        String eplQuery = "select 'IBM stats' as title, avg(price) as avgPrice, sum(price) as sumPrice\n" +
+                "from StockTickEvent(symbol='IBM').win:length(10)\n" +
+                "where symbol='IBM';";
+//        System.out.println(Parser.getEsperConverter().EPLToXML(eplQuery));
 //        System.out.println(Parser.getEsperConverter().XMLToEPL(xmlFile));
 
 
