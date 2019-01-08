@@ -110,7 +110,9 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
             QueryUtil.setHaving(query.getHaving(), queryString).append(QueryKeyWords.SPACE);
         }
         //INSERT-INTO
-        QueryUtil.setInsertInto(query.getInsertInto(), queryString).append(QueryKeyWords.SPACE);
+        if (query.getInsertInto() != null && !query.getInsertInto().isEmpty()) {
+            QueryUtil.setInsertInto(query.getInsertInto(), queryString).append(QueryKeyWords.SPACE);
+        }
 
         return queryString.toString();
     }
