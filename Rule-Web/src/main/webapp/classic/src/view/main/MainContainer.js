@@ -26,6 +26,14 @@ Ext.define('PDMS_Monitor_Web.view.main.MainContainer', {
 
     tools: [
         {
+            xtype: 'label',
+            html:'CEP ML',
+            reference:'panelLabel',
+            id:'panelLabel',
+            responsiveCls: 'big-50 small-100',
+            style:'font-weight:400; font-size:16px; color:#f0f0f0'
+        },
+        {
             xtype: 'combobox',
             itemId: 'layout-id',
             width: 200,
@@ -37,13 +45,14 @@ Ext.define('PDMS_Monitor_Web.view.main.MainContainer', {
                 ["mlcql", "CEP ML -> CQL"],
                 ["eplml", "EPL -> CEP ML"],
                 ["siddhiml", "SiddhiQL -> CEP ML"],
-                ["cqlml", "CQL -> CEP ML"]
+                // ["cqlml", "CQL -> CEP ML"]
             ],
             value: "select",
             listeners: {
                 change: function(comp, newValue, oldValue, eOpts) {
                     console.log(newValue);
                     this.up("maincontainer").getController().loadTextBox(newValue, this);
+                    Ext.get('panelLabel').component.setText(comp.rawValue)
                 }
             }
 
