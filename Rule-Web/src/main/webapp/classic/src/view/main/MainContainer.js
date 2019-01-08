@@ -51,6 +51,18 @@ Ext.define('PDMS_Monitor_Web.view.main.MainContainer', {
     ],
     items: [
         {
+            xtype: 'label',
+            html:'CEP ML',
+            responsiveCls: 'big-50 small-100',
+            style:'font-weight:400; font-size:16px'
+        },
+        {
+            xtype: 'label',
+            html:'Other Language',
+            responsiveCls: 'big-50 small-100',
+            style:'font-weight:400; font-size:16px'
+        },
+        {
             xtype: 'textareafield',
             name:'xml',
             id:'xml',
