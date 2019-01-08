@@ -34,7 +34,7 @@
             </stream>
         </streams>
     </from>
-    <where>whereCondision</where>
+    <!--<where>whereCondision</where>-->
     <group-by>grp1</group-by>
     <having>having1</having>
     <insertInto>insert-stream</insertInto>

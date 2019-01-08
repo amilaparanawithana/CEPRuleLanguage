@@ -95,18 +95,18 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         queryString.setLength(queryString.length() - 1);
 
         //on
-        if (!query.getWhere().isEmpty()) {
+        if (query.getWhere() != null && !query.getWhere().isEmpty()) {
             queryString.append(QueryKeyWords.SPACE).append("on").append(QueryKeyWords.SPACE).append(query.getWhere()).append(QueryKeyWords.SPACE);
         }
 
         // select
         QueryUtil.setSelect(query.getSelect(), queryString);
         // group by
-        if (query.getGroupBy() != null) {
+        if (query.getGroupBy() != null && !query.getGroupBy().isEmpty()) {
             QueryUtil.setGroupBy(query.getGroupBy(), queryString).append(QueryKeyWords.SPACE);
         }
         // having
-        if (query.getHaving() != null) {
+        if (query.getHaving() != null && !query.getHaving().isEmpty()) {
             QueryUtil.setHaving(query.getHaving(), queryString).append(QueryKeyWords.SPACE);
         }
         //INSERT-INTO
