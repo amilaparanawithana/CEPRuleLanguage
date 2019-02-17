@@ -40,4 +40,38 @@
     <!--<insertInto>insert-stream</insertInto>-->
 </query>
 
+<query>
+
+<select>
+    <attributes>
+        <attribute as="a1">att1</attribute>
+    </attributes>
+    <functions>
+        <function func="function" as="funcAs">functionApplyParam</function>
+        ...
+    </functions>
+</select>
+
+<from>
+    <streams>
+        <stream as="as">
+            <name>stream name</name>
+            <window func="function_name">
+                <parameters>
+                    <parameter>window parameter</parameter>
+                    ...
+                </parameters>
+            </window>
+            <filter>stream_filter_condition</filter>
+        </stream>
+        ...
+    </streams>
+</from>
+<where>..condition..</where>
+<group-by>grp_by_param</group-by>
+<having>grp_condition</having>
+<insertInto>..insert-stream..</insertInto>
+
+</query>
+
 

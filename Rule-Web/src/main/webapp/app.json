@@ -1,6 +1,6 @@
 {
-    "name": "PDMS_Monitor_Web",
-    "namespace": "PDMS_Monitor_Web",
+    "name": "CEP_ML_Web",
+    "namespace": "CEP_ML_Web",
     "version": "1.0.0.0",
     "framework": "ext",
 

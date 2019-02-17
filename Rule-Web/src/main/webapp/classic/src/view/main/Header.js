@@ -32,7 +32,7 @@ Ext.define('PDMS_Monitor_Web.view.main.Header', {
                 },
                 '->',
 
-                {
+                /*{
                     iconCls:'x-fa fa-user',
                     ui: 'header',
                     // href: '#profile',
@@ -52,7 +52,7 @@ Ext.define('PDMS_Monitor_Web.view.main.Header', {
                     width: 35,
                     alt:'current user image',
                     src: 'resources/images/user/user.png'
-                }
+                }*/
             ]
         }
     ],

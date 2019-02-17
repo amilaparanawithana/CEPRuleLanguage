@@ -34,6 +34,10 @@ Ext.define('PDMS_Monitor_Web.view.main.MainContainer', {
             style:'font-weight:400; font-size:16px; color:#f0f0f0'
         },
         {
+            tag: 'span 1',
+            html: 'Span 1'
+        },
+        {
             xtype: 'combobox',
             itemId: 'layout-id',
             width: 200,

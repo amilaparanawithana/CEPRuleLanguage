@@ -54,3 +54,7 @@ select tick.symbol from StockTick.win:time(10) as tick, News.win:time(10) as new
 where news.symbol = tick.symbol
 
 select * from StockTick(symbol='IBM').win:time(30 sec)
+
+
+select ticketDate, sum(price) from StockTickEvent(symbol='IBM').win:length(10)
+where volume > 1000
