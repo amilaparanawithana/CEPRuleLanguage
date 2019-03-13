@@ -3,10 +3,10 @@
         <attributes>
             <attribute as="rn">roomNo</attribute>
             <attribute>deviceID</attribute>
+            <functions>
+                <function func="avgTemp" as="avgTemp">temp</function>
+            </functions>
         </attributes>
-        <functions>
-            <function func="avg" as="avgTemp">temp</function>
-        </functions>
     </select>
 
     <from>
@@ -22,7 +22,8 @@
             </stream>
         </streams>
     </from>
-    <group_by>roomNo</group_by>
-    <insert-into>resultStream1</insert-into>
-
 </query>
+
+
+
+

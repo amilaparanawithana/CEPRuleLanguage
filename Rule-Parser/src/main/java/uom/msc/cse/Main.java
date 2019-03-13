@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("--------- converter running ------------");
-        File xmlFile = new File("sample.xml");
+        File xmlFile = new File("sample1.xml");
 
         /*String eplQuery = "insert into CombinedEvent\n" +
                 "select A.customerId as custId, A.timestamp - B.timestamp as latency\n" +
@@ -37,9 +37,9 @@ public class Main {
 
         // ------------ ESPER --------------------
 
-        String eplQuery = "select 'IBM stats' as title, avg(price) as avgPrice, sum(price) as sumPrice\n" +
-                "from StockTickEvent(symbol='IBM').win:length(10)\n" +
-                "where symbol='IBM';";
+        String eplQuery = "select IBM_stats as title, avg(price) as avgPrice, sum(price) as sumPrice \n" +
+                "from StockTickEvent(symbol='IBM').win:length(10) \n" +
+                "where symbol='IBM';\n";
 //        System.out.println(Parser.getEsperConverter().EPLToXML(eplQuery));
 //        System.out.println(Parser.getEsperConverter().XMLToEPL(xmlFile));
 

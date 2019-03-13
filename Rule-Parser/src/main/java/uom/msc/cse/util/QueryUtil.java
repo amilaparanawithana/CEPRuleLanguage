@@ -83,12 +83,13 @@ public class QueryUtil {
                 }
             });
 
-            final int[] numberOfFunctions = {select.getFunctions().size()}; // this is to determine on comma
-            if (numberOfFunctions[0] > 0) {
-                queryString.append(QueryKeyWords.COMMA).append(QueryKeyWords.SPACE);
-            }
 
             if(select.getFunctions() != null) {
+
+                final int[] numberOfFunctions = {select.getFunctions().size()}; // this is to determine on comma
+                if (numberOfFunctions[0] > 0) {
+                    queryString.append(QueryKeyWords.COMMA).append(QueryKeyWords.SPACE);
+                }
                 select.getFunctions().forEach(function -> {
                     queryString
                             .append(function.getFunc())

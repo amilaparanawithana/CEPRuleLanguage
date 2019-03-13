@@ -151,7 +151,9 @@ public class EsperConverterImpl implements EsperConverter {
         StringBuilder queryString = new StringBuilder();
 
         // set insert into
-        QueryUtil.setInsertInto(query.getInsertInto(), queryString).append(QueryKeyWords.SPACE);
+        if(query.getInsertInto() != null) {
+            QueryUtil.setInsertInto(query.getInsertInto(), queryString).append(QueryKeyWords.SPACE);
+        }
         // set select
         QueryUtil.setSelect(query.getSelect(), queryString);
 
@@ -163,6 +165,14 @@ public class EsperConverterImpl implements EsperConverter {
 
             query.getFrom().getStreams().forEach( stream -> {
                 queryString.append(stream.getName());
+
+                // set filter
+                String filter = stream.getFilter();
+                if(filter != null && !filter.isEmpty()) {
+                    queryString.append("(").append(filter).append(")");
+                }
+
+                //set window
                 Window window = stream.getWindow();
                 if(window != null) {
                     queryString.append(".").append("win").append(":").append(window.getFunc());
@@ -173,13 +183,16 @@ public class EsperConverterImpl implements EsperConverter {
                     queryString.setLength(queryString.length() -1);
                     queryString.append(")");
                 }
+                // set stream as
                 if(stream.getAs() != null) {
-                    queryString.append(" ").append(stream.getAs()).append(",");
+                    queryString.append(" as ").append(stream.getAs()).append(",");
                 }
             });
-        }
 
-        queryString.setLength(queryString.length() - 1);
+            if(query.getFrom().getStreams().size() > 1) {
+                queryString.setLength(queryString.length() - 1);
+            }
+        }
 
         // where
         if (query.getWhere() != null && !query.getWhere().isEmpty()) {
