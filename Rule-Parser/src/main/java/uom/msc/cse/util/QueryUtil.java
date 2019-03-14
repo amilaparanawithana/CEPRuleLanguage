@@ -56,7 +56,7 @@ public class QueryUtil {
             JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.marshal(query,sw);
-//            return sw.toString();
+            // replace greaterthan and lessthan
             return QueryUtil.prettyFormat(sw.toString());
         } catch (JAXBException e) {
             throw new ParserException("Error while converting Query to XML", e);

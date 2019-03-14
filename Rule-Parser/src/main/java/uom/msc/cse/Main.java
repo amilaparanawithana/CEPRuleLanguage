@@ -27,8 +27,8 @@ public class Main {
 
 
         // --------------Siddhi -----------------
-        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
-//        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML(siddhiQuery));
+//        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
+        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML(siddhiQuery));
 //        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML("from TempStream[temp > 30.0]#window.time(1 min) as T\n" +
 //                "  join RegulatorStream[isOn == false]#window.length(1) as R\n" +
 //                "  on T.roomNo == R.roomNo\n" +

@@ -11,7 +11,7 @@
 
     <from>
         <streams>
-            <stream>
+            <stream as="tmps">
                 <name>TempStream</name>
                 <window func="time">
                     <parameters>
@@ -20,9 +20,18 @@
                 </window>
                 <filter>roomNo > 110</filter>
             </stream>
+
+            <stream as="trfs">
+                <name>TrafficStream</name>
+                <window func="time">
+                    <parameters>
+                        <parameter>10 min</parameter>
+                    </parameters>
+                </window>
+                <filter>roadId = 2001</filter>
+            </stream>
+
         </streams>
     </from>
-    <group_by>roomNo</group_by>
-    <insert-into>resultStream1</insert-into>
-
+    <where>tmps.locId = trfs.locId</where>
 </query>

@@ -19,6 +19,7 @@ public interface QueryKeyWords {
     //siddhi
     String WINDOW = "#window";
     String ON = "on";
+    String JOIN = "join";
 
     //epl
     String AS = "as";
