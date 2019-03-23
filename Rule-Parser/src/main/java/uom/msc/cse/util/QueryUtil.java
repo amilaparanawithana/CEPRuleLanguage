@@ -1,6 +1,7 @@
 package uom.msc.cse.util;
 
 import uom.msc.cse.beans.query.From;
+import uom.msc.cse.beans.query.OrderBy;
 import uom.msc.cse.beans.query.Query;
 import uom.msc.cse.beans.query.Select;
 import uom.msc.cse.exceptions.ParserException;
@@ -56,8 +57,9 @@ public class QueryUtil {
             JAXBContext jaxbContext = JAXBContext.newInstance(Query.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             jaxbMarshaller.marshal(query,sw);
-            // replace greaterthan and lessthan
-            return QueryUtil.prettyFormat(sw.toString());
+            return QueryUtil.prettyFormat(sw.toString())
+                    .replaceAll("&gt;", ">")
+                    .replaceAll("&lt;","<");
         } catch (JAXBException e) {
             throw new ParserException("Error while converting Query to XML", e);
         }
@@ -131,6 +133,20 @@ public class QueryUtil {
 
     public static StringBuilder setHaving(String having, StringBuilder queryString) {
         queryString.append(QueryKeyWords.HAVING).append(QueryKeyWords.SPACE).append(having);
+        return queryString;
+    }
+
+    public static StringBuilder setOrderBy(OrderBy orderBy, StringBuilder queryString) {
+        queryString.append(QueryKeyWords.ORDER_BY).append(QueryKeyWords.SPACE)
+                .append(orderBy.getVariable())
+                .append(QueryKeyWords.SPACE)
+                .append(orderBy.getOrder());
+        return queryString;
+    }
+
+    public static StringBuilder setLimit(String limit, StringBuilder queryString) {
+        queryString.append(QueryKeyWords.LIMIT).append(QueryKeyWords.SPACE)
+                .append(limit).append(QueryKeyWords.SPACE);
         return queryString;
     }
 

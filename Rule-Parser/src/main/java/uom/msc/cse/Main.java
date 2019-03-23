@@ -19,16 +19,15 @@ public class Main {
                 " where A.txnId = B.txnId;";*/
 
 
-        String siddhiQuery = "from TempStream[temp > 30.0]#window.time(1 min) as T\n" +
-                "  join RegulatorStream[isOn == false]#window.length(1) as R\n" +
-                "  on T.roomNo == R.roomNo\n" +
-                "select T.roomNo, R.deviceID, 'start' as action\n" +
-                "insert into RegulatorActionStream;";
+        String siddhiQuery = "from TempStream#window.time(10 min)\n" +
+                "select avg(temp) as avgTemp, roomNo, deviceID\n" +
+                "group by roomNo, deviceID\n" +
+                "insert into AvgTempStream;";
 
 
         // --------------Siddhi -----------------
-//        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
-        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML(siddhiQuery));
+        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
+//        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML(siddhiQuery));
 //        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML("from TempStream[temp > 30.0]#window.time(1 min) as T\n" +
 //                "  join RegulatorStream[isOn == false]#window.length(1) as R\n" +
 //                "  on T.roomNo == R.roomNo\n" +
@@ -41,16 +40,13 @@ public class Main {
                 "from StockTickEvent(symbol='IBM').win:length(10) \n" +
                 "where symbol='IBM';\n";
 //        System.out.println(Parser.getEsperConverter().EPLToXML(eplQuery));
-//        System.out.println(Parser.getEsperConverter().XMLToEPL(xmlFile));
+        System.out.println(Parser.getEsperConverter().XMLToEPL(xmlFile));
 
 
 
         // ____________ CQL -----------------------
 
-        String cqlQuery = "Select segNo, dir, hwy\n" +
-                "   From SegSpeedStr [Range 5 Minutes]\n" +
-                "   Group By segNo, dir, hwy\n" +
-                "   Having Avg(speed) < 40;";
+        String cqlQuery = "select segNo, dir, hwy from SegSpeedStr[Range 5 Minutes] group by segNo, dir, hwy Having avg(speed) < 40;";
 //        xml to cql
 //        System.out.println(Parser.getStreamConverter().XMLToCQL(xmlFile));
 //        System.out.println(Parser.getStreamConverter().CQLToXML(cqlQuery));

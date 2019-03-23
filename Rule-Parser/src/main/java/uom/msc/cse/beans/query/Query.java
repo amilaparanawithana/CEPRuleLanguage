@@ -26,6 +26,10 @@ public class Query {
     private String having;
     @XmlElement(name = "insertInto")
     private String insertInto;
+    @XmlElement(name = "order-by")
+    private OrderBy orderBy;
+    @XmlElement(name = "limit")
+    private String limit;
 
     public Select getSelect() {
         return select;
@@ -73,5 +77,21 @@ public class Query {
 
     public void setWhere(String where) {
         this.where = where;
+    }
+
+    public OrderBy getOrderBy() {
+        return orderBy;
+    }
+
+    public void setOrderBy(OrderBy orderBy) {
+        this.orderBy = orderBy;
+    }
+
+    public String getLimit() {
+        return limit;
+    }
+
+    public void setLimit(String limit) {
+        this.limit = limit;
     }
 }

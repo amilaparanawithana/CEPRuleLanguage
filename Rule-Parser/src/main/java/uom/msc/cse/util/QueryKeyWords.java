@@ -15,6 +15,8 @@ public interface QueryKeyWords {
     String INSERT_INTO = "insert into";
     String GROUP_BY = "group by";
     String HAVING = "having";
+    String ORDER_BY = "order by";
+    String LIMIT = "limit";
 
     //siddhi
     String WINDOW = "#window";

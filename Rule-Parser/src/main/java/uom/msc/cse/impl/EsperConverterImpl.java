@@ -207,6 +207,16 @@ public class EsperConverterImpl implements EsperConverter {
         if (query.getHaving() != null) {
             QueryUtil.setHaving(query.getHaving(), queryString).append(QueryKeyWords.SPACE);
         }
+
+        //order-by
+        if(query.getOrderBy() != null) {
+            QueryUtil.setOrderBy(query.getOrderBy(), queryString).append(QueryKeyWords.SPACE);
+        }
+
+        //limit
+        if(query.getLimit() !=null && !query.getLimit().isEmpty()) {
+            QueryUtil.setLimit(query.getLimit(), queryString).append(QueryKeyWords.SPACE);
+        }
         return queryString.toString();
 
     }

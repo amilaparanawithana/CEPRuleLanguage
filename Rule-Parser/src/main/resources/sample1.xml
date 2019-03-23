@@ -1,37 +1,28 @@
 <query>
     <select>
         <attributes>
-            <attribute as="rn">roomNo</attribute>
-            <attribute>deviceID</attribute>
+            <attribute as="a1">att1</attribute>
         </attributes>
         <functions>
-            <function func="avg" as="avgTemp">temp</function>
+            <function func="f_name" as="f_as">func_param</function>
         </functions>
     </select>
-
     <from>
         <streams>
-            <stream as="tmps">
-                <name>TempStream</name>
-                <window func="time">
+            <stream as="s_as">
+                <name>steam_name</name>
+                <window func="window_func">
                     <parameters>
-                        <parameter>10 min</parameter>
+                        <parameter>window_param</parameter>
                     </parameters>
                 </window>
-                <filter>roomNo > 110</filter>
+                <filter>filter_condition</filter>
             </stream>
-
-            <stream as="trfs">
-                <name>TrafficStream</name>
-                <window func="time">
-                    <parameters>
-                        <parameter>10 min</parameter>
-                    </parameters>
-                </window>
-                <filter>roadId = 2001</filter>
-            </stream>
-
         </streams>
     </from>
-    <where>tmps.locId = trfs.locId</where>
+    <where>where_condition</where>
+    <group-by>group_by_variables</group-by>
+    <having>having_condition</having>
+    <order-by order="asc">ordering_param</order-by>
+    <limit>limit_length</limit>
 </query>
