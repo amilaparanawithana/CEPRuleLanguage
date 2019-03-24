@@ -189,8 +189,9 @@ public class EsperConverterImpl implements EsperConverter {
                 }
             });
 
-            if(query.getFrom().getStreams().size() > 1) {
+            if(query.getFrom().getStreams().size() > 0) {
                 queryString.setLength(queryString.length() - 1);
+                queryString.append(QueryKeyWords.SPACE);
             }
         }
 
@@ -248,6 +249,14 @@ public class EsperConverterImpl implements EsperConverter {
             }
             window.setParameters(windowParams);
             stream.setWindow(window);
+        }
+
+        if(!fromBlk.contains(".") && !fromBlk.contains("win:")) {
+            if(fromBlk.contains("as")) {
+                stream.setName(fromBlk.split("as")[0].trim());
+            } else {
+                stream.setName(fromBlk.trim());
+            }
         }
 
        if(fromBlk.contains("as")) {

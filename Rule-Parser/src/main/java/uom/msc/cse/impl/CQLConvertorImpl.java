@@ -19,7 +19,8 @@ public class CQLConvertorImpl extends AbstractConverter implements CQLConvertor 
 
     @Override
     public String XMLToCQL(String xml) throws ParserException {
-        return null;
+        Query query = QueryUtil.convertXMLStringToBean(xml);
+        return createCQLWithQuery(query);
     }
 
     @Override
@@ -54,7 +55,7 @@ public class CQLConvertorImpl extends AbstractConverter implements CQLConvertor 
                      queryString.append("]").append(QueryKeyWords.SPACE);
                  }
                   if(stream.getAs() != null && !stream.getAs().isEmpty()) {
-                      queryString.append("as").append(stream.getAs()).append(QueryKeyWords.SPACE);
+                      queryString.append(QueryKeyWords.SPACE).append("as").append(QueryKeyWords.SPACE).append(stream.getAs()).append(QueryKeyWords.SPACE);
                   }
 
                   queryString.append(QueryKeyWords.COMMA);

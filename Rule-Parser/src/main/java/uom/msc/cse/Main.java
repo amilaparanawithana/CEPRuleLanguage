@@ -19,15 +19,12 @@ public class Main {
                 " where A.txnId = B.txnId;";*/
 
 
-        String siddhiQuery = "from TempStream#window.time(10 min)\n" +
-                "select avg(temp) as avgTemp, roomNo, deviceID\n" +
-                "group by roomNo, deviceID\n" +
-                "insert into AvgTempStream;";
+        String siddhiQuery = "from temp_stream#window.time(10 min)  as tmps join traffic_stream as traffic  on tmps.locId = traffic.locId select roomNo as rn , deviceID , avg(temperature) as avgTemp group by deviceID having deviceID = 2001;";
 
 
         // --------------Siddhi -----------------
-        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
-//        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML(siddhiQuery));
+//        System.out.println(Parser.getSiddiConverter().XMLToSiddhiQL(xmlFile));
+        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML(siddhiQuery));
 //        System.out.println(Parser.getSiddiConverter().SiddhiQLToXML("from TempStream[temp > 30.0]#window.time(1 min) as T\n" +
 //                "  join RegulatorStream[isOn == false]#window.length(1) as R\n" +
 //                "  on T.roomNo == R.roomNo\n" +
@@ -36,11 +33,9 @@ public class Main {
 
         // ------------ ESPER --------------------
 
-        String eplQuery = "select IBM_stats as title, avg(price) as avgPrice, sum(price) as sumPrice \n" +
-                "from StockTickEvent(symbol='IBM').win:length(10) \n" +
-                "where symbol='IBM';\n";
+//        String eplQuery = "select roomNo as rn , deviceID , avg(temperature) as avgTemp from temp_stream.win:time(10 min) as tmps,traffic_stream as traffic  where tmps.locId = traffic.locId group by deviceID having deviceID = 2001;";
 //        System.out.println(Parser.getEsperConverter().EPLToXML(eplQuery));
-        System.out.println(Parser.getEsperConverter().XMLToEPL(xmlFile));
+//        System.out.println(Parser.getEsperConverter().XMLToEPL(xmlFile));
 
 
 

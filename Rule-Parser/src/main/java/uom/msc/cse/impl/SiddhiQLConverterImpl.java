@@ -128,8 +128,10 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
         Query query = new Query();
 
         // set insert into
-        String insertInto = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql,"insert into ");
-        query.setInsertInto(insertInto.trim());
+        if (sql.contains("insert into")) {
+            String insertInto = QueryUtil.SiddhigetStringBetweenSiddhiBreakers(sql,"insert into ");
+            query.setInsertInto(insertInto.trim());
+        }
 
         //fromstream
         From from = new From();
@@ -220,6 +222,12 @@ public class SiddhiQLConverterImpl extends AbstractConverter implements SiddhiQL
             stream.setName(fromBlk.split("\\[")[0].trim());
         } else if (fromBlk.contains("#window")) {
             stream.setName(fromBlk.split("#window")[0].trim());
+        } else if (!fromBlk.contains("[") && !fromBlk.contains("#window")){
+            if(fromBlk.contains("as")) {
+                stream.setName(fromBlk.split("as")[0].trim());
+            } else {
+                stream.setName(fromBlk.trim());
+            }
         }
 
         if (fromBlk.contains("as") && !fromBlk.contains("[") && !fromBlk.contains("#window")) {
